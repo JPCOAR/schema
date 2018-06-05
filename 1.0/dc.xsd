@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://purl.org/dc/elements/1.1/"
+    targetNamespace="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" elementFormDefault="qualified"
+    xmlns:jpcoar="https://irdb.nii.ac.jp/schema/jpcoar/1.0/">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+
+    <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
+    <xs:import namespace="https://irdb.nii.ac.jp/schema/jpcoar/1.0/" schemaLocation="jpcoar_scm.xsd"/>
+
+    <xs:element name="type" type="jpcoar:resourceType">
+        <xs:annotation>
+            <xs:documentation>
+                コンテンツの種類を資源タイプ語彙別表から選択して記入する。rdf:resourceには各統制語彙に対応するCOAR Resource Type（http://vocabularies.coar-repositories.org/documentation/resource_types/）のURIを記入する。
+                注意点：departmental bulletin paper（紀要論文）およびarticle（記事）は、journal article（学術雑誌論文）のURIを記入する。learning materialは、other（その他）のURIを記入する。
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                学術雑誌論文の例 
+                &lt;dc:type rdf:resource=&quot;http://purl.org/coar/resource_type/c_6501&quot;&gt;journal article&lt;/dc:type&gt; 
+                紀要論文の例
+                &lt;dc:type rdf:resource=&quot;http://purl.org/coar/resource_type/c_6501&quot;&gt;departmental bulletin paper&lt;/dc:type&gt; 
+                博士論文の例 
+                &lt;dc:type rdf:resource=&quot;http://purl.org/coar/resource_type/c_db06&quot;&gt;doctoral thesis&lt;/dc:type&gt; 
+                データセットの例 
+                &lt;dc:type rdf:resource=&quot;http://purl.org/coar/resource_type/c_ddb1&quot;&gt;dataset&lt;/dc:type&gt; 
+                記事の例 
+                &lt;dc:type rdf:resource=&quot;http://purl.org/coar/resource_type/c_6501&quot;&gt;article&lt;/dc:type&gt;
+                非推奨例：
+                rdf:resourceを省略してはならない。
+                &lt;dc:type&gt;departmental bulletin paper&lt;/dc:type&gt;
+            </xs:documentation>                
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="title">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                コンテンツのタイトル。論文の場合、論題である。コンテンツ本文と同じ言語のタイトル情報は必ず記入する。タイトルの言語情報はxml:langに記入する。
+                注意点：タイトル情報が複数言語ある場合は、要素を繰り返して記入する。ただし、各言語コードのdc:titleの出現回数は1回までとする。 優先度の高い言語表記の順に記入する。目次タイトル、奥付タイトル等がある場合は、dcterms:alternative（その他のタイトル）に記入する。コンテンツが図書の一部（章など）である場合、dc:title（タイトル）には章などのタイトルを記入し、図書全体のタイトルはjpcoar:relation（関連）に記入する。ヨミの言語情報はxml:lang="ja-Kana"とし、片仮名で記入する。また、ヨミを記入する場合は、xml:lang="ja"の情報を必ず記入する。
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                &lt;dc:title xml:lang="ja"&gt;情報爆発時代の研究基盤構想&lt;/dc:title&gt;
+                &lt;dc:title xml:lang="ja-Kana"&gt;ジョウホウ バクハツ ジダイ ノ ケンキュウ キバン コウソウ&lt;/dc:title&gt;
+                &lt;dc:title xml:lang="en"&gt;Research Project on Cyber Infrastructure for Information-explosion Era&lt;/dc:title&gt;
+                &lt;dc:title xml:lang="zh-cn"&gt;"如果"句的反事实表达浅析&lt;/dc:title&gt;
+                非推奨例：
+                xml:langの指定がない記入は推奨しない。 
+                &lt;dc:title&gt;情報爆発時代の研究基盤構想&lt;/dc:title&gt; 
+                複数言語の並列表記は推奨しない。 
+                &lt;dc:title xml:lang=&quot;jaen&quot;&gt;情報爆発時代の研究基盤構想 = Research Project on Cyber Infrastructure for Information-explosion Era&lt;/dc:title&gt; 
+                掲載誌名を含めることは推奨しない。掲載誌名はjpcoar:sourceTitle（収録物名）を使用する。 
+                &lt;dc:title xml:lang=&quot;ja&quot;&gt;NIIの概要(日本病院会雑誌)&lt;/dc:title&gt;
+                同一言語指定の要素を繰り返してはならない。
+                &lt;dc:title xml:lang=&quot;ja&quot;&gt;情報爆発時代の研究基盤構想&lt;/dc:title&gt;
+                &lt;dc:title xml:lang=&quot;ja&quot;&gt;データマイニング、次世代サーチなどの研究&lt;/dc:title&gt;
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="xml:lang" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="rights">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                コンテンツの利用に関する権利情報を記入する。知的所有権や著作権等に関する情報を含む。ライセンス情報を記入する際にはライセンスの正式名とバージョン情報を記入する（例：Creative Commons Attribution 4.0 International）。その他の場合は、自由記述とするが、出版社等の権利者からの指定がある場合は、その指示に従う。ライセンスにURIがある場合、rdf:resourceにHTTP URI形式で記入し、再利用の条件を明示することを推奨する。（例：https://creativecommons.org/licenses/by/4.0/deed.en）
+                注意点：ライセンス情報は短縮形で記入しない。各言語コードのdc:rightsの出現回数に制限はなく、複数回繰り返して記入してよい。
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                クリエイティブコモンズの記入例
+                &lt;dc:rights xml:lang="en" rdf:resource="https://creativecommons.org/licenses/by/4.0/deed.en"&gt;Creative Commons Attribution 4.0 International&lt;/dc:rights&gt;
+                コピーライトの記入例
+                &lt;dc:rights xml:lang="en"&gt;Copyright (c) 1997 American Physical Society&lt;/dc:rights&gt;
+                権利者からの指定の例
+                &lt;dc:rights xml:lang="en"&gt;(c) ACM 2016. This is the author's version of the work. It is posted here for your personal use. Not for redistribution. The definitive Version of Record was published in http://doi.org/10.1145/123456789&lt;/dc:rights&gt;
+                非推奨例：
+                ライセンス情報を短縮形で記入しない。
+                &lt;dc:rights xml:lang="en" rdf:resource="https://creativecommons.org/licenses/by/4.0/deed.en"&gt;CC BY 4.0&lt;/dc:rights&gt;
+                ライセンス情報のURIがある場合、記入を推奨する。 
+                &lt;dc:rights xml:lang="en"&gt;Creative Commons Attribution 4.0 International&lt;/dc:rights> 
+                異なるライセンス情報を1要素にまとめて記入しない。 ファイル単位でライセンス情報が異なる場合は、別途メタデータレコードを作成する。ファイルの分割が困難な場合は、dc:rightsを繰り返して記入する。
+                &lt;dc:rights xml:lang="en"&gt;CC BY 4.0 / Copyright (c) 1997 American Physical Society&lt;/dc:rights&gt;
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="xml:lang" use="optional"/>
+                    <xs:attribute ref="rdf:resource" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="publisher">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                コンテンツ本体を公開した主体を記入する。名称が複数言語ある場合は、コンテンツ本体と同じ言語の名称を優先する。個人名については「姓,△名」とする。肩書きは記入しない。
+                注意点：略称ではなく正式名称を記入する。作成者等の所属する組織にはjpcoar:affiliationを使用する。役割等の補助的な情報は記入しない。各言語コードのdc:publisherの出現回数に制限はなく、複数回繰り返して記入してよい。 
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                &lt;dc:publisher xml:lang="en"&gt;Elsevier&lt;/dc:publisher&gt;
+                &lt;dc:publisher xml:lang="ja"&gt;日本物理学会&lt;/dc:publisher&gt;
+                非推奨例：
+                出版地は記入しない。
+                &lt;dc:publisher&gt;東京&lt;/dc:publisher&gt;
+                印刷者や製本者は記入しない。
+                &lt;dc:publisher&gt;岡倉印刷&lt;/dc:publisher&gt;
+                機関の変遷前名称等、同一言語での異なる表記を記述してはならない。
+                &lt;dc:publisher xml:lang="ja"&gt;日本建築学会&lt;/dc:publisher&gt;
+                &lt;dc:publisher xml:lang="ja"&gt;建築学会&lt;/dc:publisher&gt;
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="xml:lang" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="identifier" type="jpcoar:identifierTypeVocab">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                掲載誌に付与された識別子を記入する。記述方法は選択した識別子に依存する。identifierTypeには以下の統制語彙から選択して記入する。　-　PISSN　-　EISSN　-　ISSN（非推奨）　-　NCID
+                注意点：ISSN、NCIDがある場合は必ず記入する。掲載誌以外のNCIDはjpcoar:relatedIdentifier（関連識別子）を使用する。junii2下位互換用の語彙としてidentifierTypeに"ISSN"を設けるが、原則使用しない。PISSNまたはEISSNの判別が困難な場合に限って使用する。
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                &lt;dc:identifier identifierType="PISSN"&gt;1234-5678&lt;/dc:identifier&gt;
+                &lt;dc:identifier identifierType="NCID"&gt;AN12345678&lt;/dc:identifier&gt;
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="language" type="ISOlangType">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                コンテンツ本文で用いられている主な言語を記入する。ISO-639-3 言語コードで記入する。ISO-639-3 のマクロランゲージの使用は任意とする。
+                注意点：言語名を記入しない。国コードを記入しない。優先度の高い言語の順に記入する。
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                コンテンツ本文が英語
+                &lt;dc:language&gt;eng&lt;/dc:language&gt;
+                コンテンツ本文が英語と日本語
+                &lt;dc:language&gt;eng&lt;/dc:language&gt;
+                &lt;dc:language&gt;jpn&lt;/dc:language&gt;
+                非推奨例：
+                ISO 639-1は推奨しない。 
+                &lt;dc:language&gt;ja&lt;/dc:language&gt;
+                1要素に複数の言語を記入しない。 
+                &lt;dc:language&gt;engjpn&lt;/dc:language&gt;
+                大文字や全角文字を使用しない。 
+                &lt;dc:language&gt;JPN&lt;/dc:language&gt;
+                &lt;dc:language&gt;ｅｎｇ&lt;/dc:language&gt;
+                言語名を記入しない。 
+                &lt;dc:language&gt;日本語&lt;/dc:language&gt;
+                国名を記入しない。
+                &lt;dc:language&gt;US&lt;/dc:language&gt;
+                ISO-639以外の規格の文字コードを記入しない。
+                &lt;dc:language&gt;en_US&lt;/dc:language&gt;
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:simpleType name="ISOlangType">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                dc:language 要素のデータ型。ISO 639-3の形式で記述。
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

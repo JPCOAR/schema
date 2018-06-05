@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://openaire.eu/schema/v4" targetNamespace="http://openaire.eu/schema/v4" elementFormDefault="qualified">
+    
+    <xs:element name="versionType" type="versionType">
+        <xs:annotation> 
+            <xs:documentation xml:lang="ja">
+                論文のバージョン情報を記入する。以下の統制語彙から選択して記入する。　-　accepted　-　published　-　draft　-　submitted　-　updated
+                注意点：論文の場合、必ず記入する。データのバージョン情報についてはdatacite:version（バージョン情報）を使用する。
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                著者最終稿（査読後、最終的に出版社に受理された原稿）の場合
+                &lt;openaire:versionType&gt;accepted&lt;/openaire:versionType&gt;
+                出版社版の場合
+                &lt;openaire:versionType&gt;published&lt;/openaire:versionType&gt;
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <xs:simpleType name="versionType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">(TODO) preliminary list of version types, derived from info:eu-repo/semantics</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="accepted"></xs:enumeration>
+            <xs:enumeration value="published"></xs:enumeration>
+            <xs:enumeration value="draft"></xs:enumeration>
+            <xs:enumeration value="submitted"></xs:enumeration>
+            <xs:enumeration value="updated"></xs:enumeration>
+        </xs:restriction>  
+    </xs:simpleType>
+</xs:schema>

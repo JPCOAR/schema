@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://datacite.org/schema/kernel-4"
+    targetNamespace="http://datacite.org/schema/kernel-4" elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+
+    <xs:element name="description">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                コンテンツの内容を示す情報を記述する。データについては、技術的な情報等、他の要素に当てはまらない追加情報を記入する。descriptionTypeには以下の統制語彙から選択して記入する。論文の抄録の場合は"abstract"を選択する。　-　abstract　-　methods　-　tableOfContents　-　technicalInfo　-　other
+                注意点：datacite:descriptionを使用する場合、必ずdescriptionTypeを指定する。各言語コードのdatacite:descriptionの出現回数に制限はなく、複数回繰り返して記入してよい。 
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                &lt;datacite:description xml:lang="ja" descriptionType="Abstract">国立情報学研究所が提供する「共用リポジトリサービス」JAIRO Cloudは、いまやJAIRO Cloudを抜きに日本の機関リポジトリを語れないところまで普及している。本稿では、このJAIRO Cloudについて、主にそのシステム基盤の意義について論ずる。JAIRO Cloudのシステム基盤の特徴は維持継続が容易で発展性が高いことにある。JAIRO Cloudの特色を地域共同リポジトリなど類似のサービスの比較により明らかにした上で、現在の取り組みを紹介していく。&lt;/datacite:description&gt;
+                非推奨例：
+                descriptionTypeを省略してはならない。
+                &lt;datacite:description xml:lang="ja">国立情報学研究所が提供する「共用リポジトリサービス」JAIRO Cloudは、いまやJAIRO Cloudを抜きに日本の機関リポジトリを語れないところまで普及している。本稿では、このJAIRO Cloudについて、主にそのシステム基盤の意義について論ずる。JAIRO Cloudのシステム基盤の特徴は維持継続が容易で発展性が高いことにある。JAIRO Cloudの特色を地域共同リポジトリなど類似のサービスの比較により明らかにした上で、現在の取り組みを紹介していく。&lt;/datacite:description&gt;
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="descriptionType" type="descriptionType" use="required"/>
+                    <xs:attribute ref="xml:lang"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="date">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                コンテンツに関連する日付を記入する。日付はISO-8601 で規定する次の 3 形式（YYYY-MM-DD、YYYY-MM、YYYY）で記入する。dateTypeは以下の統制語彙から選択して必ず記入する。　- Accepted　-　Available　-　Collected　-　Copyrighted　-　Created　-　Issued　-　Submitted　- Updated　-　Valid
+                注意点：jpcoar:accessRights（アクセス権）で "embargoed access"を指定し、コンテンツ本体の単位でエンバーゴ期間が異なる場合、dateTypeに"Available"を指定し、利用開始日を記入する。
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                発行日
+                &lt;datacite:date dateType=&quot;Issued&quot;&gt;2015-10-01&lt;/datacite:date&gt;
+                エンバーゴ終了後の利用開始日
+                &lt;datacite:date dateType=&quot;Available&quot;&gt;2016-01-01&lt;/datacite:date&gt;
+                非推奨例：
+                dateTypeを省略してはならない。
+                &lt;datacite:date&gt;2015-10-01&lt;/datacite:date&gt;
+                不明な年を記入してはならない。
+                &lt;datacite:date dateType=&quot;Issued&quot;&gt;19--&lt;/datacite:date&gt;
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="ISOdateType">
+                    <xs:attribute name="dateType" type="dateType" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="version" type="xs:string">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                データの更新に伴うバージョン番号を記入する。"メジャーバージョン番号"."マイナーバージョン番号"の形式で記入する。
+                注意点：データの場合のみ使用。バージョンの変更がある場合は、記入が望ましい。論文のバージョン情報についてはopenaire:versionType（出版タイプ）を使用する。個別ファイルのバージョン情報を記入する場合はjpcoar:version（バージョン情報）に記入する。メジャーバージョン変更の際には新しいコンテンツとして扱い、別途メタデータレコードを作成する。その際にはjpcoar:relation（関連情報）に旧バージョンとの関係性を記述する。
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                &lt;datacite:version&gt;1.2&lt;/datacite:version&gt;
+                非推奨例：
+                バージョンに番号以外の文字列を記入してはならない。
+                &lt;datacite:version&gt;ver 1.2&lt;/datacite:version&gt;
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="geoLocation">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                コンテンツを収集した、またはコンテンツの内容の空間的情報を記入する。なお、JPCOARスキーマでは下位要素「geoLocationPolygon」は扱わない。
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                ボックス状の空間的範囲を記述する例
+                &lt;datacite:geoLocation&gt;
+                    　&lt;datacite:geoLocationBox&gt;
+                        　　&lt;datacite:westBoundLongitude&gt;-71.032&lt;/datacite:westBoundLongitude&gt;
+                        　　&lt;datacite:eastBoundLongitude&gt;-68.211&lt;/datacite:eastBoundLongitude&gt;
+                        　　&lt;datacite:southBoundLatitude&gt;41.090&lt;/datacite:southBoundLatitude&gt;
+                        　　&lt;datacite:northBoundLatitude&gt;42.893&lt;/datacite:northBoundLatitude&gt;
+                        　&lt;/datacite:geoLocationBox&gt;
+                &lt;/datacite:geoLocation&gt;
+                地名を記述する例
+                &lt;datacite:geoLocation&gt;
+                    　&lt;datacite:geoLocationPlace&gt;Disko Bay&lt;/datacite:geoLocationPlace&gt;
+                &lt;/datacite:geoLocation&gt;
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="geoLocationPoint" type="point" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="ja">
+                            コンテンツが指す空間の一点を記入する。
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="geoLocationBox" type="box" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="ja">
+                            コンテンツが指すボックス状の空間的範囲を記入する。
+                        </xs:documentation>
+                        <xs:documentation xml:lang="ja">
+                            推奨例：
+                            &lt;datacite:geoLocation&gt;
+                                &lt;datacite:geoLocationBox&gt;
+                                    &lt;datacite:westBoundLongitude&gt;-71.032&lt;/datacite:westBoundLongitude&gt;
+                                    &lt;datacite:eastBoundLongitude&gt;-68.211&lt;/datacite:eastBoundLongitude&gt;
+                                    &lt;datacite:southBoundLatitude&gt;41.090&lt;/datacite:southBoundLatitude&gt;
+                                    &lt;datacite:northBoundLatitude&gt;42.893&lt;/datacite:northBoundLatitude&gt;
+                                &lt;/datacite:geoLocationBox&gt;
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="geoLocationPlace" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="ja">
+                            コンテンツが指す地理上の地点の名称を記入する。
+                        </xs:documentation>
+                        <xs:documentation xml:lang="ja">
+                            推奨例：
+                            &lt;datacite:geoLocationPlace&gt;Disko Bay&lt;/datacite:geoLocationPlace&gt;
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string"/>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="descriptionType" id="descriptionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Abstract"/>
+            <xs:enumeration value="Methods"/>
+            <xs:enumeration value="TableOfContents"/>
+            <xs:enumeration value="TechnicalInfo"/>
+            <xs:enumeration value="Other"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="dateType" id="dateType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Accepted"/>
+            <xs:enumeration value="Available"/>
+            <xs:enumeration value="Collected"/>
+            <xs:enumeration value="Copyrighted"/>
+            <xs:enumeration value="Created"/>
+            <xs:enumeration value="Issued"/>
+            <xs:enumeration value="Submitted"/>
+            <xs:enumeration value="Updated"/>
+            <xs:enumeration value="Valid"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ISOdateType">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                date 要素のデータ型。ISO-8601で規定する書式（ISO8601）YYYY-MM-DD, YYYY-MM, YYYYの形式で記述
+            </xs:documentation>
+        </xs:annotation>
+        <xs:union memberTypes="xs:date xs:gYearMonth xs:gYear"/>
+    </xs:simpleType>
+
+    <xs:complexType name="point">
+        <xs:all>
+            <xs:element name="pointLongitude" type="longitudeType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ja">
+                        経度の値 。10進数で表す。範囲は-180～180で、正の値は東部を表す。
+                        注意点：datacite:geoLocationPointを使用する場合は必須。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="pointLatitude" type="latitudeType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ja">
+                        緯度の値 。10進数で表す。範囲は-90～90で、正の値は北部を表す。
+                        注意点：datacite:geoLocationPointを使用する場合は必須。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="box">
+        <xs:all>
+            <xs:element name="westBoundLongitude" type="longitudeType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ja">
+                        西部経度の値。10進数で表す。範囲は-180～180で、正の値は東部を表す。
+                        注意点：datacite:geoLocationBoxを使用する場合は必須。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="eastBoundLongitude" type="longitudeType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ja">
+                        東部経度の値。10進数で表す。範囲は-180～180で、正の値は東部を表す。
+                        注意点：datacite:geoLocationBoxを使用する場合は必須。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="southBoundLatitude" type="latitudeType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ja">
+                        南部緯度の値。10進数で表す。範囲は-90～90で、正の値は北部を表す。
+                        注意点：datacite:geoLocationBoxを使用する場合は必須。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="northBoundLatitude" type="latitudeType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ja">
+                        北部緯度の値。10進数で表す。 範囲は-90～90で、正の値は北部を表す。
+                        注意点：datacite:geoLocationBoxを使用する場合は必須。
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:simpleType name="longitudeType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="-180"/>
+            <xs:maxInclusive value="180"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="latitudeType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="-90"/>
+            <xs:maxInclusive value="90"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="funderIdentifierType" id="funderIdentifierType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Crossref Funder"/>
+            <xs:enumeration value="GRID"/>
+            <xs:enumeration value="ISNI"/>
+            <xs:enumeration value="Other"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="funderIdentifier">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                助成主体の永続的な識別子をHTTP URI形式で記入する。funderIdentifierTypeは以下の統制語彙から選択して記入する。　-　Crossref Funder　-　GRID　-　ISNI　-　Other
+                注意点：jpcoar:fundingReferenceを記入する場合は、必須。Crossref Funder IDの使用を推奨する。Crossref Funder IDがない場合に限り、その他の識別子を記入する。
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                &lt;datacite:funderIdentifier funderIdentifierType ="Crossref Funder"&gt;https://doi.org/10.13039/501100000780&lt;/datacite:funderIdentifier&gt;
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="funderIdentifierType" type="funderIdentifierType"
+                        use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="awardNumber">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">
+                研究課題番号を文字列で記入する。科研費の課題番号、他の助成事業の統一謝辞コードもここへ記入する。記述方法は助成団体による（例：15H02781 （科研費））。awardURIは、助成団体が提供している当該の助成に関する詳細情報をHTTP URI形式で記入する。科研費の場合は、KAKENデータベースの該当するページのURLを記入する。
+            </xs:documentation>
+            <xs:documentation xml:lang="ja">
+                推奨例：
+                &lt;datacite:awardNumber awardURI="http://cordis.europa.eu/project/rcn/100603_en.html"&gt;284382&lt;/datacite:awardNumber&gt;
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="awardURI" type="xs:anyURI" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>
