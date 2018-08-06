@@ -1,32 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://openaire.eu/schema/v4" targetNamespace="http://openaire.eu/schema/v4" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://namespace.openaire.eu/schema/oaire/" targetNamespace="http://namespace.openaire.eu/schema/oaire/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" elementFormDefault="qualified">
     
-    <xs:element name="versionType" type="versionType">
+    <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
+    
+    <xs:element name="version" type="versionType">
         <xs:annotation> 
             <xs:documentation xml:lang="ja">
-                論文のバージョン情報を記入する。以下の統制語彙から選択して記入する。　-　accepted　-　published　-　draft　-　submitted　-　updated
+                論文のバージョン情報を記入する。以下の統制語彙から選択して記入する。　-　AO　-　SMUR　-　AM　-　P　-　VoR　-　CVoR　-　EVoR　-　NA
                 注意点：論文の場合、必ず記入する。データのバージョン情報についてはdatacite:version（バージョン情報）を使用する。
             </xs:documentation>
             <xs:documentation xml:lang="ja">
                 推奨例：
                 著者最終稿（査読後、最終的に出版社に受理された原稿）の場合
-                &lt;openaire:versionType&gt;accepted&lt;/openaire:versionType&gt;
+                &lt;oaire:version rdf:resource=&quot;http://purl.org/coar/version/c_ab4af688f83e57aa&quot;&gt;AM&lt;/oaire:version&gt;
                 出版社版の場合
-                &lt;openaire:versionType&gt;published&lt;/openaire:versionType&gt;
+                &lt;oaire:version rdf:resource=&quot;http://purl.org/coar/version/c_970fb48d4fbd8a85&quot;&gt;VoR&lt;/oaire:version&gt;
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     
-    <xs:simpleType name="versionType">
+    <xs:complexType name="versionType">
         <xs:annotation>
             <xs:documentation xml:lang="en">(TODO) preliminary list of version types, derived from info:eu-repo/semantics</xs:documentation>
         </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="versionVocab">
+                <xs:attribute ref="rdf:resource"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:simpleType name="versionVocab">
+        <xs:annotation>
+            <xs:documentation xml:lang="ja">oaire:version 要素の語彙</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:enumeration value="accepted"></xs:enumeration>
-            <xs:enumeration value="published"></xs:enumeration>
-            <xs:enumeration value="draft"></xs:enumeration>
-            <xs:enumeration value="submitted"></xs:enumeration>
-            <xs:enumeration value="updated"></xs:enumeration>
-        </xs:restriction>  
+            <xs:enumeration value="AO"></xs:enumeration>
+            <xs:enumeration value="SMUR"></xs:enumeration>
+            <xs:enumeration value="AM"></xs:enumeration>
+            <xs:enumeration value="P"></xs:enumeration>
+            <xs:enumeration value="VoR"></xs:enumeration>
+            <xs:enumeration value="CVoR"></xs:enumeration>
+            <xs:enumeration value="EVoR"></xs:enumeration>
+            <xs:enumeration value="NA"></xs:enumeration>
+        </xs:restriction>
     </xs:simpleType>
 </xs:schema>

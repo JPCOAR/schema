@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     attributeFormDefault="unqualified" xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:dcterms="http://purl.org/dc/terms/" xmlns:coar="http://purl.org/coar/"
+    xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxxterms/"
-    xmlns:datacite="http://datacite.org/schema/kernel-4"
-    xmlns:openaire="http://openaire.eu/schema/v4" xmlns:dcndl="http://ndl.go.jp/dcndl/terms/"
-    xmlns:jpcoar="https://irdb.nii.ac.jp/schema/jpcoar/1.0/"
-    targetNamespace="https://irdb.nii.ac.jp/schema/jpcoar/1.0/"
+    xmlns:datacite="https://schema.datacite.org/meta/kernel-4/"
+    xmlns:oaire="http://namespace.openaire.eu/schema/oaire/" xmlns:dcndl="http://ndl.go.jp/dcndl/terms/"
+    xmlns:jpcoar="https://github.com/JPCOAR/schema/blob/master/1.0/"
+    targetNamespace="https://github.com/JPCOAR/schema/blob/master/1.0/"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 
     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
@@ -16,8 +16,8 @@
     <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="dcterms.xsd"/>
     <xs:import namespace="http://www.rioxx.net/schema/v2.0/rioxxterms/"
         schemaLocation="rioxxterms.xsd"/>
-    <xs:import namespace="http://datacite.org/schema/kernel-4" schemaLocation="datacite.xsd"/>
-    <xs:import namespace="http://openaire.eu/schema/v4" schemaLocation="openaire.xsd"/>
+    <xs:import namespace="https://schema.datacite.org/meta/kernel-4/" schemaLocation="datacite.xsd"/>
+    <xs:import namespace="http://namespace.openaire.eu/schema/oaire/" schemaLocation="openaire.xsd"/>
     <xs:import namespace="http://ndl.go.jp/dcndl/terms/" schemaLocation="dcndl.xsd"/>
     <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
 
@@ -27,7 +27,7 @@
         </xs:appinfo>
         <xs:documentation>
             JPCOAR スキーマ
-            v1.0 2017.10.27
+            v1.0.1 2018.08.06
         </xs:documentation>
     </xs:annotation>
 
@@ -59,7 +59,7 @@
             <xs:element ref="dc:language" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dc:type" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="datacite:version" minOccurs="0" maxOccurs="1"/>
-            <xs:element ref="openaire:versionType" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oaire:version" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="jpcoar:identifier" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="jpcoar:identifierRegistration" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="jpcoar:relation" minOccurs="0" maxOccurs="unbounded"/>
@@ -682,7 +682,7 @@
     <xs:element name="URI" type="jpcoar:URIType">
         <xs:annotation>
             <xs:documentation xml:lang="ja">
-                コンテンツ本体ファイルのURIを記入する。objectTypeには以下の統制語彙から選択して記入する。labelはファイル名がある場合、記入する。　-　abstract　-　summary　-　fulltext　-　thumbnail　-　other
+                コンテンツ本体ファイルのURIを記入する。objectTypeには以下の統制語彙から選択して記入する。　-　abstract　-　summary　-　fulltext　-　thumbnail　-　other　labelはファイル名がある場合、記入する。
                 注意点：objectTypeはURIがある場合は必須。博士論文の場合、要約はsummary、要旨はabstractを使用する。
             </xs:documentation>
             <xs:documentation xml:lang="ja">
@@ -762,7 +762,6 @@
                             <xs:enumeration value="VIAF"/>
                             <xs:enumeration value="AID"/>
                             <xs:enumeration value="kakenhi"/>
-                            <xs:enumeration value="ISNI"/>
                             <xs:enumeration value="Ringgold"/>
                             <xs:enumeration value="GRID"/>
                         </xs:restriction>
@@ -782,7 +781,7 @@
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute ref="xml:lang" use="optional"/>
-                <xs:attribute name="subjectScheme" use="optional">
+                <xs:attribute name="subjectScheme" use="required">
                     <xs:simpleType>
                         <xs:annotation>
                             <xs:documentation xml:lang="ja">
@@ -828,7 +827,7 @@
                             <xs:enumeration value="JaLC"/>
                             <xs:enumeration value="Crossref"/>
                             <xs:enumeration value="DataCite"/>
-                            <xs:enumeration value="PMID"/>
+                            <xs:enumeration value="PMID（現在不使用）"/>
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
@@ -1299,7 +1298,13 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="datacite:funderIdentifier" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="datacite:funderIdentifier" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="ja">
+                            注意点：Crossref Funder IDの使用を推奨する。Crossref FunderIDがない場合に限り、その他の識別子を記入する。
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="funderName" minOccurs="1" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation xml:lang="ja">
@@ -1395,7 +1400,7 @@
         </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
-                <xs:attribute name="identifierType" type="jpcoar:soueceIdentifierVocab" use="optional"/>
+                <xs:attribute name="identifierType" type="jpcoar:soueceIdentifierVocab" use="required"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>

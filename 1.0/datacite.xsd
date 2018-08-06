@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://datacite.org/schema/kernel-4"
-    targetNamespace="http://datacite.org/schema/kernel-4" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://schema.datacite.org/meta/kernel-4/"
+    targetNamespace="https://schema.datacite.org/meta/kernel-4/" elementFormDefault="qualified">
 
     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
-        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+        schemaLocation="http://www.w3.org/2009/01/xml.xsd"/>
 
     <xs:element name="description">
         <xs:annotation>
