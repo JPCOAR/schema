@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jpcoar:jpcoar xmlns:jpcoar="https://github.com/JPCOAR/schema/blob/master/1.0/" 
+	xmlns:dc="http://purl.org/dc/elements/1.1/" 
+	xmlns:dcterms="http://purl.org/dc/terms/" 
+	xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxxterms/" 
+	xmlns:datacite="https://schema.datacite.org/meta/kernel-4/" 
+	xmlns:oaire="http://namespace.openaire.eu/schema/oaire/" 
+	xmlns:dcndl="http://ndl.go.jp/dcndl/terms/" 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="https://github.com/JPCOAR/schema/blob/master/1.0/ jpcoar_scm.xsd">
+	<!-- 5. 博士学位論文（オープンアクセス、JaLC DOI登録あり） / Doctoral Thesis (Open Access, JaLC DOI registered) -->
+	<dc:title xml:lang="en"> Acoustical Investigation of the Japanese Bamboo Pipe，Syakuhati</dc:title>
+	<dc:title xml:lang="ja">日本の竹製管楽器、尺八の音響学的研究</dc:title>
+	<dc:title xml:lang="ja-Kana">二ホン ノ チクセイ カンガッキ シャクハチ ノ オンキョウテキ ケンキュウ</dc:title>
+	<jpcoar:creator>
+		<jpcoar:nameIdentifier nameIdentifierScheme="ORCID" nameIdentifierURI="https://orcid.org/0000-0001-0001-0001">0000-0001-0001-0001</jpcoar:nameIdentifier>
+		<jpcoar:creatorName xml:lang="ja">寺田, 寅彦</jpcoar:creatorName>
+		<jpcoar:creatorName xml:lang="en">Terada, Torahiko</jpcoar:creatorName>
+		<jpcoar:creatorName xml:lang="ja-Kana">テラダ, トラヒコ</jpcoar:creatorName>
+		<jpcoar:affiliation>
+			<jpcoar:nameIdentifier nameIdentifierScheme="ISNI" nameIdentifierURI="http://www.isni.org/isni/0000000121691048">0000000121691048</jpcoar:nameIdentifier>
+			<jpcoar:affiliationName xml:lang="ja">東京大学</jpcoar:affiliationName>
+			<jpcoar:affiliationName xml:lang="en">University of Tokyo</jpcoar:affiliationName>
+		</jpcoar:affiliation>
+	</jpcoar:creator>
+	<!-- 指導教員（学位審査員） / Supervisor -->
+	
+	<jpcoar:contributor contributorType="Supervisor">
+		<jpcoar:nameIdentifier nameIdentifierScheme="ORCID" nameIdentifierURI="https://orcid.org/0000-0001-0002-0003">0000-0001-0002-0003</jpcoar:nameIdentifier>
+		<jpcoar:contributorName xml:lang="ja">夏目, 漱石</jpcoar:contributorName>
+		<jpcoar:contributorName xml:lang="en">Natsume, Soseki</jpcoar:contributorName>
+		<jpcoar:contributorName xml:lang="ja-Kana">ナツメ, ソウセキ</jpcoar:contributorName>
+		<jpcoar:affiliation>
+			<jpcoar:nameIdentifier nameIdentifierScheme="ISNI" nameIdentifierURI="http://www.isni.org/isni/0000000121691048">0000000121691048</jpcoar:nameIdentifier>
+			<jpcoar:affiliationName xml:lang="ja">東京大学</jpcoar:affiliationName>
+			<jpcoar:affiliationName xml:lang="en">University of Tokyo</jpcoar:affiliationName>
+		</jpcoar:affiliation>
+	</jpcoar:contributor>
+	<!-- オープンアクセス / Open Access -->
+	<dcterms:accessRights rdf:resource="http://purl.org/coar/access_right/c_abf2">open access</dcterms:accessRights>
+	<datacite:date dateType="Issued">2017-03-25</datacite:date>
+	<dc:language>eng</dc:language>
+	<!-- 博士学位論文 / Doctoral Thesis -->
+	<dc:type rdf:resource="http://purl.org/coar/resource_type/c_db06">doctoral thesis</dc:type>
+	<oaire:version rdf:resource="http://purl.org/coar/version/c_970fb48d4fbd8a85">VoR</oaire:version>
+	<!-- 17 識別子にURI形式でDOIを記入 / Input the DOI name of the content in HTTP URI syntax -->
+	<jpcoar:identifier identifierType="DOI">https://doi.org/10.15017/64495</jpcoar:identifier>
+	<jpcoar:identifier identifierType="HDL">http://hdl.handle.net/2115/64495</jpcoar:identifier>
+	<!-- JaLC DOIを登録する場合は、18 ID登録にDOIをprefix/suffixの形式で記入 / Input a DOI name in prefix/suffix syntax for DOI registration -->
+	<jpcoar:identifierRegistration identifierType="JaLC">10.15017/64495</jpcoar:identifierRegistration>
+	<!-- 報告番号 / Report Number -->
+	<dcndl:dissertationNumber>甲第5384号</dcndl:dissertationNumber>
+	<!-- 学位名称 / Degree Name -->
+	<dcndl:degreeName xml:lang="ja">博士（理学）</dcndl:degreeName>
+	<dcndl:degreeName xml:lang="en">Doctor of Science</dcndl:degreeName>
+	<!-- 学位授与日 / Degree Granting Institution -->
+	<dcndl:dateGranted>2017-03-25</dcndl:dateGranted>
+	<!-- 学位授与機関 / Degree Granting Institution -->
+	<jpcoar:degreeGrantor>
+		<jpcoar:nameIdentifier nameIdentifierScheme="kakenhi">12601</jpcoar:nameIdentifier>
+		<jpcoar:degreeGrantorName xml:lang="ja">東京大学</jpcoar:degreeGrantorName>
+		<jpcoar:degreeGrantorName xml:lang="en">University of Tokyo</jpcoar:degreeGrantorName>
+	</jpcoar:degreeGrantor>
+	<!-- 本文ファイルはobjectType属性に"fulltext"を記入 / For fulltext, input objectType="fulletext" -->
+	<jpcoar:file>
+		<jpcoar:URI objectType="fulltext" label="fulltext.pdf">http://repository.dl.itc.u-tokyo.ac.jp/files/64495/fulltext.pdf</jpcoar:URI>
+		<jpcoar:mimeType>application/pdf</jpcoar:mimeType>
+		<jpcoar:extent>10MB</jpcoar:extent>
+		<jpcoar:extent>150 pages</jpcoar:extent>
+		<datacite:date dateType="Issued">2017-03-25</datacite:date>
+	</jpcoar:file>
+	<!-- 要旨ファイルはobjectType属性に"abstract"を記入 / For abstract, input objectType="abstract" -->
+	<jpcoar:file>
+		<jpcoar:URI objectType="abstract" label="abstract.pdf">http://repository.dl.itc.u-tokyo.ac.jp/files/64495/abstract.pdf</jpcoar:URI>
+		<jpcoar:mimeType>application/pdf</jpcoar:mimeType>
+		<jpcoar:extent>100KB</jpcoar:extent>
+		<jpcoar:extent>2 pages</jpcoar:extent>
+		<datacite:date dateType="Issued">2017-03-25</datacite:date>
+	</jpcoar:file>
+	<!-- 審査要旨ファイルはobjectType属性に"other"を記入 / For abstract of review, input objectType="other" -->
+	<jpcoar:file>
+		<jpcoar:URI objectType="other" label="abstract_of_review.pdf">http://repository.dl.itc.u-tokyo.ac.jp/files/64495/abstract_of_review.pdf</jpcoar:URI>
+		<jpcoar:mimeType>application/pdf</jpcoar:mimeType>
+		<jpcoar:extent>50KB</jpcoar:extent>
+		<jpcoar:extent>1 page</jpcoar:extent>
+		<datacite:date dateType="Issued">2017-03-25</datacite:date>
+	</jpcoar:file>
+</jpcoar:jpcoar>
