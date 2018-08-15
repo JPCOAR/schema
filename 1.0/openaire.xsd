@@ -25,7 +25,7 @@
         </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="versionVocab">
-                <xs:attribute ref="rdf:resource"/>
+                <xs:attribute ref="rdf:resource" use="required"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>

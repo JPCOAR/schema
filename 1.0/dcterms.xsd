@@ -58,7 +58,7 @@
         </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="accessRightsVocab">
-                <xs:attribute ref="rdf:resource"/>
+                <xs:attribute ref="rdf:resource" use="required"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>

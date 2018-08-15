@@ -55,7 +55,7 @@
             <xs:element ref="jpcoar:subject" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="datacite:description" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dc:publisher" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="datacite:date" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="datacite:date" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dc:language" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dc:type" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="datacite:version" minOccurs="0" maxOccurs="1"/>
@@ -278,7 +278,7 @@
     <xs:element name="relation">
         <xs:annotation>
             <xs:documentation xml:lang="ja">
-                登録するコンテンツと関連するコンテンツ間の関連性を記入する。relationTypeには以下の統制語彙から選択して記入する。該当する語彙がない場合はrelationTypeを記入しない。　-　isVersionOf　-　hasVersion　-　isPartOf　-　hasPart　-　IsReferencedBy　-　references　-　isFormatOf　-　hasFormat　-　isReplacedBy　-　replaces　-　isRequiredBy　-　requires　-　isSupplementTo　-　isSupplementedBy　-　isIdenticalTo　-　isDerivedFrom　-　isSourceOf
+                登録するコンテンツと関連するコンテンツ間の関連性を記入する。relationTypeには以下の統制語彙から選択して記入する。該当する語彙がない場合はrelationTypeを記入しない。　-　isVersionOf　-　hasVersion　-　isPartOf　-　hasPart　-　isReferencedBy　-　references　-　isFormatOf　-　hasFormat　-　isReplacedBy　-　replaces　-　isRequiredBy　-　requires　-　isSupplementTo　-　isSupplementedBy　-　isIdenticalTo　-　isDerivedFrom　-　isSourceOf
                 注意点：シリーズ名を有するコンテンツで、シリーズタイトルにリンクする場合は、relationType="isPartOf"を使用する。コンテンツが図書の一部（章など）で、図書全体のタイトルにリンクする場合は、relationType="isPartOf"を使用する。著者最終稿から出版者が付与したDOIにリンクする場合は、relationType="isVersionOf"を使用する。
             </xs:documentation>
             <xs:documentation xml:lang="ja">
@@ -305,7 +305,7 @@
                         <xs:enumeration value="hasVersion"/>
                         <xs:enumeration value="isPartOf"/>
                         <xs:enumeration value="hasPart"/>
-                        <xs:enumeration value="IsReferencedBy"/>
+                        <xs:enumeration value="isReferencedBy"/>
                         <xs:enumeration value="references"/>
                         <xs:enumeration value="isFormatOf"/>
                         <xs:enumeration value="hasFormat"/>
@@ -421,7 +421,7 @@
                 <xs:element ref="jpcoar:URI" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="jpcoar:mimeType" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="jpcoar:extent" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="datacite:date" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="datacite:date" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="datacite:version" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
@@ -936,7 +936,7 @@
     <xs:complexType name="resourceType">
         <xs:simpleContent>
             <xs:extension base="jpcoar:resourceTypeVocab">
-                <xs:attribute ref="rdf:resource"/>
+                <xs:attribute ref="rdf:resource" use="required"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -1259,8 +1259,7 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:anyURI">
-                    <xs:attribute name="identifierType" type="jpcoar:identifierType" use="required"
-                    />
+                    <xs:attribute name="identifierType" type="jpcoar:identifierType" use="required"/>
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>
