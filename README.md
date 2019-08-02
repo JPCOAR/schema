@@ -1,4 +1,4 @@
-# schema
+# JPCOAR Schema
 XSD files and documents for JPCOAR schema
 
 - [JPCOAR web site](https://jpcoar.repo.nii.ac.jp/)
