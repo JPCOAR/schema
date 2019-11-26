@@ -4,55 +4,13 @@
     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
         schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
     
-    <xs:element name="dissertationNumber" type="xs:string">
-        <xs:annotation> 
-            <xs:documentation xml:lang="ja">
-                学位授与番号を記入する。
-                注意点：学位規則改正（2013年4月1日）以降に授与された博士論文を登録する場合は必須。学博士論文の場合は、学位記番号ではなく報告番号を記入する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;dcndl:dissertationNumber&gt;甲第5384号&lt;/dcndl:dissertationNumber&gt;
-                非推奨例：
-                科研費機関番号（数字5桁）+[ 甲>A | 乙>B | 他>Z ]+報告番号の形式（junii2 ver 3.0）は推奨しない。
-                &lt;dcndl:dissertationNumber&gt;15301A5384&lt;/dcndl:dissertationNumber&gt;
-                科研費機関番号（数字5 桁）+[甲|乙|]+第+報告番号+号の形式（junii2 ver 3.1）は推奨しない。
-                &lt;dcndl:dissertationNumber&gt;15301甲第5384号&lt;/dcndl:dissertationNumber&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="degreeName" type="stringType">
-        <xs:annotation> 
-            <xs:documentation xml:lang="ja">
-                学位規則で定められている学位の種別と学位の分野を記入する。
-                注意点：学位規則改正（2013年4月1日）以降に授与された博士論文を登録する場合は必須。国際流通を鑑み、英語名称を合わせて記入することを推奨する。各言語コードのdcndl:degreeNameの出現回数は1回までとする。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;dcndl:degreeName xml:lang=&quot;en&quot;&gt;Doctor of Philosophy in Letters&lt;/dcndl:degreeName&gt;
-                &lt;dcndl:degreeName xml:lang=&quot;ja&quot;&gt;博士（文学）&lt;/dcndl:degreeName&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="dateGranted" type="ISOdateType">
-        <xs:annotation> 
-            <xs:documentation xml:lang="ja">
-                学位授与年月日を記入する。日付はISO-8601 で規定する次の 3 形式（YYYY-MM-DD、YYYY-MM、YYYY）で記入する。
-                注意点：学位規則改正（2013年4月1日）以降に授与された博士論文を登録する場合は必須。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;dcndl:dateGranted&gt;2016-03-25&lt;/dcndl:dateGranted&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
+    <xs:element name="dissertationNumber" type="xs:string" />
+    
+    <xs:element name="degreeName" type="stringType" />
+    
+    <xs:element name="dateGranted" type="ISOdateType" />
 
     <xs:complexType name="stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                String型。オプションで lang 属性を記述できる。
-            </xs:documentation>
-        </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute ref="xml:lang" use="optional"/>
@@ -61,11 +19,6 @@
     </xs:complexType>
     
     <xs:simpleType name="ISOdateType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                date 要素のデータ型。ISO-8601で規定する書式（ISO8601）YYYY-MM-DD, YYYY-MM, YYYYの形式で記述。
-            </xs:documentation>
-        </xs:annotation>
         <xs:union memberTypes="xs:date xs:gYearMonth xs:gYear"/>
     </xs:simpleType>
 

@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.rioxx.net/schema/v2.0/rioxxterms/" targetNamespace="http://www.rioxx.net/schema/v2.0/rioxxterms/" elementFormDefault="qualified">
     
-    <xs:element name="apc" type="apcList">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                オリジナルのコンテンツに関連するAPCの状態。以下の語彙から選択する。　-　Paid：支払済み　-　Fully waived：全て免除　-　Not required：不要　-　Partially waived：一部免除　-　Not charged：無料　-　Unknown：不明
-                注意点：APCの価格は記入しない。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;rioxxterms:apc&gt;Paid&lt;/rioxxterms:apc&gt;
-                非推奨例：
-                APCの価格は記入しない。
-                &lt;rioxxterms:apc&gt;$3,000&lt;/rioxxterms:apc&gt;
-            </xs:documentation>
-            <xs:documentation xml:lang="en">
-                This element expresses whether or not the resource has an associated 'article processing charge'. The value of this element is taken from a controlled list.
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
+    <xs:element name="apc" type="apcList" />
     
     <xs:simpleType name="apcList">
-        <xs:annotation>
-            <xs:documentation xml:lang="en">A Controlled List</xs:documentation>
-        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Paid"/>
             <xs:enumeration value="Partially waived"/>
@@ -33,4 +13,5 @@
             <xs:enumeration value="Unknown"/>
         </xs:restriction>
     </xs:simpleType>
+    
 </xs:schema>

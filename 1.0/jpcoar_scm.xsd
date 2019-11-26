@@ -27,21 +27,15 @@
         </xs:appinfo>
         <xs:documentation>
             JPCOAR スキーマ
-            v1.0.1 2018.08.06
+            v1.0.2 2019.11.27
         </xs:documentation>
     </xs:annotation>
 
     <!-- 要素の定義 -->
-
     <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
-    <xs:element name="jpcoar" type="jpcoar:content">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                ROOTエレメント
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
+ 
+    <xs:element name="jpcoar" type="jpcoar:content" />
+    
     <xs:complexType name="content">
         <xs:sequence>
             <xs:element ref="dc:title" minOccurs="1" maxOccurs="unbounded"/>
@@ -83,46 +77,9 @@
     </xs:complexType>
 
     <xs:element name="creator">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                コンテンツの作成に責任を持つ個人または団体等。
-                注意点：学位論文の場合は必ず入力する。複数の著者が存在する場合は、第一著者から順に記入する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                    推奨例：
-                    &lt;jpcoar:creator&gt;
-                    　&lt;jpcoar:nameIdentifier nameIdentifierScheme="ORCID" nameIdentifierURI="https://orcid.org/0000-0001-0002-0003"&gt;0000-0001-0002-0003&lt;/jpcoar:nameIdentifier&gt;
-                    　&lt;jpcoar:creatorName xml:lang="ja"&gt;夏目, 漱石&lt;/jpcoar:creatorName&gt;
-                    　&lt;jpcoar:creatorName xml:lang="en"&gt;Natsume, Soseki&lt;/jpcoar:creatorName> &lt;jpcoar:creatorName xml:lang="ja-Kana">ナツメ, ソウセキ&lt;/jpcoar:creatorName&gt;
-                    　&lt;jpcoar:familyName xml:lang="ja"&gt;夏目&lt;/jpcoar:familyName&gt;
-                    　&lt;jpcoar:givenName xml:lang="ja"&gt;漱石&lt;/jpcoar:givenName&gt;
-                    　&lt;jpcoar:creatorAlternative xml:lang="ja"&gt;夏目, 金之助&lt;/jpcoar:creatorAlternative&gt;
-                    　&lt;jpcoar:creatorAlternative xml:lang="en"&gt;Natsume, Kinnosuke&lt;/jpcoar:creatorAlternative&gt;
-                    　&lt;jpcoar:creatorAlternative xml:lang="ja-Kana"&gt;ナツメ, キンノスケ&lt;/jpcoar:creatorAlternative&gt;
-                    　&lt;jpcoar:affiliation&gt;
-                    　　&lt;jpcoar:nameIdentifier nameIdentifierScheme="ISNI" nameIdentifierURI="http://isni.org/isni/0000000121691048">0000000121691048&lt;/jpcoar:nameIdentifier&gt;
-                    　　&lt;jpcoar:affiliationName xml:lang="en"&gt;University of Tokyo&lt;/jpcoar:affiliationName&gt;
-                    　&lt;/jpcoar:affiliation&gt;
-                    &lt;/jpcoar:creator&gt;
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation xml:lang="ja">
-                            作成者を一意に識別するID を記入する。記述方法は選択したスキーマに依存する（例：0000-0001-0003-0004 （ORCID）、30413925 (e-Rad)、0000000378057894（ISNI））。nameIdentifierScheme にはID を識別するスキーマ名を以下の統制語彙から選択して記入する。 - e-Rad - NRID - ORCID - ISNI - VIAF - AID - kakenhi - ISNI - Ringgold - GRID。nameIdentifierURIにはIDをHTTP URI形式で記入する。URIを持たない場合は、nameIdentifierURIは指定しない（例：https://nrid.nii.ac.jp/nrid/1000030413925/ （NRID） https://orcid.org/0000-0001-0002-0003 （ORCID） http://isni.org/isni/0000000082849737 （ISNI） https://viaf.org/viaf/56614190 （VIAF））。
-                            注意点：jpcoar:nameIdentifierの値は接頭辞等の情報を付けず、IDのみを記入する。jpcoar:nameIdentifierを記入する場合、必ずnameIdentifierSchemeにスキーマ名を指定する。
-                        </xs:documentation>
-                        <xs:documentation xml:lang="ja">
-                            推奨例：
-                            &lt;jpcoar:nameIdentifier nameIdentifierScheme="ORCID" nameIdentifierURI="https://orcid.org/0000-0001-0002-0003"&gt;0000-0001-0002-0003&lt;/jpcoar:nameIdentifier&gt;
-                            非推奨例：
-                            jpcoar:nameIdentifierの値にURLを記入しない。
-                            &lt;jpcoar:nameIdentifier nameIdentifierScheme="orcid" nameIdentifierURI="https://orcid.org/0000-0002-3276-3753"&gt;https://orcid.org/0000-0002-3276-3753&lt;/jpcoar:nameIdentifier&gt;
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded" />              
                 <xs:element ref="jpcoar:creatorName" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:familyName" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:givenName" minOccurs="0" maxOccurs="unbounded"/>
@@ -133,43 +90,9 @@
     </xs:element>
 
     <xs:element name="contributor">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                コンテンツの作成に間接的に関わりを持つ個人または団体等。contributorTypeには適切な役割を以下の統制語彙から選択して記入する。該当する役割がない場合は、"Other"を選択する。　-　ContactPerson　-　DataCollector　-　DataCurator　-　DataManager　-　Distributor　-　Editor　-　HostingInstitution　-　Producer　-　ProjectLeader　-　ProjectManager　-　ProjectMember　-　RelatedPerson　-　Researcher　-　ResearchGroup　-　Sponsor　-　Supervisor 　-　WorkPackageLeader　-　Other
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:contributor contributorType=&quot;Editor&quot;&gt;
-                    　&lt;jpcoar:nameIdentifier nameIdentifierScheme=&quot;ORCID&quot; nameIdentifierURI=&quot;https://orcid.org/0000-0001-0002-0003&quot;&gt;0000-0001-0002-0003&lt;/jpcoar:nameIdentifier&gt; 
-                    　&lt;jpcoar:contributorName xml:lang=&quot;ja&quot;&gt;山田, 一郎&lt;/jpcoar:contributorName&gt;
-                    　&lt;jpcoar:contributorName xml:lang=&quot;en&quot;&gt;Yamada, Ichiro&lt;/jpcoar:contributorName&gt; 
-                    　&lt;jpcoar:contributorName xml:lang=&quot;ja-Kana&quot;&gt;ヤマダ, イチロウ&lt;/jpcoar:contributorName&gt;
-                    　&lt;jpcoar:familyName xml:lang=&quot;ja&quot;&gt;山田&lt;/jpcoar:familyName&gt;
-                    　&lt;jpcoar:givenName xml:lang=&quot;ja&quot;&gt;一郎&lt;/jpcoar:givenName&gt;
-                    　&lt;jpcoar:affiliation&gt; 
-                        　　&lt;jpcoar:nameIdentifier nameIdentifierScheme=&quot;kakenhi&quot;&gt;12601&lt;/jpcoar:nameIdentifier&gt;
-                        　　&lt;jpcoar:affiliationName xml:lang=&quot;en&quot;&gt;University of Tokyo&lt;/jpcoar:affiliationName&gt;
-                        　&lt;/jpcoar:affiliation&gt;
-                &lt;/jpcoar:contributor&gt;
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation xml:lang="ja">
-                            寄与者を一意に識別するIDを記入する。記述方法は選択したスキーマに依存する（例：0000-0001-0002-0003 （ORCID）、12345678 (e-Rad)、0000000123456789（ISNI））。nameIdentifierSchemeにはIDを識別するスキーマ名を以下の統制語彙から選択して記入する。　-　e-Rad　-　NRID　-　ORCID　-　ISNI　-　VIAF　-　AID - kakenhi - ISNI - Ringgold - GRID。nameIdentifierURIにはIDをHTTP URI形式で記入する。URIを持たない場合は、nameIdentifierURIは指定しない（例：https://nrid.nii.ac.jp/nrid/1000030413925/ （NRID）https://orcid.org/0000-0001-0002-0003 （ORCID）http://isni.org/isni/0000000082849737 （ISNI）https://viaf.org/viaf/56614190 （VIAF））。
-                            注意点：jpcoar:nameIdentifierの値は接頭辞等の情報を付けず、IDのみを記入する。jpcoar:nameIdentifierを記入する場合、必ずnameIdentifierSchemeにスキーマ名を指定する。
-                        </xs:documentation>
-                        <xs:documentation xml:lang="ja">
-                            推奨例：
-                            &lt;jpcoar:nameIdentifier nameIdentifierScheme=&quot;ORCID&quot; nameIdentifierURI=&quot;https://orcid.org/0000-0001-0002-0003&quot;&gt;0000-0001-0002-0003&lt;/jpcoar:nameIdentifier&gt;
-                            非推奨例：
-                            nameIdentifierの値にURLを記入しない。 
-                            &lt;jpcoar:nameIdentifier&gt;https://orcid.org/0000-0002-3276-3753&lt;/jpcoar:nameIdentifier&gt;
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded" />                
                 <xs:element ref="jpcoar:contributorName" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:familyName" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:givenName" minOccurs="0" maxOccurs="unbounded"/>
@@ -178,11 +101,6 @@
             </xs:sequence>
             <xs:attribute name="contributorType" use="optional">
                 <xs:simpleType>
-                    <xs:annotation>
-                        <xs:documentation xml:lang="ja">
-                            contributorType 属性の語彙
-                        </xs:documentation>
-                    </xs:annotation>
                     <xs:restriction base="xs:string">
                         <xs:enumeration value="ContactPerson"/>
                         <xs:enumeration value="DataCollector"/>
@@ -211,88 +129,24 @@
     </xs:element>
 
     <xs:element name="affiliation">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                寄与者の所属する機関。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:affiliation&gt; 
-                    　&lt;jpcoar:nameIdentifier nameIdentifierScheme=&quot;kakenhi&quot;&gt;12601&lt;/jpcoar:nameIdentifier&gt;
-                    　&lt;jpcoar:affiliationName xml:lang=&quot;en&quot;&gt;University of Tokyo&lt;/jpcoar:affiliationName&gt;
-                &lt;/jpcoar:affiliation&gt;
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation xml:lang="ja">
-                            所属機関を一意に識別するIDを記入する。記述方法は選択したスキーマに依存する（例：000000012192178X （ISNI）、12601（kakenhi））。nameIdentifierSchemeにはIDを識別するスキーマ名を以下の統制語彙から選択して記入する。　-　kakenhi　-　ISNI　-　Ringgold　-　GRID。nameIdentifierURIにはIDの値をHTTP URI形式で記入する。URIを持たない場合は、nameIdentifierURIは指定しない（例：http://isni.org/isni/0000000121691048 （ISNI） https://www.grid.ac/institutes/grid.26999.3d （GRID）)。
-                            注意点：jpcoar:nameIdentifierの値は接頭辞等の情報を付けず、IDのみを記入する。jpcoar:nameIdentifierを記入する場合、必ずnameIdentifierSchemeにスキーマ名を指定する。
-                        </xs:documentation>
-                        <xs:documentation xml:lang="ja">
-                            推奨例：
-                            &lt;jpcoar:nameIdentifier nameIdentifierScheme=&quot;ISNI&quot; nameIdentifierURI=&quot;http://isni.org/isni/0000000121691048&quot;&gt;0000000121691048&lt;/jpcoar:nameIdentifier&gt;
-                            &lt;jpcoar:nameIdentifier nameIdentifierScheme=&quot;kakenhi&quot;&gt;12601&lt;/jpcoar:nameIdentifier&gt;
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded" />                
                 <xs:element ref="jpcoar:affiliationName" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
     <xs:element name="rightsHolder">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                作成者および寄与者以外の著作権等の権利保持情報を記入する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:rightsHolder&gt; 
-                    　&lt;jpcoar:nameIdentifier nameIdentifierScheme=&quot;ISNI&quot; nameIdentifierURI=&quot;http://isni.org/isni/00000004043815&quot;&gt;0000000404381592&lt;/jpcoar:nameIdentifier&gt; 
-                    　&lt;jpcoar:rightsHolderName xml:lang=&quot;en&quot;&gt;American Physical Society&lt;/jpcoar:rightsHolderName&gt;
-                &lt;/jpcoar:rightsHolder&gt;
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation xml:lang="ja">
-                            権利者を一意に識別するIDを記入する。記述方法は選択したスキーマに依存する（例：000000012192178X （ISNI））。nameIdentifierSchemeにはIDを識別するスキーマ名を以下の統制語彙から選択して記入する。　-　e-Rad　-　NRID　-　ORCID　-　ISNI　-　VIAF　-　AID - kakenhi - ISNI - Ringgold - GRID。nameIdentifierURIにはIDをHTTP URI形式で記入する。URIを持たない場合は、nameIdentifierURIは指定しない（例：https://nrid.nii.ac.jp/nrid/1000030413925/ （NRID）https://orcid.org/0000-0001-0002-0003 （ORCID）http://isni.org/isni/0000000082849737 （ISNI）https://viaf.org/viaf/56614190 （VIAF））。
-                            注意点：jpcoar:nameIdentifierの値は接頭辞等の情報を付けず、IDのみを記入する。jpcoar:nameIdentifierを記入する場合、必ずnameIdentifierSchemeにスキーマ名を指定する。
-                        </xs:documentation>
-                        <xs:documentation xml:lang="ja">
-                            推奨例：
-                            &lt;jpcoar:nameIdentifier nameIdentifierScheme=&quot;ISNI&quot; nameIdentifierURI=&quot;http://isni.org/isni/00000004043815&quot;&gt;0000000404381592&lt;/jpcoar:nameIdentifier&gt;
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded" />                
                 <xs:element ref="jpcoar:rightsHolderName" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
     <xs:element name="relation">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                登録するコンテンツと関連するコンテンツ間の関連性を記入する。relationTypeには以下の統制語彙から選択して記入する。該当する語彙がない場合はrelationTypeを記入しない。　-　isVersionOf　-　hasVersion　-　isPartOf　-　hasPart　-　isReferencedBy　-　references　-　isFormatOf　-　hasFormat　-　isReplacedBy　-　replaces　-　isRequiredBy　-　requires　-　isSupplementTo　-　isSupplementedBy　-　isIdenticalTo　-　isDerivedFrom　-　isSourceOf
-                注意点：シリーズ名を有するコンテンツで、シリーズタイトルにリンクする場合は、relationType="isPartOf"を使用する。コンテンツが図書の一部（章など）で、図書全体のタイトルにリンクする場合は、relationType="isPartOf"を使用する。著者最終稿から出版者が付与したDOIにリンクする場合は、relationType="isVersionOf"を使用する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                学術雑誌の著者最終稿から出版社版へリンクする場合
-                &lt;jpcoar:relation relationType=&quot;isVersionOf&quot;&gt;
-                    &lt;jpcoar:relatedIdentifier identifierType=&quot;DOI&quot;&gt;https://doi.org/10.1371/journal.pone.0170224&lt;/jpcoar:relatedIdentifier&gt;
-                &lt;/jpcoar:relation&gt;
-                リンク先のコンテンツに識別子がない場合
-                &lt;jpcoar:relation relationType=&quot;isPartOf&quot;&gt;
-                    &lt;jpcoar:relatedTitle xml:lang=&quot;ja&quot;&gt;バイリンガル育成を目指した中・高・大、日本人院生、外国人院生のティームティーチングによる支援&lt;/jpcoar:relatedTitle&gt;
-                &lt;/jpcoar:relation&gt;
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="jpcoar:relatedIdentifier" minOccurs="0" maxOccurs="1"/>
@@ -325,97 +179,36 @@
     </xs:element>
 
     <xs:element name="degreeGrantor">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                学位授与機関の情報を記入する。
-                注意点：共同大学院の場合は、学生の籍がある大学を最初に記入し、繰り返して記入する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                共同大学院の場合
-                &lt;jpcoar:degreeGrantor&gt;
-                    　&lt;jpcoar:nameIdentifier nameIdentifierScheme=&quot;kakenhi&quot;&gt;32653&lt;/jpcoar:nameIdentifier&gt;
-                    　&lt;jpcoar:degreeGrantorName xml:lang=&quot;ja&quot;&gt;東京女子医科大学&lt;/jpcoar:degreeGrantorName&gt;
-                &lt;/jpcoar:degreeGrantor&gt;
-                &lt;jpcoar:degreeGrantor&gt;
-                    　&lt;jpcoar:nameIdentifier nameIdentifierScheme=&quot;kakenhi&quot;&gt;32689&lt;/jpcoar:nameIdentifier&gt;
-                    　&lt;jpcoar:degreeGrantorName xml:lang=&quot;ja&quot;&gt;早稲田大学&lt;/jpcoar:degreeGrantorName&gt;
-                &lt;/jpcoar:degreeGrantor&gt;
-                非推奨例：
-                共同大学院をひとつのjpcoar:degreeGrantorに記入することは推奨しない。
-                &lt;jpcoar:degreeGrantor&gt;
-                    　&lt;jpcoar:nameIdentifier nameIdentifierScheme=&quot;kakenhi&quot;&gt;3265332689&lt;/jpcoar:nameIdentifier&gt;
-                    　&lt;jpcoar:degreeGrantorName xml:lang=&quot;ja&quot;&gt;東京女子医科大学早稲田大学&lt;/jpcoar:degreeGrantorName&gt;
-                &lt;/jpcoar:degreeGrantor&gt;
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation xml:lang="ja">
-                            学位授与機関を一意に識別する科研費機関番号を記入する。jpcoar:nameIdentifierを記入する場合、必ずnameIdentifierSchemeには"kakenhi"を記入する。
-                            注意点：学位規則改正（2013年4月1日）以降に授与された博士論文を登録する場合は、学位授与機関の科研費機関番号の記入が必須。
-                            ここでのスキーマは、kakenhiのみを使用する。
-                        </xs:documentation>
-                        <xs:documentation xml:lang="ja">
-                            推奨例：
-                            &lt;jpcoar:nameIdentifier nameIdentifierScheme="kakenhi"&gt;15301&lt;/jpcoar:nameIdentifier&gt;
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded" />
                 <xs:element ref="jpcoar:degreeGrantorName" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
+   
     <xs:element name="conference">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                会議情報を記入する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:conference&gt;
-                    &lt;jpcoar:conferenceName xml:lang=&quot;en&quot;&gt;RDA Seventh Plenary Meeting&lt;/jpcoar:conferenceName&gt;
-                    &lt;jpcoar:conferenceSequence&gt;7&lt;/jpcoar:conferenceSequence&gt;
-                    &lt;jpcoar:conferencePlace xml:lang=&quot;en&quot;&gt;Tokyo&lt;/jpcoar:conferencePlace&gt;
-                    &lt;jpcoar:conferenceCountry&gt;JPN&lt;/jpcoar:conferenceCountry&gt;
-                &lt;/jpcoar:conference&gt;
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="jpcoar:conferenceName" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:conferenceSequence" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="jpcoar:conferenceSponsor" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="jpcoar:conferenceDate" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="jpcoar:conferenceVenue" minOccurs="0" maxOccurs="unbounded" />
                 <xs:element ref="jpcoar:conferencePlace" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:conferenceCountry" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
+            <xs:attribute name="startDay" type="jpcoar:jpcoarDay" use="optional" />
+            <xs:attribute name="startMonth" type="jpcoar:jpcoarMonth" use="optional" />
+            <xs:attribute name="startYear" type="jpcoar:jpcoarYear" use="optional" />
+            <xs:attribute name="endDay" type="jpcoar:jpcoarDay" use="optional" />
+            <xs:attribute name="endMonth" type="jpcoar:jpcoarMonth" use="optional" />
+            <xs:attribute name="endYear" type="jpcoar:jpcoarYear" use="optional" />
         </xs:complexType>
     </xs:element>
 
     <xs:element name="file">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                コンテンツ本体に関する情報。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:file&gt;
-                    &lt;jpcoar:URI objectType=“fulltext” label=“70_5_331.pdf”&gt;http://ousar.lib.okayama-u.ac.jp/jpcoar:files/public/5/54590/20161108092537681027/70_5_331.pdf &lt;/jpcoar:URI&gt;
-                        &lt;jpcoar:mimeType&gt;application/pdf&lt;/jpcoar:mimeType&gt;
-                        &lt;jpcoar:extent&gt;3MB&lt;/jpcoar:extent&gt;
-                        &lt;jpcoar:extent&gt;15 pages&lt;/jpcoar:extent&gt;
-                        &lt;datacite:date dateType=“Issued”&gt;2015-10-01&lt;/datacite:date&gt;
-                &lt;/jpcoar:file&gt;
-                &lt;jpcoar:file&gt;&lt;jpcoar:URI objectType=“other” label=“supplimental data”&gt;http://xxx.xxx.xxx.xxx/xxx/researchdata.zip&lt;/jpcoar:URI&gt;
-                    &lt;jpcoar:mimeType&gt;application/zip&lt;/jpcoar:mimeType&gt;
-                    &lt;jpcoar:extent&gt;3MB&lt;/jpcoar:extent&gt;
-                    &lt;datacite:date dateType=“Created”&gt;2016-01-01&lt;/datacite:date&gt;
-                    &lt;datacite:version&gt;1.2&lt;/datacite:version&gt;
-                &lt;/jpcoar:file&gt;
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="jpcoar:URI" minOccurs="0" maxOccurs="1"/>
@@ -428,310 +221,33 @@
     </xs:element>
 
     <!-- エレメントの定義 -->
-    <xs:element name="creatorName" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                作成者の姓名を記入する。個人名の姓名の区切りは「姓,△名」（カンマ＋半角空白）とする。英語表記のファーストネームが不明な場合は頭文字でもよい。ミドルネームがある場合は、「姓,△ミドルネーム△名」と記入する。
-                注意点：各言語コードのjpcoar:creatorNameの出現回数は1回までとする。肩書きや役割、補記は記入しない。監修者や指導者のような間接的な役割の者はjpcoar:contributor（寄与者）を使用する。出版者はdc:publisher（出版者）を使用する。ヨミは言語情報をxml:lang="ja-Kana"とし片仮名で記入する。
-                </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                    推奨例：
-                    &lt;jpcoar:creatorName xml:lang=&quot;ja&quot;&gt;夏目, 漱石&lt;/jpcoar:creatorName&gt; 
-                    &lt;jpcoar:creatorName xml:lang=&quot;en&quot;&gt;Natsume, Soseki&lt;/jpcoar:creatorName&gt;
-                    &lt;jpcoar:creatorName xml:lang=&quot;ja-Kana&quot;&gt;ナツメ, ソウセキ&lt;/jpcoar:creatorName&gt;
-                    非推奨例：
-                    langの指定がない記入は推奨しない。 
-                    &lt;jpcoar:creatorName&gt;夏目,漱石&lt;/jpcoar:creatorName&gt;
-                </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="familyName" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                作成者の姓を記入する。作成者が個人であり、姓が判別可能な場合は記入する。
-                注意点：各言語コードのjpcoar:familyNameの出現回数は1回までとする。日本語のヨミは記入しない。団体名は記入しない。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:familyName xml:lang="ja"&gt;夏目&lt;/jpcoar:familyName&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="givenName" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                作成者の名を記入する。作成者が個人であり、名が判別可能な場合は記入する。ミドルネームがある場合は、「ミドルネーム△名」と記入する。
-                注意点：各言語コードのjpcoar:familyNameの出現回数は1回までとする。日本語のヨミは記入しない。団体名は記入しない。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:givenName xml:lang="ja"&gt;漱石&lt;/jpcoar:givenName&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="creatorAlternative" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                作成者に別名がある場合、その姓名を記入する。記述方法および注意点はjpcoar:creatorName（作成者姓名）に準じる。各言語の出現回数は1回に限らず、複数記入可能とする。
-                注意点：ヨミは言語情報をxml:lang="ja-Kana"とし片仮名で記入する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:creatorAlternative xml:lang=&quot;ja&quot;&gt;夏目, 金之助&lt;/jpcoar:creatorAlternative&gt; 
-                &lt;jpcoar:creatorAlternative xml:lang=&quot;en&quot;&gt;Natsume, Kinnosuke&lt;/jpcoar:creatorAlternative&gt;
-                &lt;jpcoar:creatorAlternative xml:lang=&quot;ja-Kana&quot;&gt;ナツメ, キンノスケ&lt;/jpcoar:creatorAlternative&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="affiliationName" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                所属機関の名称を記入する。所属機関名の言語情報はxml:langに記入する。
-                注意点：略称ではなく、正式名称を記入する。記入は機関名までとし、部局名など下位階層の所属は記入しない。当該コンテンツが作成された時点の所属機関を記入する。所属機関名が複数言語ある場合は、本文言語と同じ言語の所属機関名を最初に記入し、続いて別言語の所属機関名を繰り返して記入する。各言語コードのjpcoar:affiliationNameの出現回数は1回までとする。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:affiliationName xml:lang="en"&gt;University of Tokyo&lt;/jpcoar:affiliationName&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="nameIdentifier" type="jpcoar:nameIdentifierType">
-        <xs:annotation>
-            <xs:documentation>
-                寄与者・所属機関・権利者・学位授与機関などを一意に識別するIDを記入する。
-                記述方法は、nameIdentifierSchemeで選択したスキーマに依存する。
-                jpcoar:nameIdentifierの値は接頭辞等の情報を付けず、IDのみを記入する。jpcoar:nameIdentifierを記入する場合、必ずnameIdentifierSchemeにスキーマ名を指定する。
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="contributorName" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                寄与者の姓名を記入する。個人名の姓名の区切りは「姓,△名」（カンマ＋半角空白）とする。英語表記のファーストネームが分からない場合は頭文字でもよい。ミドルネームがある場合は、「姓,△ミドルネーム△名」と記入する。
-                注意点：各言語コードのjpcoar:contributorNameの出現回数は1回までとする。肩書きや役割、補記は記入しない。著者や翻訳者等のような直接的な役割の者はjpcoar:creator（作成者）を使用する。出版者はdc:publisher（出版者）を使用する。ヨミは言語情報をxml:lang="ja-Kana"とし片仮名で記入する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:contributorName xml:lang=&quot;ja&quot;&gt;山田, 一郎&lt;/jpcoar:contributorName&gt;
-                &lt;jpcoar:contributorName xml:lang=&quot;en&quot;&gt;Yamada, Ichiro&lt;/jpcoar:contributorName&gt; 
-                &lt;jpcoar:contributorName xml:lang=&quot;ja-Kana&quot;&gt;ヤマダ, イチロウ&lt;/jpcoar:contributorName&gt;
-                非推奨例：
-                xml:langの指定がない記入は推奨しない。 
-                &lt;jpcoar:contributorName&gt;山田, 一郎&lt;/jpcoar:contributorName&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="contributorAlternative" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                寄与者に別名がある場合、その姓名を記入する。記述方法および注意点はjpcoar:contributorName（寄与者姓名）に準じる。各言語の出現回数は1回に限らず、複数記入可能とする。
-                注意点：ヨミは言語情報をxml:lang="ja-Kana"とし片仮名で記入する。
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="rightsHolderName" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                記述方法はjpcoar:creatorName（作成者姓名）に準じる。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:rightsHolderName xml:lang=&quot;en&quot;&gt;American Physical Society&lt;/jpcoar:rightsHolderName&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="subject" type="jpcoar:subjectType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                コンテンツの内容を表す件名、著者キーワード、分類を記入する。分類はコードのみを記入する。subjectSchemeは以下の語彙を使用する。　-　BSH　-　DDC　-　LCC　-　LCSH　-　MeSH　-　NDC　-　NDLC　-　NDLSH　-　SciVal　-　UDC　-　other。subjectURIにはIDの値をHTTP URI形式で記入する。URIを持たない場合は、subjectURIは指定しない（例：https://id.ndl.go.jp/auth/ndlsh/00575529）。
-                注意点：分類の項目名は記入しない。著者キーワードの場合subjectSchemeは"Other"を指定する。各言語コードのjpcoar:subjectの出現回数に制限はなく、複数回繰り返して記入してよい。 
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                著者キーワードの例
-                &lt;jpcoar:subject xml:lang=&quot;ja&quot; subjectScheme=&quot;Other&quot;&gt;情報化社会&lt;/jpcoar:subject&gt;
-                ヨミ記入の例
-                &lt;jpcoar:subject xml:lang=&quot;ja-Kana&quot; subjectScheme=&quot;Other&quot;&gt;ジョウホウカ シャカイ&lt;/jpcoar:subject&gt;
-                分類コードの例
-                &lt;jpcoar:subject subjectScheme=&quot;NDC&quot;&gt;007&lt;/jpcoar:subject&gt;
-                件名の例
-                &lt;jpcoar:subject xml:lang=&quot;ja&quot; subjectScheme=&quot;NDLSH&quot; subjectURI=&quot;https://id.ndl.go.jp/auth/ndlsh/01009109&quot;&gt;社会情報学&lt;/jpcoar:subject&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="identifierRegistration" type="jpcoar:identifierRegistrationType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                JaLC等へIDを登録する場合、記入する。identifierTypeには登録するサービス（DOIの場合はRegistration Agency）を以下の統制語彙から選択して記入する。　-　JaLC　-　Crossref　-　DataCite　-　PMID
-                注意点：リポジトリコンテンツの自身のIDはjpcoar:identifier（識別子）に記入する。"JaLC"または"Crossref"を選択した場合、junii2スキーマのselfDOIに相当する。JaLCでDOIを登録する場合は､jpcoar:identifierRegistrationだけではなく､jpcoar:identifier（識別子） identifierType="DOI"にDOIをHTTP URI形式で記入する｡jpcoar:identifierRegistrationはJaLCとのデータ連携のためのみに使用される｡
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:identifierRegistration identifierType=&quot;JaLC&quot;&gt;10.18926/AMO/54590&lt;/jpcoar:identifierRegistration&gt;
-                非推奨例：
-                URIスキーム&quot;info:doi/&quot;、 &quot;doi:&quot;は使用してはならない。
-                &lt;jpcoar:identifierRegistration identifierType=&quot;JaLC&quot;&gt;info:doi/10.1594/WDCC/CCSRNIES_SRES_B2&lt;/jpcoar:identifierRegistration&gt;
-                DOIのURL表記は使用してはならない。
-                &lt;jpcoar:identifierRegistration identifierType=&quot;JaLC&quot;&gt;https://doi.org/10.1594/WDCC/CCSRNIES_SRES_B2&lt;/jpcoar:identifierRegistration&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="relatedIdentifier" type="jpcoar:identifierTypeVocab">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                関連するコンテンツの識別子を記入する。記述方法は選択したスキーマに依存する（例：https://doi.org/10.1594/WDCC/CCSRNIES_SRES_B2 （DOI））。identifierTypeには以下の統制語彙から選択して記入する。　-　ARK　-　arXiv　-　DOI　-　HDL　-　ICHUSHI　-　ISBN　-　J-GLOBAL　-　Local　-　PISSN　-　EISSN　-　ISSN（非推奨）　-　NAID　-　NCID　　-　PMID　-　PURL　-　SCOPUS　-　URI　-　WOS
-                注意点：識別子が存在しない場合はjpcoar:relatedTitle（関連名称）を記入する。jpcoar:relatedIdentifierを記入する場合は、必須。identifierType="NCID"には収録物以外のNCIDを記入し、収録物のNCIDはjpcoar:sourceIdentifier（雑誌識別子）を使用する。identifierTypeに"ISSN"を設けるが、原則使用しない。PISSNまたはEISSNの判別が困難な場合に限って使用する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:relatedIdentifier identifierType="DOI&quot;&gt;https://doi.org/10.1371/journal.pone.0170224&lt;/jpcoar:relatedIdentifier&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="relatedTitle" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                関連するコンテンツのタイトルを記入する。
-                注意点：対象に識別子が存在する場合はjpcoar:relatedIdentifier（関連識別子）に記入する。該当する識別子が存在しない場合にのみ記入する。各言語コードのjpcoar:creatorNameの出現回数は1回までとする。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:relatedTitle xml:lang="ja">バイリンガル育成を目指した中高大、日本人院生、外国人院生のティームティーチングによる支援&lt;/jpcoar:relatedTitle>
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="degreeGrantorName" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                学位授与機関の名称を記入する。学位授与機関名の言語情報はxml:langに記入する。
-                注意点：学位規則改正（2013年4月1日）以降に授与された博士論文を登録する場合は必須。略称ではなく、正式名称を記入する。各言語コードのjpcoar:degreeGrantorNameの出現回数は1回までとする。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:degreeGrantorName xml:lang=&quot;ja&quot;&gt;岡山大学&lt;/jpcoar:degreeGrantorName&gt;
-                &lt;jpcoar:degreeGrantorName xml:lang=&quot;en&quot;&gt;Okayama University&lt;/jpcoar:degreeGrantorName&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="conferenceName" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                会議名を記入する。
-                注意点：各言語コードのjpcoar:conferenceNameの出現回数は1回までとする。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:conferenceName xml:lang=&quot;en&quot;&gt;RDA Seventh Plenary Meeting&lt;/jpcoar:conferenceName&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="conferenceSequence" type="xs:positiveInteger">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                会議の回次を記入する。
-                注意点：アラビア数字以外の数字表記によるものは、アラビア数字に変換する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:conferenceSequence&gt;7&lt;/jpcoar:conferenceSequence&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="conferencePlace" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                会議の開催地を記入する。
-                注意点：会議の開催国はjpcoar:conferenceCountryに記入する。各言語コードのjpcoar:conferencePlaceの出現回数は1回までとする。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:conferencePlace xml:lang=&quot;en&quot;&gt;Tokyo&lt;/jpcoar:conferencePlace&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="conferenceCountry" type="jpcoar:countryType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                会議の開催国を記入する。ISO 3166-1 alpha-3形式で記入する。
-                注意点：ISO 3166-1 alpha-3形式以外で記入しない。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:conferenceCountry&gt;JPN&lt;/jpcoar:conferenceCountry&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="URI" type="jpcoar:URIType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                コンテンツ本体ファイルのURIを記入する。objectTypeには以下の統制語彙から選択して記入する。　-　abstract　-　summary　-　fulltext　-　thumbnail　-　other　labelはファイル名がある場合、記入する。
-                注意点：objectTypeはURIがある場合は必須。博士論文の場合、要約はsummary、要旨はabstractを使用する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:URI objectType=&quot;fulltext&quot; label=&quot;70_5_331.pdf&quot;&gt;http://ousar.lib.okayama-u.ac.jp/jpcoar:files/public/5/54590/20161108092537681027/70_5_331.pdf &lt;/jpcoar:URI&gt;
-                &lt;jpcoar:URI objectType=&quot;other&quot; label=&quot;supplimental data&quot;&gt;http://xxx.xxx.xxx.xxx/xxx/researchdata.zip&lt;/jpcoar:URI&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="mimeType" type="xs:string">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                コンテンツのファイル形式を記入する。IANA に登録されている MIME メディアタイプから選択することを推奨する。
-                注意点：コンテンツの種類はdc:type（資源タイプ）を使用する。コンテンツの分量はjpcoar:extent（サイズ）を使用する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:mimeType&gt;application/pdf&lt;/jpcoar:mimeType&gt;
-                &lt;jpcoar:mimeType&gt;application/zip&lt;/jpcoar:mimeType&gt;
-                非推奨例：
-                MIMEメディアタイプ以外の形式で記入してはならない。
-                &lt;jpcoar:mimeType&gt;pdf&lt;/jpcoar:mimeType&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="extent" type="xs:string">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                ファイルサイズ、分量等の情報を記入する。自由記述。但し数値はアラビア数字を半角で記入する。
-                注意点：論文の開始ページはjpcoar:pageStart（開始ページ）、終了ページはjpcoar:pageEnd（終了ページ）を利用する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:extent&gt;3MB&lt;/jpcoar:extent&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-
+    <xs:element name="creatorName" type="jpcoar:stringType" />
+    <xs:element name="familyName" type="jpcoar:stringType" />
+    <xs:element name="givenName" type="jpcoar:stringType" />
+    <xs:element name="creatorAlternative" type="jpcoar:stringType" />
+    <xs:element name="affiliationName" type="jpcoar:stringType" />
+    <xs:element name="nameIdentifier" type="jpcoar:nameIdentifierType" />
+    <xs:element name="contributorName" type="jpcoar:stringType" />
+    <xs:element name="contributorAlternative" type="jpcoar:stringType" />
+    <xs:element name="rightsHolderName" type="jpcoar:stringType" />
+    <xs:element name="subject" type="jpcoar:subjectType" />
+    <xs:element name="identifierRegistration" type="jpcoar:identifierRegistrationType" />
+    <xs:element name="relatedIdentifier" type="jpcoar:identifierTypeVocab" />
+    <xs:element name="relatedTitle" type="jpcoar:stringType" />
+    <xs:element name="degreeGrantorName" type="jpcoar:stringType" />
+    <xs:element name="conferenceName" type="jpcoar:stringType" />
+    <xs:element name="conferenceSequence" type="xs:positiveInteger" />
+    <xs:element name="conferenceSponsor" type="jpcoar:stringType" />
+    <xs:element name="conferenceDate" type="jpcoar:stringType" />
+    <xs:element name="conferenceVenue" type="jpcoar:stringType" />
+    <xs:element name="conferencePlace" type="jpcoar:stringType" />
+    <xs:element name="conferenceCountry" type="jpcoar:countryType" />
+    <xs:element name="URI" type="jpcoar:URIType" />
+    <xs:element name="mimeType" type="xs:string" />
+    <xs:element name="extent" type="xs:string" />
 
     <!-- 型の定義 -->
     <xs:complexType name="stringType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                String型。オプションで lang 属性を記述できる。
-            </xs:documentation>
-        </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute ref="xml:lang" use="optional"/>
@@ -740,20 +256,10 @@
     </xs:complexType>
 
     <xs:complexType name="nameIdentifierType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                String型。オプションで nameIdentifierScheme 属性と nameIdentifierURI 属性を記述できる。
-            </xs:documentation>
-        </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="nameIdentifierScheme" use="required">
                     <xs:simpleType>
-                        <xs:annotation>
-                            <xs:documentation xml:lang="ja">
-                                nameIdentifierScheme 属性の語彙
-                            </xs:documentation>
-                        </xs:annotation>
                         <xs:restriction base="xs:string">
                             <xs:enumeration value="e-Rad"/>
                             <xs:enumeration value="NRID"/>
@@ -773,21 +279,11 @@
     </xs:complexType>
 
     <xs:complexType name="subjectType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                String型。オプションで lang 属性と subjectScheme 属性, subjectURI 属性を記述できる。
-            </xs:documentation>
-        </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute ref="xml:lang" use="optional"/>
                 <xs:attribute name="subjectScheme" use="required">
                     <xs:simpleType>
-                        <xs:annotation>
-                            <xs:documentation xml:lang="ja">
-                                subjectScheme 属性の語彙
-                            </xs:documentation>
-                        </xs:annotation>
                         <xs:restriction base="xs:string">
                             <xs:enumeration value="BSH"/>
                             <xs:enumeration value="DDC"/>
@@ -809,20 +305,10 @@
     </xs:complexType>
 
     <xs:complexType name="identifierRegistrationType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                String型。オプションで identifierType 属性を記述できる。
-            </xs:documentation>
-        </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="identifierType" use="required">
                     <xs:simpleType>
-                        <xs:annotation>
-                            <xs:documentation xml:lang="ja">
-                                identifierType 属性の語彙
-                            </xs:documentation>
-                        </xs:annotation>
                         <xs:restriction base="xs:string">
                             <xs:enumeration value="JaLC"/>
                             <xs:enumeration value="Crossref"/>
@@ -836,20 +322,10 @@
     </xs:complexType>
 
     <xs:complexType name="identifierTypeVocab">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                String型。オプションで identifierType 属性を記述できる。
-            </xs:documentation>
-        </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="identifierType" use="required">
                     <xs:simpleType>
-                        <xs:annotation>
-                            <xs:documentation xml:lang="ja">
-                                identifierType 属性の語彙
-                            </xs:documentation>
-                        </xs:annotation>
                         <xs:restriction base="xs:string">
                             <xs:enumeration value="ARK"/>
                             <xs:enumeration value="arXiv"/>
@@ -875,35 +351,22 @@
     </xs:complexType>
 
     <xs:simpleType name="countryType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                conferenceCountry 要素のデータ型。ISO 3166-1 alpha-3の形式で記述。
-            </xs:documentation>
-        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern value="[A-Z]{3}"/>
         </xs:restriction>
     </xs:simpleType>
 
     <xs:complexType name="URIType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                anyURI型。オプションで objectType 属性と label 属性を記述できる。
-            </xs:documentation>
-        </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:anyURI">
                 <xs:attribute name="objectType" use="optional">
                     <xs:simpleType>
-                        <xs:annotation>
-                            <xs:documentation xml:lang="ja">
-                                objectType 属性の語彙
-                            </xs:documentation>
-                        </xs:annotation>
                         <xs:restriction base="xs:string">
                             <xs:enumeration value="abstract"/>
-                            <xs:enumeration value="summary"/>
+                            <xs:enumeration value="dataset" />
                             <xs:enumeration value="fulltext"/>
+                            <xs:enumeration value="software" />
+                            <xs:enumeration value="summary"/>
                             <xs:enumeration value="thumbnail"/>
                             <xs:enumeration value="other"/>
                         </xs:restriction>
@@ -915,11 +378,6 @@
     </xs:complexType>
 
     <xs:simpleType name="dateType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                dateType 属性の語彙
-            </xs:documentation>
-        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Accepted"/>
             <xs:enumeration value="Available"/>
@@ -932,6 +390,30 @@
             <xs:enumeration value="Valid"/>
         </xs:restriction>
     </xs:simpleType>
+    
+    <xs:simpleType name="jpcoarDay">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:maxInclusive value="31" />
+            <xs:minInclusive value="01" />
+            <xs:totalDigits value="2" />
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="jpcoarMonth">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:maxInclusive value="12" />
+            <xs:minInclusive value="01" />
+            <xs:totalDigits value="2" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="jpcoarYear">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:maxInclusive value="2200" />
+            <xs:minInclusive value="1400" />
+            <xs:totalDigits value="4" />
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:complexType name="resourceType">
         <xs:simpleContent>
@@ -942,320 +424,58 @@
     </xs:complexType>
 
     <xs:simpleType name="resourceTypeVocab">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                jpcoar:resourceType 要素の語彙
-            </xs:documentation>
-        </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:enumeration value="conference paper">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        会議発表論文。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="data paper">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        データ論文。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="departmental bulletin paper">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        紀要論文。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="editorial">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        エディトリアル。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="journal article">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        学術雑誌論文。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="periodical">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        逐次刊行物。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="review article">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        レビュー論文。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="article">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        記事。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="book">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        図書。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="book part">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        図書の一部。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="cartographic material">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        地図資料。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="map">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        地図。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="conference object">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        会議発表資料。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="conference proceedings">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        会議録。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="conference poster">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        会議発表ポスター。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="dataset">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        データセット。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="image">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        イメージ。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="still image">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        静止画。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="moving image">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        動画。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="video">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        録画資料。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="lecture">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        講演。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="patent">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        特許。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="internal report">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        内部報告書。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="report">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        報告書。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="research report">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        研究報告書。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="technical report">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        テクニカルレポート。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="policy report">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        ポリシーレポート。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="report part">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        報告書（部分）。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="working paper">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        ワーキングペーパー。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="sound">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        音声・音楽。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="thesis">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        学位論文。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="bachelor thesis">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        学士論文。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="master thesis">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        修士論文。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="doctoral thesis">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        博士論文。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="interactive resource">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        インタラクティブリソース。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="learning material">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        教材。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="musical notation">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        楽譜。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="research proposal">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        研究計画書。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="software">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        ソフトウェア
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="technical documentation">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        技術文書。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="workflow">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        ワークフロー。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="other">
-                <xs:annotation>
-                    <xs:documentation xml:lang="ja">
-                        その他。
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
+            <xs:enumeration value="conference paper" />
+            <xs:enumeration value="data paper" />
+            <xs:enumeration value="departmental bulletin paper" />        
+            <xs:enumeration value="editorial" />
+            <xs:enumeration value="journal article" />
+            <xs:enumeration value="newspaper" />
+            <xs:enumeration value="periodical" />
+            <xs:enumeration value="review article" />
+            <xs:enumeration value="software paper" />
+            <xs:enumeration value="article" />
+            <xs:enumeration value="book" />
+            <xs:enumeration value="book part" />
+            <xs:enumeration value="cartographic material" />
+            <xs:enumeration value="map" />
+            <xs:enumeration value="conference object" />
+            <xs:enumeration value="conference proceedings" />
+            <xs:enumeration value="conference poster" />
+            <xs:enumeration value="dataset" />
+            <xs:enumeration value="interview" />
+            <xs:enumeration value="image" />
+            <xs:enumeration value="still image" />
+            <xs:enumeration value="moving image" />
+            <xs:enumeration value="video" />
+            <xs:enumeration value="lecture" />
+            <xs:enumeration value="patent" />
+            <xs:enumeration value="internal report" />
+            <xs:enumeration value="report" />
+            <xs:enumeration value="research report" />
+            <xs:enumeration value="technical report" />
+            <xs:enumeration value="policy report" />
+            <xs:enumeration value="report part" />
+            <xs:enumeration value="working paper" />
+            <xs:enumeration value="data management plan" />
+            <xs:enumeration value="sound" />
+            <xs:enumeration value="thesis" />
+            <xs:enumeration value="bachelor thesis" />
+            <xs:enumeration value="master thesis" />
+            <xs:enumeration value="doctoral thesis" />
+            <xs:enumeration value="interactive resource" />
+            <xs:enumeration value="learning object" />
+            <xs:enumeration value="manuscript" />
+            <xs:enumeration value="musical notation" />
+            <xs:enumeration value="research proposal" />
+            <xs:enumeration value="software" />
+            <xs:enumeration value="technical documentation" />
+            <xs:enumeration value="workflow" />
+            <xs:enumeration value="other" />
         </xs:restriction>
     </xs:simpleType>
 
     <xs:element name="identifier">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                コンテンツを識別するユニークなIDを記入する。記述方法は選択したスキーマに依存する（例：https://doi.org/10.18926/AMO/54590 （DOI）http://hdl.handle.net/2115/64495 （HDL）http://ousar.lib.okayama-u.ac.jp/ja/54559 （URI））。identifierTypeには以下の統制語彙から選択して記入する。JPCOARスキーマでは統制語彙に「HDL」「URI」も使用可能とする。　-　DOI　-　HDL　-　URI
-                注意点：リポジトリコンテンツの自身のIDを記入する。学術雑誌論文の出版社版等のDOIはjpcoar:relation（関連情報）に記入する。JaLC DOIを登録する場合は、datacite:identifierだけではなく、jpcoar:iidentifierRegistration（IR登録、ID種別）に登録するDOIを"prefix/suffix"形式で記入する。datacite:identfierを記入する場合、必ずidentifierTypeを指定する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:identifier identifierType=&quot;HDL&quot;&gt;http://hdl.handle.net/2115/64495&lt;/jpcoar:identifier&gt;
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:anyURI">
@@ -1266,11 +486,6 @@
     </xs:element>
 
     <xs:simpleType name="identifierType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                identifierType 要素の語彙
-            </xs:documentation>
-        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="DOI"/>
             <xs:enumeration value="HDL"/>
@@ -1279,42 +494,10 @@
     </xs:simpleType>
 
     <xs:element name="fundingReference">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                コンテンツ作成の際に研究助成を受けた場合は、利用した助成金情報を記入する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                <jpcoar:fundingReference>
-                    &lt;datacite:funderIdentifier funderIdentifierType =&quot;Crossref Funder&quot;&gt;https://doi.org/10.13039/501100000780&lt;/datacite:funderIdentifier&gt;
-                    &lt;jpcoar:funderName xml:lang=&quot;en&quot;&gt;European Commission&lt;/jpcoar:funderName&gt;
-                    &lt;datacite:awardNumber awardURI=&quot;http://cordis.europa.eu/project/rcn/100603_en.html&quot;&gt;284382&lt;/datacite:awardNumber&gt;
-                    &lt;jpcoar:awardTitle xml:lang=&quot;en&quot;&gt;
-                        Institutionalizing global genetic-resource commons. Global Strategies for accessing and using essential public knowledge assets in the life science
-                    &lt;/jpcoar:awardTitle&gt;
-                </jpcoar:fundingReference>
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="datacite:funderIdentifier" minOccurs="0" maxOccurs="1">
-                    <xs:annotation>
-                        <xs:documentation xml:lang="ja">
-                            注意点：Crossref Funder IDの使用を推奨する。Crossref FunderIDがない場合に限り、その他の識別子を記入する。
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:element>
+                <xs:element ref="datacite:funderIdentifier" minOccurs="0" maxOccurs="1" />
                 <xs:element name="funderName" minOccurs="1" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation xml:lang="ja">
-                            研究課題番号を文字列で記入する。記述方法は助成団体による（例：15H02781 （科研費））。awardURIは、助成団体が提供している当該の助成に関する詳細情報をHTTP URI形式で記入する。科研費の場合は、KAKENデータベースの該当するページのURLを記入する。
-                            注意点：jpcoar:fundingReferenceを記入する場合は、必須。略称ではなく、正式名称を記入する。各言語コードのjpcoar:funderNameの出現回数は1回までとする。
-                        </xs:documentation>
-                        <xs:documentation xml:lang="ja">
-                            推奨例：
-                            &lt;jpcoar:funderName xml:lang=&quot;en&quot;&gt;European Commission&lt;/jpcoar:funderName&gt;
-                        </xs:documentation>
-                    </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
@@ -1325,19 +508,6 @@
                 </xs:element>
                 <xs:element ref="datacite:awardNumber" minOccurs="0" maxOccurs="1"/>
                 <xs:element name="awardTitle" minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation xml:lang="ja">
-                            研究課題名を文字列で記入する。
-                            注意点：各言語コードのjpcoar:awardTitleの出現回数は1回までとする。
-                        </xs:documentation>
-                        <xs:documentation xml:lang="ja">
-                            推奨例：
-                            &lt;jpcoar:awardTitle xml:lang=&quot;en&quot;&gt;
-                                Institutionalizing global genetic-resource commons. Global Strategies for accessing and using essential public knowledge assets in the life science
-                            &lt;/jpcoar:awardTitle&gt;
-                            
-                        </xs:documentation>
-                    </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
@@ -1359,44 +529,11 @@
         </xs:restriction>
     </xs:simpleType>
 
-
-    <xs:element name="sourceTitle" type="jpcoar:stringType">
-        <xs:annotation>
-            <xs:documentation>
-                コンテンツの収録物のタイトルを記入する。
-                注意点：日本語雑誌名で和文、欧文コンテンツが混在する場合は、本文の言語に応じて雑誌名を表記することが望ましい。タイトルが複数言語ある場合は、要素を繰り返して記入する。ただし、各言語コードのtitleの出現回数は1回までとする。言語表記ごとの繰り返しにする場合は、優先度の高い言語表記の順に記入する。
-            </xs:documentation>
-            <xs:documentation>
-                推奨例：
-                &lt;jpcoar:sourceTitle xml:lang=&quot;ja&quot;&gt;看護総合科学研究会誌&lt;/jpcoar:sourceTitle&gt;
-                &lt;jpcoar:sourceTitle xml:lang=&quot;en&quot;&gt;Journal of Comprehensive Nursing Research&lt;/jpcoar:sourceTitle&gt;
-                非推奨例：
-                収録物名の略称は推奨しない。
-                &lt;jpcoar:sourceTitle xml:lang=&quot;en&quot;&gt;Annu Rev Biochem&lt;/jpcoar:sourceTitle&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="sourceIdentifier" type="jpcoar:sourceIdentifierType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                収録物に付与された識別子を記入する。記述方法は選択した識別子に依存する。identifierTypeには以下の統制語彙から選択して記入する。　-　PISSN　-　EISSN　-　ISSN（非推奨）　-　NCID
-                注意点：ISSN、NCIDがある場合は必ず記入する。収録物以外のNCIDはjpcoar:relatedIdentifier（関連識別子）を使用する。junii2下位互換用の語彙としてidentifierTypeに"ISSN"を設けるが、原則使用しない。PISSNまたはEISSNの判別が困難な場合に限って使用する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:sourceIdentifier identifierType=&quot;PISSN&quot;&gt;1234-5678&lt;/jpcoar:sourceIdentifier&gt;
-                &lt;jpcoar:sourceIdentifier identifierType=&quot;NCID&quot;&gt;AN12345678&lt;/jpcoar:sourceIdentifier&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
+    <xs:element name="sourceTitle" type="jpcoar:stringType" />
+    
+    <xs:element name="sourceIdentifier" type="jpcoar:sourceIdentifierType" />    
 
     <xs:complexType name="sourceIdentifierType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                jpcoar:sourceIdentifier 要素の型
-            </xs:documentation>
-        </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="identifierType" type="jpcoar:soueceIdentifierVocab" use="required"/>
@@ -1405,11 +542,6 @@
     </xs:complexType>
 
     <xs:simpleType name="soueceIdentifierVocab">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                identifierType 要素の語彙
-            </xs:documentation>
-        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="PISSN"/>
             <xs:enumeration value="EISSN"/>
@@ -1418,63 +550,14 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:element name="volume" type="xs:string">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                収録物の巻レベルを記入する。単位を表す語句（「巻」、「vol」、「号」、「年」など）は記入しない。巻号と通号の両者が存在する場合は、巻号を採用する。
-                注意点：号または通号のみをもつ場合は、巻レベルとし、jpcoar:volumeに記入する。アラビア数字以外の数字表記によるものは、アラビア数字に変換する。アラビア数字に変換できない場合は、そのまま転記する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:volume&gt;1&lt;/jpcoar:volume&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="issue" type="xs:string">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                収録物の号レベルを記入する。単位を表す語句（「号」、「issue」など）は削除する。
-                注意点：号または通号のみをもつ場合は、巻レベルとし、jpcoar:volumeに記入する。アラビア数字以外の数字表記によるものは、アラビア数字に変換する。アラビア数字に変換できない場合は、そのまま転記する。号レベルより下位のレベルが存在する場合でも（例えばvolume3、issue2、part1 等の場合）、その下位レベルについては記入しない。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:issue&gt;1&lt;/jpcoar:issue&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="numPages" type="xs:positiveInteger">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                コンテンツの総ページ数を記入する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:numPages&gt;12&lt;/jpcoar:numPages&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="pageStart" type="xs:positiveInteger">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                コンテンツの収録物中における開始ページを記入する。開始ページと終了ページが同じ場合は、jpcoar:pageEndにも同様の値を記入する。巻（volume）の通ページと、号（issue）ごとのページの両方が存在する場合は、巻 （volume）の通ページを記入する。
-                注意点：アラビア数字以外の数字表記によるものは、アラビア数字に変換する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:pageStart&gt;1&lt;/jpcoar:pageStart&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="pageEnd" type="xs:positiveInteger">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                コンテンツの収録物中における終了ページを記入する。開始ページと終了ページが同じ場合は、jpcoar:pageStartと同様の値を記入する。巻（volume）の通ページと、号（issue）ごとのページの両方が存在する場合は、巻 （volume）の通ページを記入する。
-                注意点：アラビア数字以外の数字表記によるものは、アラビア数字に変換する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;jpcoar:pageEnd&gt;12&lt;/jpcoar:pageEnd&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
+    <xs:element name="volume" type="xs:string" />
+    
+    <xs:element name="issue" type="xs:string" />
+    
+    <xs:element name="numPages" type="xs:positiveInteger" />
+    
+    <xs:element name="pageStart" type="xs:positiveInteger" />
+    
+    <xs:element name="pageEnd" type="xs:positiveInteger" />
+    
 </xs:schema>

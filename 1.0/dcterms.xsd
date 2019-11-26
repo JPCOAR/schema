@@ -9,22 +9,6 @@
     <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
     
     <xs:element name="alternative">
-        <xs:annotation> 
-            <xs:documentation xml:lang="ja">
-                目次タイトル、奥付タイトル等の本タイトル以外のタイトルを記入する。
-                注意点：その他のタイトルが複数言語ある場合は、要素を繰り返して記入する。各言語コードのdcterms:alternativeの出現回数に制限はなく、複数回繰り返して記入してよい。 本タイトルの別言語のタイトルはdc:title（タイトル）に記入する。ヨミは言語情報をxml:lang="ja-Kana"とし片仮名で記入する。また、ヨミを記入する場合は、xml:lang="ja"の情報を必ず記入する。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;dcterms:alternative xml:lang=&quot;ja&quot;&gt;データマイニング、次世代サーチなどの研究&lt;/dcterms:alternative&gt;
-                &lt;dcterms:alternative xml:lang=&quot;ja-Kana&quot;&gt;データ マイニング ジセダイ サーチ ナド ノ ケンキュウ&lt;/dcterms:alternative&gt;
-                非推奨例：
-                複数言語の並列表記は推奨しない。 
-                &lt;dcterms:alternative xml:lang=&quot;&quot;jaen&quot;&quot;&gt;情報爆発時代の研究基盤構想 = Research Project on Cyber Infrastructure for Information-explosion Era&lt;/dcterms:alternative&gt; 
-                掲載誌名を含めることは推奨しない。掲載誌名はjpcoar:sourceTitle（収録物名）を使用する。 
-                &lt;dcterms:alternative xml:lang=&quot;&quot;ja&quot;&quot;&gt;NIIの概要(日本病院会雑誌)&lt;/dcterms:alternative&gt;
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
@@ -34,28 +18,9 @@
         </xs:complexType>
     </xs:element>
     
-    <xs:element name="accessRights" type="accessRightsType">
-        <xs:annotation>
-            <xs:documentation>
-                コンテンツのアクセス状態を記入する。以下の統制語彙から選択して記入する。　-　embargoed access: エンバーゴ有　-　metadata only access: メタデータのみ　-　open access: オープンアクセス　-　restricted access: アクセス制限有。rdf:resourceには各統制語彙に対応するCOAR Access RightsのURIを記入する。
-                注意点：コンテンツのライセンスに関する情報はdc:rights（権利情報）を参照する。「embargoed access」の場合は、datacite:date（日付）のdateTypeに"Available"を指定し、利用開始日を記入する。
-            </xs:documentation>
-            <xs:documentation>
-                推奨例：
-                &lt;jpcoar:accessRights rdf:resource=&quot;http://purl.org/coar/access_right/c_abf2&quot;&gt;open access&lt;/jpcoar:accessRights&gt;
-                &lt;jpcoar:accessRights rdf:resource=&quot;http://purl.org/coar/access_right/c_f1cf&quot;&gt;embargoed access&lt;/jpcoar:accessRights&gt;
-                &lt;jpcoar:accessRights rdf:resource=&quot;http://purl.org/coar/access_right/c_14cb&quot;&gt;metadata only access&lt;/jpcoar:accessRights&gt;
-                &lt;jpcoar:accessRights rdf:resource=&quot;http://purl.org/coar/access_right/c_16ec&quot;&gt;restricted access&lt;/jpcoar:accessRights&gt;
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
+    <xs:element name="accessRights" type="accessRightsType" />
     
     <xs:complexType name="accessRightsType">
-        <xs:annotation>
-            <xs:documentation xml:lang="ja">
-                dcterms:accessRights 要素の型
-            </xs:documentation>
-        </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="accessRightsVocab">
                 <xs:attribute ref="rdf:resource" use="required"/>
@@ -64,18 +29,6 @@
     </xs:complexType>
     
     <xs:element name="temporal">
-        <xs:annotation> 
-            <xs:documentation xml:lang="ja">
-                コンテンツの内容の時間的範囲を記入する。所定のスキーマに従って記入することが望ましい。
-                注意点：
-                各言語コードのdcterms:temporalの出現回数に制限はなく、複数回繰り返して記入してよい。
-            </xs:documentation>
-            <xs:documentation xml:lang="ja">
-                推奨例：
-                &lt;dcterms:temporal xml:lang=&quot;ja&quot;&gt;奈良時代&lt;/dcterms:temporal&gt;
-                &lt;dcterms:temporal xml:lang=&quot;en&quot;&gt;A.D. 1800 - A.D. 1850&lt;/dcterms:temporal&gt;
-            </xs:documentation>
-        </xs:annotation>
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
@@ -86,13 +39,10 @@
     </xs:element>
 
     <xs:simpleType name="accessRightsVocab">
-        <xs:annotation>
-            <xs:documentation>dcterms:accessRights 要素の語彙</xs:documentation>
-        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="embargoed access"/>
-            <xs:enumeration value="open access"/>
             <xs:enumeration value="metadata only access"/>
+            <xs:enumeration value="open access"/>
             <xs:enumeration value="restricted access"/>
         </xs:restriction>
     </xs:simpleType>
