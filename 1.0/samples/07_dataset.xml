@@ -102,7 +102,7 @@
 		<jpcoar:awardTitle xml:lang="en">Institutionalizing global genetic-resource commons. Global Strategies for accessing and using essential public knowledge assets in the life science</jpcoar:awardTitle>
 	</jpcoar:fundingReference>
 	<jpcoar:file>
-		<jpcoar:URI objectType="other" label="dataset.csv">http://repository.dl.itc.u-tokyo.ac.jp/files/64495/JIS_12_3_34-57.csv</jpcoar:URI>
+		<jpcoar:URI objectType="dataset" label="dataset.csv">http://repository.dl.itc.u-tokyo.ac.jp/files/64495/JIS_12_3_34-57.csv</jpcoar:URI>
 		<jpcoar:extent>1GB</jpcoar:extent>
 		<datacite:date dateType="Created">2014-01-01</datacite:date>
 		<datacite:date dateType="Issued">2015-07-01</datacite:date>
