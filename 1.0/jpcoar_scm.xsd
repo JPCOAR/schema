@@ -26,12 +26,13 @@
             JPCOAR Schema
         </xs:appinfo>
         <xs:documentation>
-            JPCOAR Schema
+            JPCOAR スキーマ
             v1.0.2 2019.11.27
         </xs:documentation>
     </xs:annotation>
 
-    <!-- Element definition -->
+    <!-- 要素の定義 -->
+    <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
  
     <xs:element name="jpcoar" type="jpcoar:content" />
     
@@ -198,6 +199,12 @@
                 <xs:element ref="jpcoar:conferencePlace" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:conferenceCountry" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
+            <xs:attribute name="startDay" type="jpcoar:jpcoarDay" use="optional" />
+            <xs:attribute name="startMonth" type="jpcoar:jpcoarMonth" use="optional" />
+            <xs:attribute name="startYear" type="jpcoar:jpcoarYear" use="optional" />
+            <xs:attribute name="endDay" type="jpcoar:jpcoarDay" use="optional" />
+            <xs:attribute name="endMonth" type="jpcoar:jpcoarMonth" use="optional" />
+            <xs:attribute name="endYear" type="jpcoar:jpcoarYear" use="optional" />
         </xs:complexType>
     </xs:element>
 
@@ -213,7 +220,7 @@
         </xs:complexType>
     </xs:element>
 
-    <!-- Element definition -->
+    <!-- エレメントの定義 -->
     <xs:element name="creatorName" type="jpcoar:stringType" />
     <xs:element name="familyName" type="jpcoar:stringType" />
     <xs:element name="givenName" type="jpcoar:stringType" />
@@ -231,6 +238,7 @@
     <xs:element name="conferenceName" type="jpcoar:stringType" />
     <xs:element name="conferenceSequence" type="xs:positiveInteger" />
     <xs:element name="conferenceSponsor" type="jpcoar:stringType" />
+    <xs:element name="conferenceDate" type="jpcoar:stringType" />
     <xs:element name="conferenceVenue" type="jpcoar:stringType" />
     <xs:element name="conferencePlace" type="jpcoar:stringType" />
     <xs:element name="conferenceCountry" type="jpcoar:countryType" />
@@ -238,7 +246,7 @@
     <xs:element name="mimeType" type="xs:string" />
     <xs:element name="extent" type="xs:string" />
 
-    <!-- Type definition -->
+    <!-- 型の定義 -->
     <xs:complexType name="stringType">
         <xs:simpleContent>
             <xs:extension base="xs:string">
@@ -305,7 +313,7 @@
                             <xs:enumeration value="JaLC"/>
                             <xs:enumeration value="Crossref"/>
                             <xs:enumeration value="DataCite"/>
-                            <xs:enumeration value="PMID"/>
+                            <xs:enumeration value="PMID（現在不使用）"/>
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
@@ -551,20 +559,5 @@
     <xs:element name="pageStart" type="xs:positiveInteger" />
     
     <xs:element name="pageEnd" type="xs:positiveInteger" />
-    
-    <xs:element name="conferenceDate">
-        <xs:complexType>
-            <xs:simpleContent>
-                <xs:extension base="jpcoar:stringType">
-                    <xs:attribute name="startDay" type="jpcoar:jpcoarDay" use="optional" />
-                    <xs:attribute name="startMonth" type="jpcoar:jpcoarMonth" use="optional" />
-                    <xs:attribute name="startYear" type="jpcoar:jpcoarYear" use="optional" />
-                    <xs:attribute name="endDay" type="jpcoar:jpcoarDay" use="optional" />
-                    <xs:attribute name="endMonth" type="jpcoar:jpcoarMonth" use="optional" />
-                    <xs:attribute name="endYear" type="jpcoar:jpcoarYear" use="optional" />
-                </xs:extension>
-            </xs:simpleContent>
-        </xs:complexType>
-    </xs:element>
     
 </xs:schema>
