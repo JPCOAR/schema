@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://purl.org/dc/terms/" targetNamespace="http://purl.org/dc/terms/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+
+    <!-- Element difinition -->
+    <xs:element name="alternative" type="stringLangType" />
+    <xs:element name="accessRights" type="accessRightsType" />
+    <xs:element name="date" type="stringLangType" />
+    <xs:element name="temporal" type="stringType" />
+    <xs:element name="extent" type="stringLangType" />
+    <xs:element name="format" type="stringLangType" />
+
+
+    <!-- Type definition -->
+    <xs:complexType name="stringLangType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:lang" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="stringType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:lang" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="accessRightsType">
+        <xs:simpleContent>
+            <xs:extension base="accessRightsVocab">
+                <xs:attribute ref="rdf:resource" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="accessRightsVocab">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="embargoed access"/>
+            <xs:enumeration value="metadata only access"/>
+            <xs:enumeration value="open access"/>
+            <xs:enumeration value="restricted access"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

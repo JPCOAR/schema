@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://schema.datacite.org/meta/kernel-4/"
+    targetNamespace="https://schema.datacite.org/meta/kernel-4/" elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2009/01/xml.xsd"/>
+
+
+    <!-- Element difinition -->
+    <xs:element name="description">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="descriptionType" type="descriptionType" use="required"/>
+                    <xs:attribute ref="xml:lang" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="date">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="ISOdateType">
+                    <xs:attribute name="dateType" type="dateType" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="version" type="xs:string" />
+
+    <xs:element name="geoLocation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="geoLocationPoint" type="point" minOccurs="0" maxOccurs="1" />
+                <xs:element name="geoLocationBox" type="box" minOccurs="0" maxOccurs="1" />
+                <xs:element name="geoLocationPlace" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string"/>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+    <!-- Type definition -->
+    <xs:simpleType name="descriptionType" id="descriptionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Abstract"/>
+            <xs:enumeration value="Methods"/>
+            <xs:enumeration value="TableOfContents"/>
+            <xs:enumeration value="TechnicalInfo"/>
+            <xs:enumeration value="Other"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="dateType" id="dateType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Accepted"/>
+            <xs:enumeration value="Available"/>
+            <xs:enumeration value="Collected"/>
+            <xs:enumeration value="Copyrighted"/>
+            <xs:enumeration value="Created"/>
+            <xs:enumeration value="Issued"/>
+            <xs:enumeration value="Submitted"/>
+            <xs:enumeration value="Updated"/>
+            <xs:enumeration value="Valid"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ISOdateType">
+        <xs:union memberTypes="xs:date xs:gYearMonth xs:gYear xs:dateTime"/>
+    </xs:simpleType>
+
+    <xs:complexType name="point">
+        <xs:all>
+            <xs:element name="pointLongitude" type="longitudeType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="pointLatitude" type="latitudeType" minOccurs="1" maxOccurs="1" />
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="box">
+        <xs:all>
+            <xs:element name="westBoundLongitude" type="longitudeType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="eastBoundLongitude" type="longitudeType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="southBoundLatitude" type="latitudeType" minOccurs="1" maxOccurs="1" />
+            <xs:element name="northBoundLatitude" type="latitudeType" minOccurs="1" maxOccurs="1" />
+        </xs:all>
+    </xs:complexType>
+
+    <xs:simpleType name="longitudeType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="-180"/>
+            <xs:maxInclusive value="180"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="latitudeType">
+        <xs:restriction base="xs:float">
+            <xs:minInclusive value="-90"/>
+            <xs:maxInclusive value="90"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

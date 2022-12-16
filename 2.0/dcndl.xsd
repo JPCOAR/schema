@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ndl.go.jp/dcndl/terms/" targetNamespace="http://ndl.go.jp/dcndl/terms/" elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+
+    <!-- Element difinition -->
+    <xs:element name="dissertationNumber" type="xs:string" />
+    <xs:element name="degreeName" type="stringType" />
+    <xs:element name="dateGranted" type="ISOdateType" />
+    <xs:element name="edition" type="stringLangType" />
+    <xs:element name="volumeTitle" type="stringLangType" />
+    <xs:element name="originalLanguage" type="xs:string" />
+    <xs:element name="location" type="stringLangType" />
+    <xs:element name="publicationPlace" type="xs:string" />
+
+
+
+    <!-- Type definition -->
+    <xs:complexType name="stringLangType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:lang" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="stringType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:lang" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="ISOdateType">
+        <xs:union memberTypes="xs:date xs:gYearMonth xs:gYear"/>
+    </xs:simpleType>
+
+</xs:schema>

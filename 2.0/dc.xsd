@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://purl.org/dc/elements/1.1/"
+    targetNamespace="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" elementFormDefault="qualified"
+    xmlns:jpcoar="https://github.com/JPCOAR/schema/blob/master/2.0/">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
+    <xs:import namespace="https://github.com/JPCOAR/schema/blob/master/2.0/" schemaLocation="jpcoar_scm.xsd"/>
+
+    <!-- Element difinition -->
+    <xs:element name="type" type="jpcoar:resourceType" />
+    <xs:element name="title" type="stringLangType" />
+
+    <xs:element name="rights">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="xml:lang" use="optional"/>
+                    <xs:attribute ref="rdf:resource" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="publisher" type="stringLangType" />
+    <xs:element name="identifier" type="jpcoar:identifierTypeVocab" />
+    <xs:element name="language" type="ISOlangType" />
+
+
+    <!-- Type definition -->
+    <xs:complexType name="stringLangType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:lang" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="ISOlangType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

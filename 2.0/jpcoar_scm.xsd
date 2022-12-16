@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:datacite="https://schema.datacite.org/meta/kernel-4/"
+    xmlns:oaire="http://namespace.openaire.eu/schema/oaire/"
+    xmlns:dcndl="http://ndl.go.jp/dcndl/terms/"
+    xmlns:jpcoar="https://github.com/JPCOAR/schema/blob/master/2.0/"
+    targetNamespace="https://github.com/JPCOAR/schema/blob/master/2.0/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="dc.xsd"/>
+    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="dcterms.xsd"/>
+    <xs:import namespace="https://schema.datacite.org/meta/kernel-4/" schemaLocation="datacite.xsd"/>
+    <xs:import namespace="http://namespace.openaire.eu/schema/oaire/" schemaLocation="openaire.xsd"/>
+    <xs:import namespace="http://ndl.go.jp/dcndl/terms/" schemaLocation="dcndl.xsd"/>
+    <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
+
+    <xs:annotation>
+        <xs:appinfo>
+            JPCOAR Schema
+        </xs:appinfo>
+        <xs:documentation>
+            JPCOAR Schema
+            v2.0.0 2022.12.01
+        </xs:documentation>
+    </xs:annotation>
+
+
+    <!-- Element difinition -->
+
+    <xs:element name="jpcoar" type="jpcoar:content"/>
+
+    <xs:complexType name="content">
+        <xs:sequence>
+            <xs:element ref="dc:title" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="dcterms:alternative" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:creator" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:contributor" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dcterms:accessRights" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dc:rights" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:subject" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="datacite:description" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dc:publisher" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:publisher" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="datacite:date" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dcterms:date" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dc:language" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dc:type" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="datacite:version" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="oaire:version" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="jpcoar:identifier" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:identifierRegistration" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="jpcoar:relation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dcterms:temporal" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="datacite:geoLocation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:fundingReference" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:sourceIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dcndl:edition" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dcndl:volumeTitle" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dcndl:originalLanguage" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dcterms:extent" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:format" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:holdingAgent" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="jpcoar:datasetSeries" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="jpcoar:sourceTitle" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:volume" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="jpcoar:issue" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="jpcoar:numPages" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="jpcoar:pageStart" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="jpcoar:pageEnd" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dcndl:dissertationNumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dcndl:degreeName" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dcndl:dateGranted" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="jpcoar:degreeGrantor" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:conference" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:file" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="jpcoar:catalog" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="creator">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="jpcoar:creatorName" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:familyName" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:givenName" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:creatorAlternative" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:affiliation" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="creatorType" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="contributor">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="jpcoar:contributorName" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:familyName" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:givenName" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:contributorAlternative" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:affiliation" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="contributorType" type="jpcoar:contributorTypeVocab" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="affiliation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="jpcoar:affiliationName" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="rightsHolder">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:rightsHolderName" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="relation">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="jpcoar:relatedIdentifier" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="jpcoar:relatedTitle" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="relationType" type="jpcoar:relationTypeVocab" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="degreeGrantor">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:degreeGrantorName" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="conference">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="jpcoar:conferenceName" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:conferenceSequence" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="jpcoar:conferenceSponsor" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:conferenceDate" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="jpcoar:conferenceVenue" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:conferencePlace" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:conferenceCountry" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="sourceIdentifier">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="identifierType" type="jpcoar:soueceIdentifierVocab" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="file">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="jpcoar:URI" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="jpcoar:mimeType" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="jpcoar:extent" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="datacite:date" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="datacite:version" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="creatorName">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="jpcoar:stringLangType">
+                    <xs:attribute name="nameType" type="jpcoar:nameTypeVocab" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="contributorName">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="jpcoar:stringLangType">
+                    <xs:attribute name="nameType" type="jpcoar:nameTypeVocab" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="familyName" type="jpcoar:stringType"/>
+    <xs:element name="givenName" type="jpcoar:stringType"/>
+    <xs:element name="creatorAlternative" type="jpcoar:stringLangType"/>
+    <xs:element name="affiliationName" type="jpcoar:stringType"/>
+    <xs:element name="nameIdentifier" type="jpcoar:nameIdentifierType"/>
+    <xs:element name="contributorAlternative" type="jpcoar:stringLangType"/>
+    <xs:element name="rightsHolderName" type="jpcoar:stringType"/>
+    <xs:element name="subject" type="jpcoar:subjectType"/>
+    <xs:element name="identifierRegistration" type="jpcoar:identifierRegistrationType"/>
+    <xs:element name="relatedIdentifier" type="jpcoar:identifierTypeVocab"/>
+    <xs:element name="relatedTitle" type="jpcoar:stringLangType"/>
+    <xs:element name="degreeGrantorName" type="jpcoar:stringType"/>
+    <xs:element name="conferenceName" type="jpcoar:stringType"/>
+    <xs:element name="conferenceSequence" type="xs:positiveInteger"/>
+    <xs:element name="conferenceSponsor" type="jpcoar:stringType"/>
+    <xs:element name="conferenceVenue" type="jpcoar:stringType"/>
+    <xs:element name="conferencePlace" type="jpcoar:stringType"/>
+    <xs:element name="conferenceCountry" type="jpcoar:countryType"/>
+    <xs:element name="URI" type="jpcoar:URIType"/>
+    <xs:element name="mimeType" type="xs:string"/>
+    <xs:element name="extent" type="xs:string"/>
+    <xs:element name="datasetSeries" type="jpcoar:datasetSeriesType"/>
+
+
+    <xs:element name="publisher">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="publisherName" type="jpcoar:stringLangType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="publisherDescription" type="jpcoar:stringLangType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcndl:location" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcndl:publicationPlace" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="identifier">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:anyURI">
+                    <xs:attribute name="identifierType" type="jpcoar:identifierType" use="required"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="fundingReference">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="jpcoar:funderIdentifier" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="funderName" type="jpcoar:stringLangType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:fundingStreamIdentifier" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="fundingStream" type="jpcoar:stringLangType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:awardNumber" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="awardTitle" type="jpcoar:stringLangType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="funderIdentifier">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="funderIdentifierType" type="jpcoar:funderIdentifierType" use="required"/>
+                    <xs:attribute name="funderIdentifierTypeURI" type="xs:anyURI" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="fundingStreamIdentifier">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="fundingStreamIdentifierType" type="jpcoar:fundingStreamIdentifierType" use="optional"/>
+                    <xs:attribute name="fundingStreamIdentifierTypeURI" type="xs:anyURI" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="awardNumber">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="awardURI" type="xs:anyURI" use="optional"/>
+                    <xs:attribute name="awardNumberType" type="xs:string" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="sourceTitle" type="jpcoar:stringType"/>
+
+    <xs:element name="volume" type="xs:string"/>
+
+    <xs:element name="issue" type="xs:string"/>
+
+    <xs:element name="numPages" type="xs:positiveInteger"/>
+
+    <xs:element name="pageStart" type="xs:positiveInteger"/>
+
+    <xs:element name="pageEnd" type="xs:positiveInteger"/>
+
+    <xs:element name="conferenceDate">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="jpcoar:stringType">
+                    <xs:attribute name="startDay" type="jpcoar:jpcoarDay" use="optional"/>
+                    <xs:attribute name="startMonth" type="jpcoar:jpcoarMonth" use="optional"/>
+                    <xs:attribute name="startYear" type="jpcoar:jpcoarYear" use="optional"/>
+                    <xs:attribute name="endDay" type="jpcoar:jpcoarDay" use="optional"/>
+                    <xs:attribute name="endMonth" type="jpcoar:jpcoarMonth" use="optional"/>
+                    <xs:attribute name="endYear" type="jpcoar:jpcoarYear" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="holdingAgent">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="jpcoar:holdingAgentNameIdentifier" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="holdingAgentName" type="jpcoar:stringLangType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="holdingAgentNameIdentifier">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="jpcoar:stringType">
+                    <xs:attribute name="nameIdentifierScheme" type="jpcoar:holdingAgentNameIdentifierType" use="required"/>
+                    <xs:attribute name="nameIdentifierURI" type="xs:anyURI" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="catalog">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="jpcoar:contributor" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:identifier" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dc:title" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="datacite:description" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:subject" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="jpcoar:license" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dc:rights" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcterms:accessRights" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="jpcoar:file" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="license">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="jpcoar:stringLangType">
+                    <xs:attribute name="licenseType" type="jpcoar:licenseType" use="required"/>
+                    <xs:attribute ref="rdf:resource" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!-- Type definition -->
+
+    <xs:complexType name="stringLangType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:lang" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="stringType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:lang" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="nameIdentifierType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="nameIdentifierScheme" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="e-Rad_Researcher"/>
+                            <xs:enumeration value="NRID"/>
+                            <xs:enumeration value="ORCID"/>
+                            <xs:enumeration value="ISNI"/>
+                            <xs:enumeration value="VIAF"/>
+                            <xs:enumeration value="AID"/>
+                            <xs:enumeration value="kakenhi"/>
+                            <xs:enumeration value="Ringgold"/>
+                            <xs:enumeration value="GRID"/>
+                            <xs:enumeration value="ROR"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="nameIdentifierURI" type="xs:anyURI" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="subjectType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:lang" use="required"/>
+                <xs:attribute name="subjectScheme" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="BSH"/>
+                            <xs:enumeration value="DDC"/>
+                            <xs:enumeration value="e-Rad_field"/>
+                            <xs:enumeration value="JEL"/>
+                            <xs:enumeration value="LCC"/>
+                            <xs:enumeration value="LCSH"/>
+                            <xs:enumeration value="MeSH"/>
+                            <xs:enumeration value="NDC"/>
+                            <xs:enumeration value="NDLC"/>
+                            <xs:enumeration value="NDLSH"/>
+                            <xs:enumeration value="SciVal"/>
+                            <xs:enumeration value="UDC"/>
+                            <xs:enumeration value="Other"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="subjectURI" type="xs:anyURI" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="identifierRegistrationType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="identifierType" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="JaLC"/>
+                            <xs:enumeration value="Crossref"/>
+                            <xs:enumeration value="DataCite"/>
+                            <xs:enumeration value="PMID"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="identifierTypeVocab">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI">
+                <xs:attribute name="identifierType" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="ARK"/>
+                            <xs:enumeration value="arXiv"/>
+                            <xs:enumeration value="CRID"/>
+                            <xs:enumeration value="DOI"/>
+                            <xs:enumeration value="HDL"/>
+                            <xs:enumeration value="ICHUSHI"/>
+                            <xs:enumeration value="ISBN"/>
+                            <xs:enumeration value="J-GLOBAL"/>
+                            <xs:enumeration value="Local"/>
+                            <xs:enumeration value="PISSN"/>
+                            <xs:enumeration value="EISSN"/>
+                            <xs:enumeration value="ISSN"/>
+                            <xs:enumeration value="NAID"/>
+                            <xs:enumeration value="NCID"/>
+                            <xs:enumeration value="PMID"/>
+                            <xs:enumeration value="PURL"/>
+                            <xs:enumeration value="SCOPUS"/>
+                            <xs:enumeration value="URI"/>
+                            <xs:enumeration value="WOS"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="contributorTypeVocab">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ContactPerson"/>
+            <xs:enumeration value="DataCollector"/>
+            <xs:enumeration value="DataCurator"/>
+            <xs:enumeration value="DataManager"/>
+            <xs:enumeration value="Distributor"/>
+            <xs:enumeration value="Editor"/>
+            <xs:enumeration value="HostingInstitution"/>
+            <xs:enumeration value="Producer"/>
+            <xs:enumeration value="ProjectLeader"/>
+            <xs:enumeration value="ProjectManager"/>
+            <xs:enumeration value="ProjectMember"/>
+            <xs:enumeration value="RelatedPerson"/>
+            <xs:enumeration value="Researcher"/>
+            <xs:enumeration value="ResearchGroup"/>
+            <xs:enumeration value="Sponsor"/>
+            <xs:enumeration value="Supervisor"/>
+            <xs:enumeration value="WorkPackageLeader"/>
+            <xs:enumeration value="Other"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="relationTypeVocab">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="inSeries"/>
+            <xs:enumeration value="isCitedBy"/>
+            <xs:enumeration value="Cites"/>
+            <xs:enumeration value="isVersionOf"/>
+            <xs:enumeration value="hasVersion"/>
+            <xs:enumeration value="isPartOf"/>
+            <xs:enumeration value="hasPart"/>
+            <xs:enumeration value="isReferencedBy"/>
+            <xs:enumeration value="references"/>
+            <xs:enumeration value="isFormatOf"/>
+            <xs:enumeration value="hasFormat"/>
+            <xs:enumeration value="isReplacedBy"/>
+            <xs:enumeration value="replaces"/>
+            <xs:enumeration value="isRequiredBy"/>
+            <xs:enumeration value="requires"/>
+            <xs:enumeration value="isSupplementTo"/>
+            <xs:enumeration value="isSupplementedBy"/>
+            <xs:enumeration value="isIdenticalTo"/>
+            <xs:enumeration value="isDerivedFrom"/>
+            <xs:enumeration value="isSourceOf"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="countryType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="URIType">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI">
+                <xs:attribute name="objectType" use="optional">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="abstract"/>
+                            <xs:enumeration value="dataset"/>
+                            <xs:enumeration value="fulltext"/>
+                            <xs:enumeration value="iiif"/>
+                            <xs:enumeration value="software"/>
+                            <xs:enumeration value="summary"/>
+                            <xs:enumeration value="thumbnail"/>
+                            <xs:enumeration value="other"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="label" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="dateType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Accepted"/>
+            <xs:enumeration value="Available"/>
+            <xs:enumeration value="Collected"/>
+            <xs:enumeration value="Copyrighted"/>
+            <xs:enumeration value="Created"/>
+            <xs:enumeration value="Issued"/>
+            <xs:enumeration value="Submitted"/>
+            <xs:enumeration value="Updated"/>
+            <xs:enumeration value="Valid"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="jpcoarDay">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:maxInclusive value="31"/>
+            <xs:minInclusive value="01"/>
+            <xs:totalDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="jpcoarMonth">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:maxInclusive value="12"/>
+            <xs:minInclusive value="01"/>
+            <xs:totalDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="jpcoarYear">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:maxInclusive value="2200"/>
+            <xs:minInclusive value="1400"/>
+            <xs:totalDigits value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="resourceType">
+        <xs:simpleContent>
+            <xs:extension base="jpcoar:resourceTypeVocab">
+                <xs:attribute ref="rdf:resource" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="resourceTypeVocab">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="conference paper"/>
+            <xs:enumeration value="data paper"/>
+            <xs:enumeration value="departmental bulletin paper"/>
+            <xs:enumeration value="editorial"/>
+            <xs:enumeration value="journal"/>
+            <xs:enumeration value="journal article"/>
+            <xs:enumeration value="newspaper"/>
+            <xs:enumeration value="review article"/>
+            <xs:enumeration value="other periodical"/>
+            <xs:enumeration value="software paper"/>
+            <xs:enumeration value="article"/>
+            <xs:enumeration value="book"/>
+            <xs:enumeration value="book part"/>
+            <xs:enumeration value="cartographic material"/>
+            <xs:enumeration value="map"/>
+            <xs:enumeration value="conference output"/>
+            <xs:enumeration value="conference presentation"/>
+            <xs:enumeration value="conference proceedings"/>
+            <xs:enumeration value="conference poster"/>
+            <xs:enumeration value="aggregated data"/>
+            <xs:enumeration value="clinical trial data"/>
+            <xs:enumeration value="compiled data"/>
+            <xs:enumeration value="dataset"/>
+            <xs:enumeration value="encoded data"/>
+            <xs:enumeration value="experimental data"/>
+            <xs:enumeration value="genomic data"/>
+            <xs:enumeration value="geospatial data"/>
+            <xs:enumeration value="laboratory notebook"/>
+            <xs:enumeration value="measurement and test data"/>
+            <xs:enumeration value="observational data"/>
+            <xs:enumeration value="recorded data"/>
+            <xs:enumeration value="simulation data"/>
+            <xs:enumeration value="survey data"/>
+            <xs:enumeration value="image"/>
+            <xs:enumeration value="still image"/>
+            <xs:enumeration value="moving image"/>
+            <xs:enumeration value="video"/>
+            <xs:enumeration value="lecture"/>
+            <xs:enumeration value="design patent"/>
+            <xs:enumeration value="patent"/>
+            <xs:enumeration value="PCT application"/>
+            <xs:enumeration value="plant patent"/>
+            <xs:enumeration value="plant variety protection"/>
+            <xs:enumeration value="software patent"/>
+            <xs:enumeration value="trademark"/>
+            <xs:enumeration value="utility model"/>
+            <xs:enumeration value="report"/>
+            <xs:enumeration value="research report"/>
+            <xs:enumeration value="technical report"/>
+            <xs:enumeration value="policy report"/>
+            <xs:enumeration value="working paper"/>
+            <xs:enumeration value="data management plan"/>
+            <xs:enumeration value="sound"/>
+            <xs:enumeration value="thesis"/>
+            <xs:enumeration value="bachelor thesis"/>
+            <xs:enumeration value="master thesis"/>
+            <xs:enumeration value="doctoral thesis"/>
+            <xs:enumeration value="commentary"/>
+            <xs:enumeration value="design"/>
+            <xs:enumeration value="industrial design"/>
+            <xs:enumeration value="interactive resource"/>
+            <xs:enumeration value="layout design"/>
+            <xs:enumeration value="learning object"/>
+            <xs:enumeration value="manuscript"/>
+            <xs:enumeration value="musical notation"/>
+            <xs:enumeration value="peer review"/>
+            <xs:enumeration value="research proposal"/>
+            <xs:enumeration value="research protocol"/>
+            <xs:enumeration value="software"/>
+            <xs:enumeration value="source code"/>
+            <xs:enumeration value="technical documentation"/>
+            <xs:enumeration value="transcription"/>
+            <xs:enumeration value="workflow"/>
+            <xs:enumeration value="other"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="identifierType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DOI"/>
+            <xs:enumeration value="HDL"/>
+            <xs:enumeration value="URI"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="funderIdentifierType" id="funderIdentifierType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Crossref Funder"/>
+            <xs:enumeration value="e-Rad_funder"/>
+            <xs:enumeration value="GRID"/>
+            <xs:enumeration value="ISNI"/>
+            <xs:enumeration value="ROR"/>
+            <xs:enumeration value="Other"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="fundingStreamIdentifierType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Crossref Funder"/>
+            <xs:enumeration value="JGN_fundingStream"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="soueceIdentifierVocab">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PISSN"/>
+            <xs:enumeration value="EISSN"/>
+            <xs:enumeration value="ISSN"/>
+            <xs:enumeration value="NCID"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="holdingAgentNameIdentifierType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="kakenhi"/>
+            <xs:enumeration value="ISNI"/>
+            <xs:enumeration value="Ringgold"/>
+            <xs:enumeration value="GRID"/>
+            <xs:enumeration value="ROR"/>
+            <xs:enumeration value="FANO"/>
+            <xs:enumeration value="ISIL"/>
+            <xs:enumeration value="MARC"/>
+            <xs:enumeration value="OCLC"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="licenseType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="file"/>
+            <xs:enumeration value="metadata"/>
+            <xs:enumeration value="thumbnail"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="nameTypeVocab">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Organizational"/>
+            <xs:enumeration value="Personal"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="datasetSeriesType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="True"/>
+            <xs:enumeration value="False"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
