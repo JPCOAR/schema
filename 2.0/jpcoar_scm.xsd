@@ -225,6 +225,7 @@
     <xs:element name="URI" type="jpcoar:URIType"/>
     <xs:element name="mimeType" type="xs:string"/>
     <xs:element name="extent" type="xs:string"/>
+    <xs:element name="format" type="xs:string"/>
     <xs:element name="datasetSeries" type="jpcoar:datasetSeriesType"/>
 
 
