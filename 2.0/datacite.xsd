@@ -73,7 +73,18 @@
     </xs:simpleType>
 
     <xs:simpleType name="ISOdateType">
-        <xs:union memberTypes="xs:date xs:gYearMonth xs:gYear xs:dateTime"/>
+        <xs:restriction base="xs:string">
+            <!-- W3C Date and Time Format（YYYY、YYYY-MM、YYYY-MM-DD、YYYY-MM-DDThh:mmTZD、YYYY-MM-DDThh:mm:ssTZD) -->
+            <xs:pattern value="\d{4}(-\d{2}(-\d{2}(T\d{2}:\d{2}(:\d{2})?(Z|[\+\-]\d{2}:\d{2}))?)?)?"/>
+            <!-- RKMS-ISO8601 format
+             1. like YYYY/(a time-period starting only) or YYYY/YYYY (a time-period starting and ending)
+             -->
+            <xs:pattern value="\d{4}(-\d{2}(-\d{2}(T\d{2}:\d{2}(:\d{2})?(Z|[\+\-]\d{2}:\d{2}))?)?)?/(\d{4}(-\d{2}(-\d{2}(T\d{2}:\d{2}(:\d{2})?(Z|[\+\-]\d{2}:\d{2}))?)?)?)?"/>
+            <!-- RKMS-ISO8601 format
+             2. like /YYYY (a time-period ending only)
+             -->
+            <xs:pattern value="/(\d{4}(-\d{2}(-\d{2}(T\d{2}:\d{2}(:\d{2})?(Z|[\+\-]\d{2}:\d{2}))?)?)?)"/>
+        </xs:restriction>
     </xs:simpleType>
 
     <xs:complexType name="point">

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    elementFormDefault="qualified"
-    attributeFormDefault="unqualified"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    attributeFormDefault="unqualified" xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:datacite="https://schema.datacite.org/meta/kernel-4/"
     xmlns:oaire="http://namespace.openaire.eu/schema/oaire/"
@@ -11,7 +9,8 @@
     targetNamespace="https://github.com/JPCOAR/schema/blob/master/2.0/"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 
-    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
     <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="dc.xsd"/>
     <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="dcterms.xsd"/>
     <xs:import namespace="https://schema.datacite.org/meta/kernel-4/" schemaLocation="datacite.xsd"/>
@@ -39,7 +38,7 @@
             <xs:element ref="dc:title" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element ref="dcterms:alternative" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="jpcoar:creator" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="jpcoar:contributor" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="jpcoar:contributor" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="dcterms:accessRights" minOccurs="0" maxOccurs="1"/>
             <xs:element ref="dc:rights" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element ref="jpcoar:rightsHolder" minOccurs="0" maxOccurs="unbounded"/>
@@ -86,7 +85,7 @@
     <xs:element name="creator">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="jpcoar:nameIdentifier" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:creatorName" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:familyName" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:givenName" minOccurs="0" maxOccurs="unbounded"/>
@@ -100,7 +99,7 @@
     <xs:element name="contributor">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="jpcoar:nameIdentifier" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:contributorName" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:familyName" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:givenName" minOccurs="0" maxOccurs="unbounded"/>
@@ -114,7 +113,7 @@
     <xs:element name="affiliation">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="jpcoar:nameIdentifier" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="jpcoar:nameIdentifier" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:affiliationName" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
@@ -167,7 +166,8 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
-                    <xs:attribute name="identifierType" type="jpcoar:soueceIdentifierVocab" use="required"/>
+                    <xs:attribute name="identifierType" type="jpcoar:soueceIdentifierVocab"
+                        use="required"/>
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>
@@ -188,7 +188,7 @@
     <xs:element name="creatorName">
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="jpcoar:stringLangType">
+                <xs:extension base="jpcoar:stringType">
                     <xs:attribute name="nameType" type="jpcoar:nameTypeVocab" use="optional"/>
                 </xs:extension>
             </xs:simpleContent>
@@ -197,7 +197,7 @@
     <xs:element name="contributorName">
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="jpcoar:stringLangType">
+                <xs:extension base="jpcoar:stringType">
                     <xs:attribute name="nameType" type="jpcoar:nameTypeVocab" use="optional"/>
                 </xs:extension>
             </xs:simpleContent>
@@ -206,15 +206,15 @@
 
     <xs:element name="familyName" type="jpcoar:stringType"/>
     <xs:element name="givenName" type="jpcoar:stringType"/>
-    <xs:element name="creatorAlternative" type="jpcoar:stringLangType"/>
+    <xs:element name="creatorAlternative" type="jpcoar:stringType"/>
     <xs:element name="affiliationName" type="jpcoar:stringType"/>
     <xs:element name="nameIdentifier" type="jpcoar:nameIdentifierType"/>
-    <xs:element name="contributorAlternative" type="jpcoar:stringLangType"/>
+    <xs:element name="contributorAlternative" type="jpcoar:stringType"/>
     <xs:element name="rightsHolderName" type="jpcoar:stringType"/>
     <xs:element name="subject" type="jpcoar:subjectType"/>
     <xs:element name="identifierRegistration" type="jpcoar:identifierRegistrationType"/>
     <xs:element name="relatedIdentifier" type="jpcoar:identifierTypeVocab"/>
-    <xs:element name="relatedTitle" type="jpcoar:stringLangType"/>
+    <xs:element name="relatedTitle" type="jpcoar:stringType"/>
     <xs:element name="degreeGrantorName" type="jpcoar:stringType"/>
     <xs:element name="conferenceName" type="jpcoar:stringType"/>
     <xs:element name="conferenceSequence" type="xs:positiveInteger"/>
@@ -225,14 +225,17 @@
     <xs:element name="URI" type="jpcoar:URIType"/>
     <xs:element name="mimeType" type="xs:string"/>
     <xs:element name="extent" type="xs:string"/>
+    <xs:element name="format" type="jpcoar:stringType"/>
     <xs:element name="datasetSeries" type="jpcoar:datasetSeriesType"/>
 
 
     <xs:element name="publisher">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="publisherName" type="jpcoar:stringLangType" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element name="publisherDescription" type="jpcoar:stringLangType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="publisherName" type="jpcoar:stringType" minOccurs="0"
+                    maxOccurs="unbounded"/>
+                <xs:element name="publisherDescription" type="jpcoar:stringType" minOccurs="0"
+                    maxOccurs="unbounded"/>
                 <xs:element ref="dcndl:location" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcndl:publicationPlace" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
@@ -243,7 +246,8 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:anyURI">
-                    <xs:attribute name="identifierType" type="jpcoar:identifierType" use="required"/>
+                    <xs:attribute name="identifierType" type="jpcoar:identifierType" use="required"
+                    />
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>
@@ -254,11 +258,14 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="jpcoar:funderIdentifier" minOccurs="0" maxOccurs="1"/>
-                <xs:element name="funderName" type="jpcoar:stringLangType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="funderName" type="jpcoar:stringType" minOccurs="1"
+                    maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:fundingStreamIdentifier" minOccurs="0" maxOccurs="1"/>
-                <xs:element name="fundingStream" type="jpcoar:stringLangType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="fundingStream" type="jpcoar:stringType" minOccurs="0"
+                    maxOccurs="unbounded"/>
                 <xs:element ref="jpcoar:awardNumber" minOccurs="0" maxOccurs="1"/>
-                <xs:element name="awardTitle" type="jpcoar:stringLangType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="awardTitle" type="jpcoar:stringType" minOccurs="0"
+                    maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -267,7 +274,8 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
-                    <xs:attribute name="funderIdentifierType" type="jpcoar:funderIdentifierType" use="required"/>
+                    <xs:attribute name="funderIdentifierType" type="jpcoar:funderIdentifierType"
+                        use="required"/>
                     <xs:attribute name="funderIdentifierTypeURI" type="xs:anyURI" use="optional"/>
                 </xs:extension>
             </xs:simpleContent>
@@ -278,8 +286,10 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
-                    <xs:attribute name="fundingStreamIdentifierType" type="jpcoar:fundingStreamIdentifierType" use="optional"/>
-                    <xs:attribute name="fundingStreamIdentifierTypeURI" type="xs:anyURI" use="optional"/>
+                    <xs:attribute name="fundingStreamIdentifierType"
+                        type="jpcoar:fundingStreamIdentifierType" use="optional"/>
+                    <xs:attribute name="fundingStreamIdentifierTypeURI" type="xs:anyURI"
+                        use="optional"/>
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>
@@ -327,7 +337,8 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="jpcoar:holdingAgentNameIdentifier" minOccurs="0" maxOccurs="1"/>
-                <xs:element name="holdingAgentName" type="jpcoar:stringLangType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="holdingAgentName" type="jpcoar:stringType" minOccurs="0"
+                    maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -336,7 +347,8 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="jpcoar:stringType">
-                    <xs:attribute name="nameIdentifierScheme" type="jpcoar:holdingAgentNameIdentifierType" use="required"/>
+                    <xs:attribute name="nameIdentifierScheme"
+                        type="jpcoar:holdingAgentNameIdentifierType" use="required"/>
                     <xs:attribute name="nameIdentifierURI" type="xs:anyURI" use="optional"/>
                 </xs:extension>
             </xs:simpleContent>
@@ -362,7 +374,7 @@
     <xs:element name="license">
         <xs:complexType>
             <xs:simpleContent>
-                <xs:extension base="jpcoar:stringLangType">
+                <xs:extension base="jpcoar:stringType">
                     <xs:attribute name="licenseType" type="jpcoar:licenseType" use="required"/>
                     <xs:attribute ref="rdf:resource" use="optional"/>
                 </xs:extension>
@@ -372,14 +384,6 @@
 
 
     <!-- Type definition -->
-
-    <xs:complexType name="stringLangType">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute ref="xml:lang" use="required"/>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
 
     <xs:complexType name="stringType">
         <xs:simpleContent>
@@ -416,7 +420,7 @@
     <xs:complexType name="subjectType">
         <xs:simpleContent>
             <xs:extension base="xs:string">
-                <xs:attribute ref="xml:lang" use="required"/>
+                <xs:attribute ref="xml:lang" use="optional"/>
                 <xs:attribute name="subjectScheme" use="required">
                     <xs:simpleType>
                         <xs:restriction base="xs:string">

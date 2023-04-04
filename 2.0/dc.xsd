@@ -32,7 +32,7 @@
     <xs:complexType name="stringLangType">
         <xs:simpleContent>
             <xs:extension base="xs:string">
-                <xs:attribute ref="xml:lang" use="required"/>
+                <xs:attribute ref="xml:lang" use="optional"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
