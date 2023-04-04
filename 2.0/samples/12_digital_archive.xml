@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jpcoar:jpcoar xmlns:jpcoar="https://github.com/JPCOAR/schema/blob/master/2.0/" 
+	xmlns:dc="http://purl.org/dc/elements/1.1/" 
+	xmlns:dcterms="http://purl.org/dc/terms/" 
+	xmlns:datacite="https://schema.datacite.org/meta/kernel-4/" 
+	xmlns:oaire="http://namespace.openaire.eu/schema/oaire/" 
+	xmlns:dcndl="http://ndl.go.jp/dcndl/terms/" 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="https://github.com/JPCOAR/schema/blob/master/2.0/ jpcoar_scm.xsd">
+	<!-- 12. デジタルアーカイブ / Digital Archive -->
+	<dc:title xml:lang="ja"> 和訓栞</dc:title>
+	<dc:title xml:lang="ja-Kana">ワクンノシオリ</dc:title>
+	<dc:title xml:lang="ja-Latn">Wakun no shiori</dc:title>
+	<dcterms:alternative xml:lang="ja"> 栞</dcterms:alternative>
+	<dcterms:alternative xml:lang="ja-Kana">シオリブミ</dcterms:alternative>
+	<dcterms:alternative xml:lang="ja"> 倭訓栞</dcterms:alternative>
+	<dcterms:alternative xml:lang="ja-Kana">ワクンノシオリ</dcterms:alternative>
+	<jpcoar:creator creatorType="著">
+		<jpcoar:nameIdentifier nameIdentifierScheme="VIAF" nameIdentifierURI="https://viaf.org/viaf/18126058"> 18126058</jpcoar:nameIdentifier>
+		<jpcoar:creatorName xml:lang="ja">谷川, 士清</jpcoar:creatorName>
+		<jpcoar:creatorName xml:lang="en">Tanigawa, Kotosuga</jpcoar:creatorName>
+		<jpcoar:creatorName xml:lang="ja-Kana">タニガワ, コトスガ</jpcoar:creatorName>
+		<jpcoar:familyName xml:lang="ja">谷川</jpcoar:familyName>
+		<jpcoar:givenName xml:lang="ja">士清</jpcoar:givenName>
+		<jpcoar:creatorAlternative xml:lang="ja">谷川, 昇</jpcoar:creatorAlternative>
+		<jpcoar:creatorAlternative xml:lang="en">Tanigawa, Noboru</jpcoar:creatorAlternative>
+		<jpcoar:creatorAlternative xml:lang="ja-Kana">タニガワ, ノボル</jpcoar:creatorAlternative>
+	</jpcoar:creator>
+	<dcterms:accessRights rdf:resource="http://purl.org/coar/access_right/c_abf2">open access</dcterms:accessRights>
+	<dc:rights xml:lang="en" rdf:resource="https://creativecommons.org/licenses/by-sa/4.0/deed.en">Creative Commons Attribution 4.0 International</dc:rights> 
+	<!-- デジアカ必要項目１ -->
+		<jpcoar:publisher>
+			<jpcoar:publisherName xml:lang="ja">須原屋, 茂兵衞</jpcoar:publisherName>
+			<jpcoar:publisherDescription xml:lang="ja">巻之一三 </jpcoar:publisherDescription>
+			<dcndl:location xml:lang="ja">江戸</dcndl:location>
+			<dcndl:publicationPlace>JPN</dcndl:publicationPlace> 
+		</jpcoar:publisher>
+		<jpcoar:publisher>
+			<jpcoar:publisherName xml:lang="ja">山本, 平左衞門</jpcoar:publisherName>
+			<jpcoar:publisherDescription xml:lang="ja">巻之一三 </jpcoar:publisherDescription>
+			<dcndl:location xml:lang="ja">京都</dcndl:location>
+			<dcndl:publicationPlace>JPN</dcndl:publicationPlace> 
+		</jpcoar:publisher>
+		<jpcoar:publisher>
+			<jpcoar:publisherName xml:lang="ja">出雲寺, 文次郎</jpcoar:publisherName>
+			<jpcoar:publisherDescription xml:lang="ja">巻之二八 </jpcoar:publisherDescription>
+			<dcndl:location xml:lang="ja">京都</dcndl:location>
+			<dcndl:publicationPlace>JPN</dcndl:publicationPlace> 
+		</jpcoar:publisher>
+	<datacite:date dateType="Issued">1777/1830</datacite:date>
+	<!-- デジアカ必要項目2-->
+		<dcterms:date xml:lang="ja">安永6-文政13</dcterms:date>
+	<dc:language>jpn</dc:language>
+	<dc:type rdf:resource="http://purl.org/coar/resource_type/c_2f33">book</dc:type>
+	<jpcoar:identifier identifierType="DOI">https://doi.org/10.20730/200017323</jpcoar:identifier>
+	<jpcoar:identifier identifierType="URI">https://kokusho.nijl.ac.jp/biblio/200017323/</jpcoar:identifier>
+	<jpcoar:identifierRegistration identifierType="JaLC">10.20730/200017323</jpcoar:identifierRegistration>
+	<!-- デジアカ必要項目8 -->
+		<jpcoar:relation relationType="inSeries">
+			<jpcoar:relatedIdentifier identifierType="URI">https://kokusho.nijl.ac.jp/page/list-ukai.html</jpcoar:relatedIdentifier>
+			<jpcoar:relatedTitle xml:lang="ja">鵜飼文庫</jpcoar:relatedTitle>
+		</jpcoar:relation>
+	<dcterms:temporal xml:lang="ja">江戸時代</dcterms:temporal>
+	<!-- デジアカ必要項目3 -->
+		<dcndl:edition xml:lang="ja">安永３年刊の改版</dcndl:edition>
+	<!-- デジアカ必要項目3-1 -->
+		<dcndl:volumeTitle xml:lang="ja">前編</dcndl:volumeTitle>
+		<dcndl:volumeTitle xml:lang="ja-Kana">ゼンペン</dcndl:volumeTitle>
+	<!-- デジアカ必要項目3-2 -->
+		<dcndl:originalLanguage>jpn</dcndl:originalLanguage>
+	<!-- デジアカ必要項目4 -->
+		<dcterms:extent xml:lang="ja">34冊 ; 25.1×17.7cm</dcterms:extent>
+	<!-- デジアカ必要項目5 -->
+		<jpcoar:format>袋綴</jpcoar:format>
+	<!-- デジアカ必要項目6 -->
+		<jpcoar:holdingAgent>
+			<jpcoar:holdingAgentNameIdentifier nameIdentifierScheme="ROR">https://ror.org/01464wm64</jpcoar:holdingAgentNameIdentifier>
+			<jpcoar:holdingAgentName xml:lang="ja">人間文化研究機構　国文学研究資料館</jpcoar:holdingAgentName>
+			<jpcoar:holdingAgentName xml:lang="en">National Institute of Japanese Literature</jpcoar:holdingAgentName>
+		</jpcoar:holdingAgent>
+        <jpcoar:file>
+                <jpcoar:URI objectType="iiif" >https://kokusho.nijl.ac.jp/biblio/200017323/manifest</jpcoar:URI>
+        </jpcoar:file>
+	<!-- デジアカ必要項目10 -->
+	<jpcoar:catalog>
+		<jpcoar:contributor contributorType="HostingInstitution">
+			<jpcoar:contributorName xml:lang="ja">国文学研究資料館</jpcoar:contributorName>
+			<jpcoar:contributorName xml:lang="en">National Institute of Japanese Literature</jpcoar:contributorName>
+		</jpcoar:contributor>
+		<jpcoar:identifier identifierType="URI">https://kokusho.nijl.ac.jp</jpcoar:identifier>
+		<dc:title xml:lang="ja">国書データベース</dc:title>
+		<dc:title xml:lang="ja-Kana">コクショデータベース</dc:title>
+		<dc:title xml:lang="en"> The Largest Digital Reference on Pre-Modern Japanese Works</dc:title>
+
+		<datacite:description xml:lang="ja" descriptionType="Other">国内外の多くの機関等及び国文学研究資料館が所蔵する古典籍（江戸時代以前の書籍）等資料の書誌情報と、その一部の高精細画像を一度に検索・利用できるデータベースです。無料で公開していますので、どなたでも利用できます。日本の古典籍の総合目録である「日本古典籍総合目録データベース」と「日本語の 歴史的典籍の国際共同研究ネットワーク構築計画（略称：歴史的典籍NW事業）」によって構築された「新日本古典籍総合データベース」を発展的に統合し、さらに機能強化を目指すものです。</datacite:description>
+		<jpcoar:subject subjectScheme="Other">書籍等</jpcoar:subject>
+		<jpcoar:subject subjectScheme="Other">人文学</jpcoar:subject>
+		<jpcoar:subject subjectScheme="Other">自然史・理工学</jpcoar:subject>
+		<jpcoar:license xml:lang="ja" licenseType="file" rdf:resource="https://kokusho.nijl.ac.jp/page/usage.html">画像利用条件</jpcoar:license>
+		<dc:rights xml:lang="ja">二次利用の条件は原本の所蔵者によって異なる</dc:rights>
+		<dcterms:accessRights rdf:resource="http://purl.org/coar/access_right/c_abf2">open access</dcterms:accessRights>
+		<jpcoar:file>
+			<jpcoar:URI objectType="thumbnail">https://xxx.xxx.xxx.xxx/xxx/thumbnail.jpg（準備中）</jpcoar:URI>
+		</jpcoar:file>
+	</jpcoar:catalog>
+</jpcoar:jpcoar>

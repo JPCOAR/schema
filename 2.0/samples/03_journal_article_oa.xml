@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jpcoar:jpcoar xmlns:jpcoar="https://github.com/JPCOAR/schema/blob/master/2.0/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:datacite="https://schema.datacite.org/meta/kernel-4/"
+    xmlns:oaire="http://namespace.openaire.eu/schema/oaire/"
+    xmlns:dcndl="http://ndl.go.jp/dcndl/terms/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://github.com/JPCOAR/schema/blob/master/2.0/ jpcoar_scm.xsd">
+    <!-- 3. 学術雑誌論文（出版者版、サンプル2のエンバーゴ終了後） / Journal Article (Version of Record, After Embargo Period of Sample 2) -->
+    <dc:title xml:lang="ja">情報爆発時代の研究基盤構想</dc:title>
+    <dc:title xml:lang="en">Research Project on Cyber Infrastructure for Information-explosion Era</dc:title>
+    <dc:title xml:lang="ja-Kana">ジョウホウ バクハツ ジダイ ノ ケンキュウ キバン コウソウ</dc:title>
+    <dc:title xml:lang="ja-Latn">Joho bakuhatsu jidai no kenkyu kiban koso</dc:title>
+    <jpcoar:creator creatorType="著">
+        <jpcoar:nameIdentifier nameIdentifierScheme="ORCID" nameIdentifierURI="https://orcid.org/0000-0001-0002-0003">0000-0001-0002-0003</jpcoar:nameIdentifier>
+        <jpcoar:creatorName xml:lang="ja">安達, 淳</jpcoar:creatorName>
+        <jpcoar:creatorName xml:lang="en">Adachi, Jun</jpcoar:creatorName>
+        <jpcoar:creatorName xml:lang="ja-Kana">アダチ, ジュン</jpcoar:creatorName>
+        <jpcoar:affiliation>
+            <jpcoar:nameIdentifier nameIdentifierScheme="ISNI" nameIdentifierURI="http://www.isni.org/isni/0000000121691048">0000000121691048</jpcoar:nameIdentifier>
+            <jpcoar:affiliationName xml:lang="ja">東京大学</jpcoar:affiliationName>
+            <jpcoar:affiliationName xml:lang="en">The University of Tokyo</jpcoar:affiliationName>
+        </jpcoar:affiliation>
+    </jpcoar:creator>
+    <!-- オープンアクセスに修正 / Change to Open Access -->
+    <dcterms:accessRights rdf:resource="http://purl.org/coar/access_right/c_abf2">open access</dcterms:accessRights>
+    <jpcoar:subject xml:lang="en" subjectScheme="Other">information retrieval</jpcoar:subject>
+    <jpcoar:subject xml:lang="en" subjectScheme="Other">data mining</jpcoar:subject>
+    <dc:publisher xml:lang="en">Elsevier</dc:publisher>
+    <datacite:date dateType="Issued">2015-10-01</datacite:date>
+    <!-- 公開予定日は修正不要 / No Need to Change Avaiable Date -->
+    <datacite:date dateType="Available">2016-04-01</datacite:date>
+    <dc:language>eng</dc:language>
+    <dc:type rdf:resource="http://purl.org/coar/resource_type/c_6501">journal article</dc:type>
+    <oaire:version rdf:resource="http://purl.org/coar/version/c_970fb48d4fbd8a85">VoR</oaire:version>
+    <jpcoar:identifier identifierType="HDL">http://hdl.handle.net/2115/64495</jpcoar:identifier>
+    <jpcoar:relation relationType="isIdenticalTo">
+        <jpcoar:relatedIdentifier identifierType="DOI">https://doi.org/10.1371/journal.pone.0170224</jpcoar:relatedIdentifier>
+    </jpcoar:relation>
+    <jpcoar:fundingReference>
+        <jpcoar:funderIdentifier funderIdentifierType="e-Rad_funder">1025</jpcoar:funderIdentifier>
+        <jpcoar:funderName xml:lang="ja">日本学術振興会</jpcoar:funderName>
+        <jpcoar:fundingStream xml:lang="ja">科学研究費助成事業</jpcoar:fundingStream>
+        <jpcoar:awardNumber awardURI="https://kaken.nii.ac.jp/ja/grant/KAKENHI-PLANNED-18049069/" awardNumberType="JGN">JP18049069</jpcoar:awardNumber>
+        <jpcoar:awardTitle xml:lang="ja">情報爆発時代の情報検索基盤技術</jpcoar:awardTitle>
+    </jpcoar:fundingReference> 
+    <jpcoar:sourceIdentifier identifierType="PISSN">1880-697X</jpcoar:sourceIdentifier>
+    <jpcoar:sourceIdentifier identifierType="NCID">AA12032633</jpcoar:sourceIdentifier>
+    <jpcoar:sourceTitle xml:lang="en">Journal of information studies</jpcoar:sourceTitle>
+    <jpcoar:volume>12</jpcoar:volume>
+    <jpcoar:issue>3</jpcoar:issue>
+    <jpcoar:numPages>24</jpcoar:numPages>
+    <jpcoar:pageStart>34</jpcoar:pageStart>
+    <jpcoar:pageEnd>57</jpcoar:pageEnd>
+    <jpcoar:file>
+        <jpcoar:URI objectType="fulltext" label="JIS_12_3_34-57.pdf">http://repository.dl.itc.u-tokyo.ac.jp/files/64495/JIS_12_3_34-57.pdf</jpcoar:URI>
+        <jpcoar:mimeType>application/pdf</jpcoar:mimeType>
+        <jpcoar:extent>3MB</jpcoar:extent>
+        <jpcoar:extent>24 pages</jpcoar:extent>
+        <datacite:date dateType="Issued">2015-10-01</datacite:date>
+        <!-- 公開予定日 / Available date -->
+        <datacite:date dateType="Available">2016-04-01</datacite:date>
+    </jpcoar:file>
+</jpcoar:jpcoar>

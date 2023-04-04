@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ご確認いただきたい点に（要確認）とコメントしてあります -->
+<jpcoar:jpcoar
+	xmlns:jpcoar="https://github.com/JPCOAR/schema/blob/master/2.0/" 
+	xmlns:dc="http://purl.org/dc/elements/1.1/" 
+	xmlns:dcterms="http://purl.org/dc/terms/" 
+	xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxxterms/" 
+	xmlns:datacite="https://schema.datacite.org/meta/kernel-4/" 
+	xmlns:oaire="http://namespace.openaire.eu/schema/oaire/" 
+	xmlns:dcndl="http://ndl.go.jp/dcndl/terms/" 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="https://github.com/JPCOAR/schema/blob/master/2.0/ https://raw.githubusercontent.com/JPCOAR/schema/master/2.0/jpcoar_scm.xsd">
+		<!-- 11. 研究データ（オープンアクセス、外部ストレージ公開） / Research Data (Open Access, stored in external storage) -->
+	<dc:title xml:lang="en">The GRENE-TEA Project dataset</dc:title>
+	<jpcoar:creator>
+		<jpcoar:nameIdentifier nameIdentifierScheme="ORCID" nameIdentifierURI="https://orcid.org/0000-0001-0001-0001">0000-0001-0001-0001</jpcoar:nameIdentifier>
+		<jpcoar:creatorName xml:lang="ja">寺田, 寅彦</jpcoar:creatorName>
+		<jpcoar:creatorName xml:lang="en">Terada, Torahiko</jpcoar:creatorName>
+		<jpcoar:creatorName xml:lang="ja-Kana">テラダ, トラヒコ</jpcoar:creatorName>
+		<jpcoar:affiliation>
+			<jpcoar:nameIdentifier nameIdentifierScheme="ISNI" nameIdentifierURI="http://www.isni.org/isni/0000000121691048">0000000121691048</jpcoar:nameIdentifier>
+			<jpcoar:affiliationName xml:lang="ja">東京大学</jpcoar:affiliationName>
+			<jpcoar:affiliationName xml:lang="en">University of Tokyo</jpcoar:affiliationName>
+		</jpcoar:affiliation>
+	</jpcoar:creator>
+	<!-- プロジェクトリーダー / Project Leader-->
+	<jpcoar:contributor contributorType="ProjectLeader">
+		<jpcoar:nameIdentifier nameIdentifierScheme="ORCID" nameIdentifierURI="https://orcid.org/0000-0001-0002-0003">0000-0001-0002-0003</jpcoar:nameIdentifier>
+		<jpcoar:contributorName xml:lang="ja">夏目, 漱石</jpcoar:contributorName>
+		<jpcoar:contributorName xml:lang="en">Natsume, Soseki</jpcoar:contributorName>
+		<jpcoar:contributorName xml:lang="ja-Kana">ナツメ, ソウセキ</jpcoar:contributorName>
+		<jpcoar:affiliation>
+			<jpcoar:nameIdentifier nameIdentifierScheme="ISNI" nameIdentifierURI="http://www.isni.org/isni/0000000121691048">0000000121691048</jpcoar:nameIdentifier>
+			<jpcoar:affiliationName xml:lang="ja">東京大学</jpcoar:affiliationName>
+			<jpcoar:affiliationName xml:lang="en">University of Tokyo</jpcoar:affiliationName>
+		</jpcoar:affiliation>
+	</jpcoar:contributor>
+	<!-- データ収集者 / Data Collector -->
+	<jpcoar:contributor contributorType="DataCollector">
+		<jpcoar:nameIdentifier nameIdentifierScheme="ORCID" nameIdentifierURI="https://orcid.org/0000-0001-0002-0003">0000-0001-0002-0003</jpcoar:nameIdentifier>
+		<jpcoar:contributorName xml:lang="ja">夏目, 純一</jpcoar:contributorName>
+		<jpcoar:contributorName xml:lang="en">Natsume, Jun'ichi</jpcoar:contributorName>
+		<jpcoar:contributorName xml:lang="ja-Kana">ナツメ, ジュンイチ</jpcoar:contributorName>
+		<jpcoar:affiliation>
+			<jpcoar:nameIdentifier nameIdentifierScheme="ISNI" nameIdentifierURI="http://www.isni.org/isni/0000000121691048">0000000121691048</jpcoar:nameIdentifier>
+			<jpcoar:affiliationName xml:lang="ja">東京大学</jpcoar:affiliationName>
+			<jpcoar:affiliationName xml:lang="en">University of Tokyo</jpcoar:affiliationName>
+		</jpcoar:affiliation>
+	</jpcoar:contributor>
+	<!-- 連絡担当者 / Contact Person -->
+	<jpcoar:contributor contributorType="ContactPerson">
+		<jpcoar:nameIdentifier nameIdentifierScheme="ORCID" nameIdentifierURI="https://orcid.org/0000-0001-0002-0003">0000-0001-0002-0003</jpcoar:nameIdentifier>
+		<jpcoar:contributorName xml:lang="ja">夏目, 伸六</jpcoar:contributorName>
+		<jpcoar:contributorName xml:lang="en">Natsume, Shinroku</jpcoar:contributorName>
+		<jpcoar:contributorName xml:lang="ja-Kana">ナツメ, シンロク</jpcoar:contributorName>
+		<jpcoar:affiliation>
+			<jpcoar:nameIdentifier nameIdentifierScheme="ISNI" nameIdentifierURI="http://www.isni.org/isni/0000000121691048">0000000121691048</jpcoar:nameIdentifier>
+			<jpcoar:affiliationName xml:lang="ja">東京大学</jpcoar:affiliationName>
+			<jpcoar:affiliationName xml:lang="en">University of Tokyo</jpcoar:affiliationName>
+		</jpcoar:affiliation>
+	</jpcoar:contributor>
+	<!-- リポジトリには外部リンクのみ記載している場合も、リンク先がオープンアクセスであればアクセス権はopen accessと設定 / If the file is open access, the access rights are set to "open access" even if the repository contains only external links. -->
+	<dcterms:accessRights rdf:resource="http://purl.org/coar/access_right/c_abf2">open access</dcterms:accessRights>
+	<dc:rights xml:lang="en" rdf:resource="https://creativecommons.org/licenses/by/4.0/deed.en">Creative Commons Attribution 4.0 International</dc:rights>
+    <!-- （要確認）ガイドラインを参考に主題を追加してみましたが、誤り等ないかご確認いただけると幸いです-->
+    <!-- バージョン2.0で追加された主題((e-Rad）の研究分野（主）)(jpcoar:subject@subjectScheme="e-Rad_field")の記載例 -->
+    <jpcoar:subject xml:lang="ja" subjectScheme="e-Rad_field" subjectURI="https://www.e-rad.go.jp/code/Fields/1000">自然科学一般</jpcoar:subject>
+    <jpcoar:subject xml:lang="en" subjectScheme="e-Rad_field" subjectURI="https://www.e-rad.go.jp/code/Fields/1000">Natural Science</jpcoar:subject>
+	<datacite:description descriptionType="Abstract">The authors describe the construction of a forcing dataset for GREEN-TEA Models with eight meteorological variables for the 35 year period from 1970 to 2005. </datacite:description>
+	<dc:publisher xml:lang="ja">東京大学</dc:publisher>
+	<dc:publisher xml:lang="en">University of Tokyo</dc:publisher>
+    <!-- （要確認）作成日と更新日は省略、Issued Dateのみ記載に変更 -->
+    <!-- データ本体は外部ストレージで公開されているため、作成日および更新日は記載なし/ Created Date and Updated Date are omitted because the file is published on external storage.-->
+    <!-- リポジトリ上への登録日 / Issued Date -->
+	<datacite:date dateType="Issued">2020-06-01</datacite:date>
+	<dc:language>eng</dc:language>
+	<!-- データセット / Dataset -->
+	<dc:type rdf:resource="http://purl.org/coar/resource_type/c_ddb1">dataset</dc:type>
+    <!-- （要確認）外部ストレージの場合のバージョン記述方法について（外部ストレージ上で更新された場合の確認が難しいのでは？→省略すべきか） -->
+	<!-- バージョン / Version -->
+	<datacite:version>1.00</datacite:version>
+    <!-- （要確認）名古屋大にちょうどメタデータのみの研究データのコンテンツがあったので例示として識別子を使っています。リンクのみなのでJaLC DOIは不可 -->
+	<!-- 17 識別子にHDL形式やURI形式でリポジトリコンテンツのIDを記入 / Input the ID of the content in Handle URL syntax or HTTP URI syntax -->
+	<jpcoar:identifier identifierType="HDL">http://hdl.handle.net/2237/00032309</jpcoar:identifier>
+    <jpcoar:identifier identifierType="URI">https://nagoya.repo.nii.ac.jp/records/30123</jpcoar:identifier>
+	<!-- データを引用した論文へのリンク / Link to an article citing the dataset -->
+	<jpcoar:relation relationType="isReferencedBy">
+		<jpcoar:relatedIdentifier identifierType="DOI">https://doi.org/10.5194/essdd-8-703-2015</jpcoar:relatedIdentifier>
+	</jpcoar:relation>
+	<dcterms:temporal xml:lang="en">1970-01-01 00:00:00 - 2005-01-01 23:59:59</dcterms:temporal>
+		<datacite:geoLocation>
+		<datacite:geoLocationBox>
+			<datacite:westBoundLongitude>-140.487500</datacite:westBoundLongitude>
+			<datacite:eastBoundLongitude>109.618333</datacite:eastBoundLongitude>
+			<datacite:southBoundLatitude>60.255000</datacite:southBoundLatitude>
+			<datacite:northBoundLatitude>75.589167</datacite:northBoundLatitude>
+		</datacite:geoLocationBox>
+	</datacite:geoLocation>
+    <!-- （要確認）ガイドラインを参考に埋めてみましたが、誤り等ないかご確認いただけると幸いです-->
+    <!-- （要確認）e-Radの機関番号や資金制度の調べ方がわからず、Crossref Funderで記載しました…e-Radでの記載例がわかればお教えいただけると助かります。-->
+	<jpcoar:fundingReference>
+		<jpcoar:funderIdentifier funderIdentifierType="Crossref Funder">http://data.crossref.org/fundingdata/funder/10.13039/501100001700</jpcoar:funderIdentifier>
+        <jpcoar:funderName xml:lang="ja">文部科学省</jpcoar:funderName>
+        <jpcoar:funderName xml:lang="en">Ministry of Education, Culture, Sports, Science and Technology</jpcoar:funderName>
+        <!-- バージョン2.0で追加されたプログラム情報識別子(jpcoar:fundingStreamIdentifier)の記載例 -->
+		<jpcoar:fundingStreamIdentifier fundingStreamIdentifierType="Crossref Funder">http://data.crossref.org/fundingdata/funder/10.13039/501100001691</jpcoar:fundingStreamIdentifier>
+        <jpcoar:fundingStream xml:lang="ja">科学研究費補助金</jpcoar:fundingStream>
+        <jpcoar:awardNumber awardURI="https://kaken.nii.ac.jp/ja/grant/KAKENHI-PLANNED-15H05814/">JP15H05814</jpcoar:awardNumber>
+        <jpcoar:awardTitle xml:lang="ja">科学研究費補助金新学術領域（研究領域提案型）「太陽地球圏環境予測：我々が生きる宇宙の理解とその変動に対応する社会基盤の形成」計画研究A02「太陽嵐の発生機構の解明と予測」</jpcoar:awardTitle>
+	</jpcoar:fundingReference>
+	<jpcoar:file>
+        <!-- 外部ストレージで公開している場合はコンテンツ本体ファイルのURIを記入する / Input the file URI if the file is published on external storage. -->
+		<jpcoar:URI objectType="dataset" label="sampleFile.tar">https://example.org/externalStrage/12345/sampleFile.tar</jpcoar:URI>
+		<jpcoar:extent>1GB</jpcoar:extent>
+		<datacite:date dateType="Issued">2020-06-01</datacite:date>
+		<!-- バージョン / Version -->
+		<datacite:version>1.00</datacite:version>
+	</jpcoar:file>
+</jpcoar:jpcoar>

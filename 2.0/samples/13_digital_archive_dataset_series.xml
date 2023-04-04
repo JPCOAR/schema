@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jpcoar:jpcoar xmlns:jpcoar="https://github.com/JPCOAR/schema/blob/master/2.0/" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:dcterms="http://purl.org/dc/terms/" 
+    xmlns:datacite="https://schema.datacite.org/meta/kernel-4/" 
+    xmlns:oaire="http://namespace.openaire.eu/schema/oaire/" 
+    xmlns:dcndl="http://ndl.go.jp/dcndl/terms/" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="https://github.com/JPCOAR/schema/blob/master/2.0/ jpcoar_scm.xsd">
+    <!-- 13. データセットシリーズ / Dataset Series -->
+    <dc:title xml:lang="ja"> 鵜飼文庫</dc:title>
+    <dc:title xml:lang="ja-Kana">ウカイブンコ</dc:title>
+    <dc:title xml:lang="ja-Latn">ukai bunko</dc:title>
+    <jpcoar:subject subjectScheme="NDLC">W</jpcoar:subject>
+    <datacite:description xml:lang="ja" descriptionType="Abstract">自由民権運動家、衆議院議員の鵜飼郁次郎の収集による文庫。</datacite:description>
+    <dc:type rdf:resource="http://purl.org/coar/resource_type/c_ecc8">book</dc:type>
+    <jpcoar:identifier identifierType="URI">https://kokusho.nijl.ac.jp/page/list-ukai.html</jpcoar:identifier>
+    <dcterms:temporal xml:lang="ja">江戸-明治</dcterms:temporal>
+    <jpcoar:datasetSeries>True</jpcoar:datasetSeries>
+</jpcoar:jpcoar>

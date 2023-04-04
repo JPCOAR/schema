@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jpcoar:jpcoar
+    xmlns:jpcoar="https://github.com/JPCOAR/schema/blob/master/2.0/" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:dcterms="http://purl.org/dc/terms/" 
+    xmlns:datacite="https://schema.datacite.org/meta/kernel-4/" 
+    xmlns:oaire="http://namespace.openaire.eu/schema/oaire/" 
+    xmlns:dcndl="http://ndl.go.jp/dcndl/terms/" 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="https://github.com/JPCOAR/schema/blob/master/2.0/ jpcoar_scm.xsd">
+    <!-- 8. 会議発表資料（プレゼンテーション、オープンアクセス） / Conference Object (Presentation, Open Access) -->
+    <dc:title xml:lang="en">Research data sharing framework to enhance open science</dc:title>
+    <jpcoar:creator>
+        <jpcoar:nameIdentifier nameIdentifierScheme="ORCID" nameIdentifierURI="https://orcid.org/0000-0002-2909-7163">0000-0002-2909-7163</jpcoar:nameIdentifier>
+        <jpcoar:creatorName xml:lang="ja">武田, 英明</jpcoar:creatorName>
+        <jpcoar:creatorName xml:lang="en">Takeda, Hideaki</jpcoar:creatorName>
+        <jpcoar:creatorName xml:lang="ja-Kana">タケダ, ヒデアキ</jpcoar:creatorName>
+        <jpcoar:affiliation>
+            <jpcoar:nameIdentifier nameIdentifierScheme="ISNI" nameIdentifierURI="http://www.isni.org/isni/0000000121691048">0000000121691048</jpcoar:nameIdentifier>
+            <jpcoar:affiliationName xml:lang="ja">東京大学</jpcoar:affiliationName>
+            <jpcoar:affiliationName xml:lang="en">The University of Tokyo</jpcoar:affiliationName>
+        </jpcoar:affiliation>
+    </jpcoar:creator>
+    <!-- オープンアクセス / Open Access -->
+    <dcterms:accessRights rdf:resource="http://purl.org/coar/access_right/c_abf2">open access</dcterms:accessRights>
+    <jpcoar:subject xml:lang="en" subjectScheme="Other">information retrieval</jpcoar:subject>
+    <jpcoar:subject xml:lang="en" subjectScheme="Other">data mining</jpcoar:subject>
+    <datacite:date dateType="Issued">2015-10-01</datacite:date>
+    <dc:language>eng</dc:language>
+    <!-- 会議発表資料 / Conference Object -->
+    <dc:type rdf:resource="http://purl.org/coar/resource_type/c_c94f">conference object</dc:type>
+    <oaire:version rdf:resource="http://purl.org/coar/version/c_970fb48d4fbd8a85">VoR</oaire:version>
+    <jpcoar:identifier identifierType="HDL">http://hdl.handle.net/2115/64495</jpcoar:identifier>
+    <jpcoar:fundingReference>
+        <jpcoar:funderIdentifier funderIdentifierType="Crossref Funder">https://doi.org/10.13039/501100001691</jpcoar:funderIdentifier>
+        <jpcoar:funderName xml:lang="ja">日本学術振興会</jpcoar:funderName>
+        <jpcoar:awardNumber awardURI="https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-15H02781/" awardNumberType="JGN">JP15H02781</jpcoar:awardNumber>
+        <jpcoar:awardTitle xml:lang="ja">Linked Open Data利活用のためのクエリ共有手法に関する研究</jpcoar:awardTitle>
+    </jpcoar:fundingReference>
+    <!-- 会議情報 / Conference Information -->
+    <jpcoar:conference>
+        <jpcoar:conferenceName xml:lang="en">RDA Seventh Plenary Meeting</jpcoar:conferenceName>
+        <jpcoar:conferenceSequence>7</jpcoar:conferenceSequence>
+        <jpcoar:conferenceSponsor xml:lang="en">The Research Data Alliance</jpcoar:conferenceSponsor>
+        <jpcoar:conferenceDate xml:lang="en" startDay="29" startMonth="02" starYear="2016" endDay="04" endMonth="03" endYear="2016">February 29th to March 4th, 2016</jpcoar:conferenceDate>
+        <jpcoar:conferenceVenue xml:lang="en">Hitotsubashi Hall</jpcoar:conferenceVenue>
+        <jpcoar:conferencePlace xml:lang="en">Tokyo</jpcoar:conferencePlace>
+        <jpcoar:conferenceCountry>JPN</jpcoar:conferenceCountry>
+    </jpcoar:conference>
+    <jpcoar:file>
+        <jpcoar:URI objectType="fulltext" label="JIS_12_3_34-57.pdf">http://repository.dl.itc.u-tokyo.ac.jp/files/64495/JIS_12_3_34-57.pdf</jpcoar:URI>
+        <jpcoar:mimeType>application/pdf</jpcoar:mimeType>
+        <jpcoar:extent>3MB</jpcoar:extent>
+        <jpcoar:extent>24 pages</jpcoar:extent>
+        <datacite:date dateType="Issued">2015-10-01</datacite:date>
+    </jpcoar:file>
+</jpcoar:jpcoar>
