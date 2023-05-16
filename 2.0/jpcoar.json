@@ -1,0 +1,1149 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema#",
+
+  "$defs": {
+    "dc:title": {
+      "type": "object",
+      "properties": {
+          "title": {"type": "string"},
+          "xml:lang": {"type": "string"}
+      }
+    },
+
+    "dcterms:alternative": {
+      "type": "object",
+      "properties": {
+        "alternative": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:creator": {
+      "type": "object",
+      "properties": {
+        "jpcoar:nameIdentifier": {"$ref": "#/$defs/jpcoar:nameIdentifier"},
+        "jpcoar:creatorName": {"$ref": "#/$defs/jpcoar:creatorName"},
+        "jpcoar:familyName": {"$ref": "#/$defs/jpcoar:familyName"},
+        "jpcoar:givenName": {"$ref": "#/$defs/jpcoar:givenName"},
+        "jpcoar:creatorAlternative": {"$ref": "#/$defs/jpcoar:creatorAlternative"},
+        "jpcoar:affiliation": {"$ref": "#/$defs/jpcoar:affiliation"},
+        "creatorType": {"type": "string"}
+      }
+    },
+
+    "jpcoar:contributor": {
+      "type": "object",
+      "properties": {
+        "jpcoar:nameIdentifier": {"$ref": "#/$defs/jpcoar:nameIdentifier"},
+        "jpcoar:contributorName": {"$ref": "#/$defs/jpcoar:contributorName"},
+        "jpcoar:familyName": {"$ref": "#/$defs/jpcoar:familyName"},
+        "jpcoar:givenName": {"$ref": "#/$defs/jpcoar:givenName"},
+        "jpcoar:contributorAlternative": {"$ref": "#/$defs/jpcoar:contributorAlternative"},
+        "jpcoar:affiliation": {"$ref": "#/$defs/jpcoar:affiliation"},
+        "contributorType": {
+          "type": "string",
+          "enum": [
+            "ContactPerson",
+            "DataCollector",
+            "DataCurator",
+            "DataManager",
+            "Distributor",
+            "Editor",
+            "HostingInstitution",
+            "Producer",
+            "ProjectLeader",
+            "ProjectManager",
+            "ProjectMember",
+            "RelatedPerson",
+            "Researcher",
+            "ResearchGroup",
+            "Sponsor",
+            "Supervisor",
+            "WorkPackageLeader",
+            "Other"
+          ]
+        }
+      }
+    },
+
+    "dcterms:accessRights": {
+      "type": "object",
+      "properties": {
+        "accessRights": {
+          "type": "string",
+          "enum": [
+            "embargoed access",
+            "metadata only access",
+            "open access",
+            "restricted access"
+          ]
+        },
+        "rdf:resource": {"type": "string", "format": "uri"}
+      }
+    },
+
+    "dc:rights": {
+      "type": "object",
+      "properties": {
+        "rights": {"type": "string"},
+        "xml:lang": {"type": "string"},
+        "rdf:resource": {"type": "string", "format": "uri"}
+      }
+    },
+
+    "jpcoar:rightsHolder": {
+      "type": "object",
+      "properties": {
+        "jpcoar:nameIdentifier": {"$ref": "#/$defs/jpcoar:nameIdentifier"},
+        "jpcoar:rightsHolderName": {"$ref": "#/$defs/jpcoar:rightsHolderName"}
+      }
+    },
+
+    "jpcoar:subject": {
+      "type": "object",
+      "properties": {
+        "subject": {"type": "string"},
+        "xml:lang": {"type": "string"},
+        "subjectScheme": {
+          "type": "string",
+          "enum": [
+            "BSH",
+            "DDC",
+            "e-Rad_field",
+            "JEL",
+            "LCC",
+            "LCSH",
+            "MeSH",
+            "NDC",
+            "NDLC",
+            "NDLSH",
+            "SciVal",
+            "UDC",
+            "Other"
+          ]
+        },
+        "subjectURI": {"type": "string", "format": "uri"}
+      }
+    },
+
+    "datacite:description": {
+      "type": "object",
+      "properties": {
+        "description": {"type": "string"},
+        "descriptionType": {
+          "type": "string",
+          "enum": [
+            "Abstract",
+            "Methods",
+            "TableOfContents",
+            "TechnicalInfo",
+            "Other"
+          ]
+        },
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "dc:publisher": {
+      "type": "object",
+      "properties": {
+        "publisher": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:publisher": {
+      "type": "object",
+      "properties": {
+        "publisherName": {
+          "type": "object",
+          "properties": {
+            "publisherName": {"type": "string"},
+            "xml:lang": {"type": "string"}
+          }
+        },
+        "publisherDescription": {
+          "type": "object",
+          "properties": {
+            "publisherDescription": {"type": "string"},
+            "xml:lang": {"type": "string"}
+          }
+        },
+        "dcndl:location": {"$ref": "#/$defs/dcndl:location"},
+        "dcndl:publicationPlace": {"$ref": "#/$defs/dcndl:publicationPlace"}
+      }
+    },
+
+    "datacite:date": {
+      "type": "object",
+      "properties": {
+        "date": {"type": "string", "format": "date"},
+        "dateType": {
+          "type": "string",
+          "enum": [
+            "Accepted",
+            "Available",
+            "Collected",
+            "Copyrighted",
+            "Created",
+            "Issued",
+            "Submitted",
+            "Updated",
+            "Valid"
+          ]
+        }
+      }
+    },
+
+    "dcterms:date": {
+      "type": "object",
+      "properties": {
+        "date": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "dc:language": {
+      "type": "object",
+      "properties": {
+        "language": {"type": "string", "pattern": "^[a-z]{3}$"}
+      }
+    },
+
+    "dc:type": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "conference paper",
+            "data paper",
+            "departmental bulletin paper",
+            "editorial",
+            "journal",
+            "journal article",
+            "newspaper",
+            "review article",
+            "other periodical",
+            "software paper",
+            "article",
+            "book",
+            "book part",
+            "cartographic material",
+            "map",
+            "conference output",
+            "conference presentation",
+            "conference proceedings",
+            "conference poster",
+            "aggregated data",
+            "clinical trial data",
+            "compiled data",
+            "dataset",
+            "encoded data",
+            "experimental data",
+            "genomic data",
+            "geospatial data",
+            "laboratory notebook",
+            "measurement and test data",
+            "observational data",
+            "recorded data",
+            "simulation data",
+            "survey data",
+            "image",
+            "still image",
+            "moving image",
+            "video",
+            "lecture",
+            "design patent",
+            "patent",
+            "PCT application",
+            "plant patent",
+            "plant variety protection",
+            "software patent",
+            "trademark",
+            "utility model",
+            "report",
+            "research report",
+            "technical report",
+            "policy report",
+            "working paper",
+            "data management plan",
+            "sound",
+            "thesis",
+            "bachelor thesis",
+            "master thesis",
+            "doctoral thesis",
+            "commentary",
+            "design",
+            "industrial design",
+            "interactive resource",
+            "layout design",
+            "learning object",
+            "manuscript",
+            "musical notation",
+            "peer review",
+            "research proposal",
+            "research protocol",
+            "software",
+            "source code",
+            "technical documentation",
+            "transcription",
+            "workflow",
+            "other"
+          ]
+        },
+        "rdf:resource": {"type": "string", "format": "uri"}
+      }
+    },
+
+    "datacite:version": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string"}
+      }
+    },
+
+    "oaire:version": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "enum": [
+            "AO",
+            "SMUR",
+            "AM",
+            "P",
+            "VoR",
+            "CVoR",
+            "EVoR",
+            "NA"
+          ]
+        },
+        "rdf:resource": {"type": "string", "format": "uri"}
+      }
+    },
+
+    "jpcoar:identifier": {
+      "type": "object",
+      "properties": {
+        "identifier": {"type": "string", "format": "uri"},
+        "identifierType": {
+          "type": "string",
+          "enum": [
+            "DOI",
+            "HDL",
+            "URI"
+          ]
+        }
+      }
+    },
+
+    "jpcoar:identifierRegistration": {
+      "type": "object",
+      "properties": {
+        "identifierRegistration": {"type": "string"},
+        "identifierType": {
+          "type": "string",
+          "enum": [
+            "JaLC",
+            "Crossref",
+            "DataCite",
+            "PMID"
+          ]
+        }
+      }
+    },
+
+    "jpcoar:relation": {
+      "type": "object",
+      "properties": {
+        "jpcoar:relatedIdentifier": {"$ref": "#/$defs/jpcoar:relatedIdentifier"},
+        "jpcoar:relatedTitle": {"$ref": "#/$defs/jpcoar:relatedTitle"},
+        "relationType": {
+          "type": "string",
+          "enum": [
+            "inSeries",
+            "isCitedBy",
+            "Cites",
+            "isVersionOf",
+            "hasVersion",
+            "isPartOf",
+            "hasPart",
+            "isReferencedBy",
+            "references",
+            "isFormatOf",
+            "hasFormat",
+            "isReplacedBy",
+            "replaces",
+            "isRequiredBy",
+            "requires",
+            "isSupplementTo",
+            "isSupplementedBy",
+            "isIdenticalTo",
+            "isDerivedFrom",
+            "isSourceOf"
+          ]
+        }
+      }
+    },
+
+    "dcterms:temporal": {
+      "type": "object",
+      "properties": {
+        "temporal": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "datacite:geoLocation": {
+      "type": "object",
+      "properties": {
+        "geoLocationPoint": {
+          "type": "object",
+          "properties": {
+            "pointLongitude": {
+              "type": "number","minimum": -180,"maximum": 180
+            },
+            "pointLatitude": {
+              "type": "number","minimum": -90,"maximum": 90
+            }
+          }
+        },
+        "geoLocationBox": {
+          "type": "object",
+          "properties": {
+            "westBoundLongitude": {
+              "type": "number","minimum": -180,"maximum": 180
+            },
+            "eastBoundLongitude": {
+              "type": "number","minimum": -180,"maximum": 180
+            },
+            "southBoundLatitude": {
+              "type": "number","minimum": -90,"maximum": 90
+            },
+            "northBoundLatitude": {
+              "type": "number","minimum": -90,"maximum": 90
+            }
+          }
+        },
+        "geoLocationPlace": {"type": "string"}
+      }
+    },
+
+    "jpcoar:fundingReference": {
+      "type": "object",
+      "properties": {
+        "jpcoar:funderIdentifier": {"$ref": "#/$defs/jpcoar:funderIdentifier"},
+        "funderName": {
+          "type": "object",
+          "properties": {
+            "funderName": {"type": "string"},
+            "xml:lang": {"type": "string"}
+          }
+        },
+        "jpcoar:fundingStreamIdentifier": {"$ref": "#/$defs/jpcoar:fundingStreamIdentifier"},
+        "fundingStream": {
+          "type": "object",
+          "properties": {
+            "fundingStream": {"type": "string"},
+            "xml:lang": {"type": "string"}
+          }
+        },
+        "jpcoar:awardNumber": {"$ref": "#/$defs/jpcoar:awardNumber"},
+        "awardTitle": {
+          "type": "object",
+          "properties": {
+            "awardTitle": {"type": "string"},
+            "xml:lang": {"type": "string"}
+          }
+        }
+      }
+    },
+
+    "jpcoar:sourceIdentifier": {
+      "type": "object",
+      "properties": {
+        "sourceIdentifier": {"type": "string"},
+        "identifierType": {
+          "type": "string",
+          "enum": [
+            "PISSN",
+            "EISSN",
+            "ISSN",
+            "NCID"
+          ]
+        }
+      }
+    },
+
+    "dcndl:edition": {
+      "type": "object",
+      "properties": {
+        "edition": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "dcndl:volumeTitle": {
+      "type": "object",
+      "properties": {
+        "volumeTitle": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "dcndl:originalLanguage": {
+      "type": "object",
+      "properties": {
+        "originalLanguage": {"type": "string"}
+      }
+    },
+
+    "dcterms:extent": {
+      "type": "object",
+      "properties": {
+        "extent": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:format": {
+      "type": "object",
+      "properties": {
+      }
+    },
+
+    "jpcoar:holdingAgent": {
+      "type": "object",
+      "properties": {
+        "holdingAgentNameIdentifier": {
+          "type": "object",
+          "properties": {
+            "holdingAgentNameIdentifier": {"type": "string"},
+            "nameIdentifierScheme":{
+              "type": "string",
+              "enum": [
+                "kakenhi",
+                "ISNI",
+                "Ringgold",
+                "GRID",
+                "ROR",
+                "FANO",
+                "ISIL",
+                "MARC",
+                "OCLC"
+              ]
+            },
+            "nameIdentifierURI": {"type": "string", "format": "uri"}
+          }
+        },
+        "holdingAgentName": {
+          "type": "object",
+          "properties": {
+            "holdingAgentName": {"type": "string"},
+            "xml:lang": {"type": "string"}
+          }
+        }
+      }
+    },
+
+    "jpcoar:datasetSeries": {
+      "type": "object",
+      "properties": {
+        "datasetSeries":{
+          "type": "string",
+          "enum": [
+            "True",
+            "False"
+          ]
+        }
+      }
+    },
+
+    "jpcoar:sourceTitle": {
+      "type": "object",
+      "properties": {
+        "sourceTitle": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:volume": {
+      "type": "object",
+      "properties": {
+        "volume": {"type": "string"}
+      }
+    },
+
+    "jpcoar:issue": {
+      "type": "object",
+      "properties": {
+        "issue": {"type": "string"}
+      }
+    },
+
+    "jpcoar:numPages": {
+      "type": "object",
+      "properties": {
+        "numPages": {"type": "number"}
+      }
+    },
+
+    "jpcoar:pageStart": {
+      "type": "object",
+      "properties": {
+        "pageStart": {"type": "number"}
+      }
+    },
+
+    "jpcoar:pageEnd": {
+      "type": "object",
+      "properties": {
+        "pageEnd": {"type": "number"}
+      }
+    },
+
+    "dcndl:dissertationNumber": {
+      "type": "object",
+      "properties": {
+        "dissertationNumber": {"type": "string"}
+      }
+    },
+
+    "dcndl:degreeName": {
+      "type": "object",
+      "properties": {
+        "degreeName": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "dcndl:dateGranted": {
+      "type": "object",
+      "properties": {
+        "dateGranted": {"type": "string", "format": "date"}
+      }
+    },
+
+    "jpcoar:degreeGrantor": {
+      "type": "object",
+      "properties": {
+        "jpcoar:nameIdentifier": {"$ref": "#/$defs/jpcoar:nameIdentifier"},
+        "jpcoar:degreeGrantorName": {
+          "type": "object",
+          "properties": {
+            "degreeGrantorName": {"type": "string"},
+            "xml:lang": {"type": "string"}
+          }
+        }
+      }
+    },
+
+    "jpcoar:conference": {
+      "type": "object",
+      "properties": {
+        "jpcoar:conferenceName": {"$ref": "#/$defs/jpcoar:conferenceName"},
+        "jpcoar:conferenceSequence": {"$ref": "#/$defs/jpcoar:conferenceSequence"},
+        "jpcoar:conferenceSponsor": {"$ref": "#/$defs/jpcoar:conferenceSponsor"},
+        "jpcoar:conferenceDate": {"$ref": "#/$defs/jpcoar:conferenceDate"},
+        "jpcoar:conferenceVenue": {"$ref": "#/$defs/jpcoar:conferenceVenue"},
+        "jpcoar:conferencePlace": {"$ref": "#/$defs/jpcoar:conferencePlace"},
+        "jpcoar:conferenceCountry": {"$ref": "#/$defs/jpcoar:conferenceCountry"}
+      }
+    },
+
+    "jpcoar:file": {
+      "type": "object",
+      "properties": {
+        "jpcoar:URI": {"$ref": "#/$defs/jpcoar:URI"},
+        "jpcoar:mimeType": {"$ref": "#/$defs/jpcoar:mimeType"},
+        "jpcoar:extent": {"$ref": "#/$defs/jpcoar:extent"},
+        "datacite:date": {"$ref": "#/$defs/datacite:date"},
+        "datacite:version": {"$ref": "#/$defs/datacite:version"}
+      }
+    },
+
+    "jpcoar:catalog": {
+      "type": "object",
+      "properties": {
+        "jpcoar:contributor": {"$ref": "#/$defs/jpcoar:contributor"},
+        "jpcoar:identifier": {"$ref": "#/$defs/jpcoar:identifier"},
+        "dc:title": {"$ref": "#/$defs/dc:title"},
+        "datacite:description": {"$ref": "#/$defs/datacite:description"},
+        "jpcoar:subject": {"$ref": "#/$defs/jpcoar:subject"},
+        "jpcoar:license": {"$ref": "#/$defs/jpcoar:license"},
+        "dc:rights": {"$ref": "#/$defs/dc:rights"},
+        "dcterms:accessRights": {"$ref": "#/$defs/dcterms:accessRights"},
+        "jpcoar:file": {"$ref": "#/$defs/jpcoar:file"}
+      }
+    },
+
+
+    "jpcoar:nameIdentifier": {
+      "type": "object",
+      "properties": {
+        "nameIdentifier": {"type": "string"},
+        "nameIdentifierScheme":{
+          "type": "string",
+          "enum": [
+            "e-Rad_Researcher",
+            "NRID",
+            "ORCID",
+            "ISNI",
+            "VIAF",
+            "AID",
+            "kakenhi",
+            "Ringgold",
+            "GRID",
+            "ROR"
+          ]
+        },
+        "nameIdentifierURI": {"type": "string", "format": "uri"}
+      }
+    },
+
+    "jpcoar:creatorName": {
+      "type": "object",
+      "properties": {
+        "creatorName": {"type": "string"},
+        "nameType":{
+          "type": "string",
+          "enum": [
+            "Organizational",
+            "Personal"
+          ]
+        },
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:familyName": {
+      "type": "object",
+      "properties": {
+        "familyName": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:givenName": {
+      "type": "object",
+      "properties": {
+        "givenName": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:creatorAlternative": {
+      "type": "object",
+      "properties": {
+        "creatorAlternative": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:affiliation": {
+      "type": "object",
+      "properties": {
+        "jpcoar:nameIdentifier": {"$ref": "#/$defs/jpcoar:nameIdentifier"},
+        "jpcoar:affiliationName": {"$ref": "#/$defs/jpcoar:affiliationName"}
+      }
+    },
+
+    "jpcoar:contributorName": {
+      "type": "object",
+      "properties": {
+        "contributorName": {"type": "string"},
+        "nameType":{
+          "type": "string",
+          "enum": [
+            "Organizational",
+            "Personal"
+          ]
+        },
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:contributorAlternative": {
+      "type": "object",
+      "properties": {
+        "contributorAlternative": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:affiliationName": {
+      "type": "object",
+      "properties": {
+        "affiliationName": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:rightsHolderName": {
+      "type": "object",
+      "properties": {
+        "rightsHolderName": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:relatedIdentifier": {
+      "type": "object",
+      "properties": {
+        "identifierType":{
+          "type": "string",
+          "enum": [
+            "ARK",
+            "arXiv",
+            "CRID",
+            "DOI",
+            "HDL",
+            "ICHUSHI",
+            "ISBN",
+            "J-GLOBAL",
+            "Local",
+            "PISSN",
+            "EISSN",
+            "ISSN",
+            "NAID",
+            "NCID",
+            "PMID",
+            "PURL",
+            "SCOPUS",
+            "URI",
+            "WOS"
+          ]
+        },
+        "relatedIdentifier": {"type": "string", "format": "uri"}
+      }
+    },
+
+    "jpcoar:relatedTitle": {
+      "type": "object",
+      "properties": {
+        "relatedTitle": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "dcndl:location": {
+      "type": "object",
+      "properties": {
+        "location": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "dcndl:publicationPlace": {
+      "type": "object",
+      "properties": {
+        "publicationPlace": {"type": "string"}
+      }
+    },
+
+    "jpcoar:funderIdentifier": {
+      "type": "object",
+      "properties": {
+        "funderIdentifier": {"type": "string"},
+        "funderIdentifierType":{
+          "type": "string",
+          "enum": [
+            "Crossref Funder",
+            "e-Rad_funder",
+            "GRID",
+            "ISNI",
+            "ROR",
+            "Other"
+          ]
+        },
+        "funderIdentifierTypeURI": {"type": "string", "format": "uri"}
+      }
+    },
+
+    "jpcoar:fundingStreamIdentifier": {
+      "type": "object",
+      "properties": {
+        "fundingStreamIdentifier": {"type": "string"},
+        "fundingStreamIdentifierType":{
+          "type": "string",
+          "enum": [
+            "Crossref Funder",
+            "JGN_fundingStream"
+          ]
+        },
+        "fundingStreamIdentifierTypeURI": {"type": "string", "format": "uri"}
+      }
+    },
+
+    "jpcoar:awardNumber": {
+      "type": "object",
+      "properties": {
+        "awardNumber": {"type": "string"},
+        "awardURI": {"type": "string", "format": "uri"},
+        "awardNumberType": {"type": "string"}
+      }
+    },
+
+    "jpcoar:conferenceName": {
+      "type": "object",
+      "properties": {
+        "conferenceName": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:conferenceSequence": {
+      "type": "object",
+      "properties": {
+        "conferenceSequence": {"type": "number"}
+      }
+    },
+
+    "jpcoar:conferenceSponsor": {
+      "type": "object",
+      "properties": {
+        "conferenceSponsor": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:conferenceDate": {
+      "type": "object",
+      "properties": {
+        "conferenceDate": {"type": "string"},
+        "startDay": {
+          "type": "number","minimum": 1,"maximum": 31
+        },
+        "startMonth": {
+          "type": "number","minimum": 1,"maximum": 12
+        },
+        "startYear": {
+          "type": "number","minimum": 1400,"maximum": 2200
+        },
+        "endDay": {
+          "type": "number","minimum": 1,"maximum": 31
+        },
+        "endMonth": {
+          "type": "number","minimum": 1,"maximum": 12
+        },
+        "endYear": {
+          "type": "number","minimum": 1400,"maximum": 2200
+        },
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:conferenceVenue": {
+      "type": "object",
+      "properties": {
+        "conferenceVenue": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:conferencePlace": {
+      "type": "object",
+      "properties": {
+        "conferencePlace": {"type": "string"},
+        "xml:lang": {"type": "string"}
+      }
+    },
+
+    "jpcoar:conferenceCountry": {
+      "type": "object",
+      "properties": {
+        "conferenceCountry": {"type": "string", "pattern": "^[A-Z]{3}$"}
+      }
+    },
+
+    "jpcoar:URI": {
+      "type": "object",
+      "properties": {
+        "URI": {"type": "string", "format": "uri"},
+        "objectType":{
+          "type": "string",
+          "enum": [
+            "abstract",
+            "dataset",
+            "fulltext",
+            "iiif",
+            "software",
+            "summary",
+            "thumbnail",
+            "other"
+          ]
+        },
+        "label": {"type": "string"}
+      }
+    },
+
+    "jpcoar:mimeType": {
+      "type": "object",
+      "properties": {
+        "mimeType": {"type": "string"}
+      }
+    },
+
+    "jpcoar:extent": {
+      "type": "object",
+      "properties": {
+        "extent": {"type": "string"}
+      }
+    },
+
+    "jpcoar:license": {
+      "type": "object",
+      "properties": {
+        "license": {"type": "string"},
+        "licenseType":{
+          "type": "string",
+          "enum": [
+            "file",
+            "metadata",
+            "thumbnail"
+          ]
+        },
+        "rdf:resource": {"type": "string", "format": "uri"}
+      }
+    }
+
+  },
+
+
+
+  "anyOf": [
+    { "type": "object", "required": ["dc:title"],
+      "properties": {"dc:title": {"$ref": "#/$defs/dc:title"}}
+    },
+    { "type": "object",
+    "properties": {"dcterms:alternative": {"$ref": "#/$defs/dcterms:alternative"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:creator": {"$ref": "#/$defs/jpcoar:creator"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:contributor": {"$ref": "#/$defs/jpcoar:contributor"}}
+    },
+    { "type": "object",
+    "properties": {"dcterms:accessRights": {"$ref": "#/$defs/dcterms:accessRights"}}
+    },
+    { "type": "object",
+    "properties": {"dc:rights": {"$ref": "#/$defs/dc:rights"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:rightsHolder": {"$ref": "#/$defs/jpcoar:rightsHolder"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:subject": {"$ref": "#/$defs/jpcoar:subject"}}
+    },
+    { "type": "object",
+    "properties": {"datacite:description": {"$ref": "#/$defs/datacite:description"}}
+    },
+    { "type": "object",
+    "properties": {"dc:publisher": {"$ref": "#/$defs/dc:publisher"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:publisher": {"$ref": "#/$defs/jpcoar:publisher"}}
+    },
+    { "type": "object",
+    "properties": {"datacite:date": {"$ref": "#/$defs/datacite:date"}}
+    },
+    { "type": "object",
+    "properties": {"dcterms:date": {"$ref": "#/$defs/dcterms:date"}}
+    },
+    { "type": "object",
+    "properties": {"dc:language": {"$ref": "#/$defs/dc:language"}}
+    },
+    { "type": "object", "required": ["dc:type"],
+    "properties": {"dc:type": {"$ref": "#/$defs/dc:type"}}
+    },
+    { "type": "object",
+    "properties": {"datacite:version": {"$ref": "#/$defs/datacite:version"}}
+    },
+    { "type": "object",
+    "properties": {"oaire:version": {"$ref": "#/$defs/oaire:version"}}
+    },
+    { "type": "object", "required": ["jpcoar:identifier"],
+    "properties": {"jpcoar:identifier": {"$ref": "#/$defs/jpcoar:identifier"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:identifierRegistration": {"$ref": "#/$defs/jpcoar:identifierRegistration"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:relation": {"$ref": "#/$defs/jpcoar:relation"}}
+    },
+    { "type": "object",
+    "properties": {"dcterms:temporal": {"$ref": "#/$defs/dcterms:temporal"}}
+    },
+    { "type": "object",
+    "properties": {"datacite:geoLocation": {"$ref": "#/$defs/datacite:geoLocation"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:fundingReference": {"$ref": "#/$defs/jpcoar:fundingReference"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:sourceIdentifier": {"$ref": "#/$defs/jpcoar:sourceIdentifier"}}
+    },
+    { "type": "object",
+    "properties": {"dcndl:edition": {"$ref": "#/$defs/dcndl:edition"}}
+    },
+    { "type": "object",
+    "properties": {"dcndl:volumeTitle": {"$ref": "#/$defs/dcndl:volumeTitle"}}
+    },
+    { "type": "object",
+    "properties": {"dcndl:originalLanguage": {"$ref": "#/$defs/dcndl:originalLanguage"}}
+    },
+    { "type": "object",
+    "properties": {"dcterms:extent": {"$ref": "#/$defs/dcterms:extent"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:format": {"$ref": "#/$defs/jpcoar:format"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:holdingAgent": {"$ref": "#/$defs/jpcoar:holdingAgent"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:datasetSeries": {"$ref": "#/$defs/jpcoar:datasetSeries"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:sourceTitle": {"$ref": "#/$defs/jpcoar:sourceTitle"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:volume": {"$ref": "#/$defs/jpcoar:volume"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:issue": {"$ref": "#/$defs/jpcoar:issue"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:numPages": {"$ref": "#/$defs/jpcoar:numPages"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:pageStart": {"$ref": "#/$defs/jpcoar:pageStart"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:pageEnd": {"$ref": "#/$defs/jpcoar:pageEnd"}}
+    },
+    { "type": "object",
+    "properties": {"dcndl:dissertationNumber": {"$ref": "#/$defs/dcndl:dissertationNumber"}}
+    },
+    { "type": "object",
+    "properties": {"dcndl:degreeName": {"$ref": "#/$defs/dcndl:degreeName"}}
+    },
+    { "type": "object",
+    "properties": {"dcndl:dateGranted": {"$ref": "#/$defs/dcndl:dateGranted"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:degreeGrantor": {"$ref": "#/$defs/jpcoar:degreeGrantor"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:conference": {"$ref": "#/$defs/jpcoar:conference"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:file": {"$ref": "#/$defs/jpcoar:file"}}
+    },
+    { "type": "object",
+    "properties": {"jpcoar:catalog": {"$ref": "#/$defs/jpcoar:catalog"}}
+    }
+  ]
+}
