@@ -29,7 +29,7 @@
     <datacite:date dateType="Issued">2015-10-01</datacite:date>
     <dc:language>eng</dc:language>
     <!-- 会議発表資料 / Conference Object -->
-    <dc:type rdf:resource="http://purl.org/coar/resource_type/c_c94f">conference object</dc:type>
+    <dc:type rdf:resource="http://purl.org/coar/resource_type/c_c94f">conference output</dc:type>
     <oaire:version rdf:resource="http://purl.org/coar/version/c_970fb48d4fbd8a85">VoR</oaire:version>
     <jpcoar:identifier identifierType="HDL">http://hdl.handle.net/2115/64495</jpcoar:identifier>
     <jpcoar:fundingReference>
