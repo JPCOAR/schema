@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jpcoar:jpcoar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:oaire="http://namespace.openaire.eu/schema/oaire/"
+ xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxxterms/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:schemaLocation="https://github.com/JPCOAR/schema/blob/master/2.0/"
+ xmlns:datacite="https://schema.datacite.org/meta/kernel-4/"
+ xmlns:dcndl="http://ndl.go.jp/dcndl/terms/"
+ xmlns:jpcoar="https://github.com/JPCOAR/schema/blob/master/2.0/"
+ xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xsi:schemaLocation="https://github.com/JPCOAR/schema/blob/master/2.0/ jpcoar_scm.xsd">
+
+	<!-- データの名称-->
+	<dc:title xml:lang="ja">〇〇実証においてセンサより撮像したデータ及び関連データ</dc:title>
+
+<!-- ●データの管理機関・管理者・作成者に関する情報● -->
+	<!-- データ作成者 -->
+	<jpcoar:creator>
+		<jpcoar:nameIdentifier nameIdentifierScheme="e-Rad_Researcher">2021xxxx</jpcoar:nameIdentifier>
+		<jpcoar:familyName xml:lang="ja">情報</jpcoar:familyName>
+		<jpcoar:familyName xml:lang="en">Jyoho</jpcoar:familyName>
+		<jpcoar:givenName xml:lang="ja">太郎</jpcoar:givenName>
+		<jpcoar:givenName xml:lang="en">Taro</jpcoar:givenName>
+	</jpcoar:creator>
+	<!-- データ管理機関 -->
+	<jpcoar:contributor contributorType="HostingInstitution"><!-- ◆DataManagerのaffiliationではないことに注意。-->
+		<!-- データ管理機関コード-->
+		<jpcoar:nameIdentifier nameIdentifierScheme="ROR">https://ror.org/057zh3y96</jpcoar:nameIdentifier>
+		<!-- データ管理機関-->
+		<jpcoar:contributorName xml:lang="ja" nameType="Organizational">〇〇大学</jpcoar:contributorName>
+		<jpcoar:contributorName xml:lang="en" nameType="Organizational">The University of 〇〇</jpcoar:contributorName>
+	</jpcoar:contributor>
+	<!-- データ管理機関--><!--◆個人情報保護の観点から個人名ではなく部署名を推奨-->
+	<jpcoar:contributor contributorType="DataManager">
+		<jpcoar:contributorName xml:lang="ja" nameType="Organizational">データ管理室</jpcoar:contributorName>
+		<!-- データ管理機関コード--><!--◆部署レベルの記載なのでRORの適用ではなく、データ管理機関コードは書かない-->
+	</jpcoar:contributor>	
+	<!-- データ管理者の連絡先--><!--◆本来氏名を記述する項目だが、自由記述で連絡先を入力する -->
+	<jpcoar:contributor contributorType="ContactPerson">
+		<jpcoar:contributorName xml:lang="en" nameType="Organizational">受付係　〇〇県〇〇市xx-xx</jpcoar:contributorName>
+	</jpcoar:contributor>
+
+<!-- ●データの属性に関する情報● -->
+	<!-- アクセス権-->
+	<dcterms:accessRights rdf:resource="http://purl.org/coar/access_right/c_f1cf">embargoed access</dcterms:accessRights>
+	<!-- ◆ここが「embargoed access」の場合は、datacite:date（日付）のdateTypeに"Available"を指定し、利用開始日を記入する。（通常はdatacite:date（日付）のdateTypeは"Issued"） -->
+	<!-- 管理対象データの利活用・提供方針--><!--◆ライセンス情報のURL表記が望ましいが、自由記述も可能 -->
+	<dc:rights xml:lang="en" rdf:resource="https://creativecommons.org/licenses/by/4.0/deed.en">Creative Commons Attribution 4.0 International</dc:rights>
+	<dc:rights xml:lang="ja">このデータを使用するにあたっては〇〇</dc:rights>
+	<!-- データの分野-->
+	<jpcoar:subject xml:lang="ja" subjectScheme="e-Rad_field">自然科学一般</jpcoar:subject><!-- ◆e-Rad分野コードはURIが未設置のため、テキストでの記載-->
+	<jpcoar:subject xml:lang="en" subjectScheme="e-Rad_field">Natural Science</jpcoar:subject>
+	<!-- データの説明 -->
+	<datacite:description xml:lang="ja" descriptionType="Abstract">〇〇への応用が期待できる、〇〇〇〇のゲノム解析と、その効率的な化合物生産に役立てるための発現プロファイル情報</datacite:description>	
+	<!-- 掲載日・掲載更新日-->
+	<datacite:date dateType="Available">2030-04-01</datacite:date>
+	<!-- ◆dcterms:accessRightsが「embargoed access」の場合は、datacite:date（日付）のdateTypeに"Available"を指定し、利用開始日を記入する。（通常はdatacite:date（日付）のdateTypeは"Issued"） -->
+	<!-- データの種別--><!-- ◆COAR語彙のDataset下位項目を指定可能 -->
+	<dc:type rdf:resource="http://purl.org/coar/resource_type/63NG-B465">dataset</dc:type>
+	<!-- リポジトリ情報--><!-- IRDBハーベスト時に付与される-->
+	<!-- リポジトリURI, DOIリンク-->
+	<jpcoar:identifier identifierType="DOI">https://doi.org/10.xxxxx/xxxxxxxx</jpcoar:identifier>
+	<!-- データNo. -->
+	<jpcoar:relation relationType="isIdenticalTo">
+		<jpcoar:relatedIdentifier identifierType="Local">12345678</jpcoar:relatedIdentifier>
+	</jpcoar:relation>
+	
+<!-- ●助成に関する情報● -->
+	<jpcoar:fundingReference>
+		<!-- 資金配分機関情報（配分機関名） -->
+		<jpcoar:funderName xml:lang="ja">国立研究開発法人科学技術振興機構（JST）</jpcoar:funderName>
+		<jpcoar:funderName xml:lang="en">Japan Science and Technology Agency（JST）</jpcoar:funderName>
+		<!-- 体系的番号におけるプログラム情報コード/ プログラム情報 -->
+		<jpcoar:fundingStreamIdentifier fundingStreamIdentifierType="JGN_fundingStream" fundingStreamIdentifierTypeURI="https://www.nistep.go.jp/taikei">MJPF</jpcoar:fundingStreamIdentifier>
+		<jpcoar:fundingStream xml:lang="ja">〇〇研究開発事業</jpcoar:fundingStream>
+		<!-- 体系的番号-->
+		<jpcoar:awardNumber awardNumberType="JGN">JPMJPF9999</jpcoar:awardNumber>
+		<jpcoar:awardTitle xml:lang="ja">〇〇の××に基づく△△の実現</jpcoar:awardTitle>
+	</jpcoar:fundingReference>	
+
+<!-- ●管理対象データファイルの指定● -->
+	<!-- 概略データ量-->
+	<jpcoar:file>
+		<jpcoar:extent>852.95 KB</jpcoar:extent>
+	</jpcoar:file>
+</jpcoar:jpcoar>
