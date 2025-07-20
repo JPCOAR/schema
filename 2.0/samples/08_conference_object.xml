@@ -43,7 +43,7 @@
         <jpcoar:conferenceName xml:lang="en">RDA Seventh Plenary Meeting</jpcoar:conferenceName>
         <jpcoar:conferenceSequence>7</jpcoar:conferenceSequence>
         <jpcoar:conferenceSponsor xml:lang="en">The Research Data Alliance</jpcoar:conferenceSponsor>
-        <jpcoar:conferenceDate xml:lang="en" startDay="29" startMonth="02" starYear="2016" endDay="04" endMonth="03" endYear="2016">February 29th to March 4th, 2016</jpcoar:conferenceDate>
+        <jpcoar:conferenceDate xml:lang="en" startDay="29" startMonth="02" startYear="2016" endDay="04" endMonth="03" endYear="2016">February 29th to March 4th, 2016</jpcoar:conferenceDate>
         <jpcoar:conferenceVenue xml:lang="en">Hitotsubashi Hall</jpcoar:conferenceVenue>
         <jpcoar:conferencePlace xml:lang="en">Tokyo</jpcoar:conferencePlace>
         <jpcoar:conferenceCountry>JPN</jpcoar:conferenceCountry>
