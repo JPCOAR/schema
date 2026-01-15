@@ -69,7 +69,6 @@
             <xs:enumeration value="Submitted"/>
             <xs:enumeration value="Updated"/>
             <xs:enumeration value="Valid"/>
-            <xs:enumeration value="Coverage"/>
         </xs:restriction>
     </xs:simpleType>
 
