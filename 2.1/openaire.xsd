@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://namespace.openaire.eu/schema/oaire/" targetNamespace="http://namespace.openaire.eu/schema/oaire/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
+
+    <!-- Element difinition -->
+    <xs:element name="version" type="versionType" />
+
+    <!-- Type definition -->
+    <xs:complexType name="versionType">
+        <xs:simpleContent>
+            <xs:extension base="versionVocab">
+                <xs:attribute ref="rdf:resource" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="versionVocab">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="AO" />
+            <xs:enumeration value="SMUR" />
+            <xs:enumeration value="AM" />
+            <xs:enumeration value="P" />
+            <xs:enumeration value="VoR" />
+            <xs:enumeration value="CVoR" />
+            <xs:enumeration value="EVoR" />
+            <xs:enumeration value="NA" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
